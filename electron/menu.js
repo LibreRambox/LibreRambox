@@ -1,5 +1,5 @@
 'use strict';
-const os = require('os');
+
 const electron = require('electron');
 const { systemPreferences } = require('electron')
 const app = electron.app;
@@ -21,27 +21,9 @@ module.exports = function(config) {
 	const locale = require('../resources/languages/'+config.get('locale'));
 	const helpSubmenu = [
 		{
-			label: `&`+locale['menu.help[0]'],
-			click() {
-				shell.openExternal('https://rambox.app');
-			}
-		},
-		{
-			label: `&Facebook`,
-			click() {
-				shell.openExternal('https://www.facebook.com/ramboxapp');
-			}
-		},
-		{
-			label: `&Twitter`,
-			click() {
-				shell.openExternal('https://www.twitter.com/ramboxapp');
-			}
-		},
-		{
 			label: `&GitHub`,
 			click() {
-				shell.openExternal('https://github.com/ramboxapp/community-edition');
+				shell.openExternal('https://github.com/KevinRoebert/community-edition');
 			}
 		},
 		{
