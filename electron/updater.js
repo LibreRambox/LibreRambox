@@ -3,13 +3,13 @@ const { autoUpdater } = require("electron-updater");
 
 // autoUpdater.logger = require("electron-log");
 // autoUpdater.logger.transports.file.level = "debug";
-// autoUpdater.currentVersion = '0.8.0';
+// autoUpdater.currentVersion = '0.8.1';
 // autoUpdater.updateConfigPath = path.join(__dirname, 'dev-app-update.yml');
 
 autoUpdater.setFeedURL({
 	"provider": "github",
-	"owner": "ramboxapp",
-	"repo": "download",
+	"owner": "KevinRoebert",
+	"repo": "rambox-build",
 	"vPrefixedTagName": true
 });
 

@@ -1,7 +1,6 @@
-var auth0, lock; // Auth0 vars
 // Enable Cookies
 var ElectronCookies = require('@exponent/electron-cookies');
-ElectronCookies.enable({ origin: 'http://rambox.pro' });
+ElectronCookies.enable({ origin: 'localhost' });
 
 // Sencha App
 Ext.setGlyphFontFamily('FontAwesome');
@@ -72,7 +71,7 @@ ipc.on('autoUpdater:update-downloaded', function(e, info) {
 				 xtype: 'button'
 				,text: 'Changelog'
 				,ui: 'decline'
-				,href: 'https://github.com/ramboxapp/download/releases/latest'
+				,href: 'https://github.com/KevinRoebert/rambox-build/releases/latest'
 			}
 			,'->'
 			,{
