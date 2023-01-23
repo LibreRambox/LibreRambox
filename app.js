@@ -71,7 +71,7 @@ ipc.on('autoUpdater:update-downloaded', function(e, info) {
 				 xtype: 'button'
 				,text: 'Changelog'
 				,ui: 'decline'
-				,href: 'https://github.com/KevinRoebert/rambox-build/releases/latest'
+				,href: 'https://github.com/LibreRambox/rambox-build/releases/latest'
 			}
 			,'->'
 			,{

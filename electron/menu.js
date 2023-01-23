@@ -23,7 +23,7 @@ module.exports = function(config) {
 		{
 			label: `&GitHub`,
 			click() {
-				shell.openExternal('https://github.com/KevinRoebert/community-edition');
+				shell.openExternal('https://github.com/LibreRambox/community-edition');
 			}
 		},
 		{
