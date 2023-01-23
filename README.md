@@ -9,24 +9,19 @@
   <h4>Free, Open Source and Cross Platform messaging and emailing app that combines common web applications into one.</h4>
 
   <p>
-    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg" alt="Donate with PayPal" /></a>
     <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"><img src="https://img.shields.io/github/license/saenzramiro/rambox.svg" alt="GNU GPL v3" /></a>
-    <a href="https://gitter.im/saenzramiro/rambox" target="_blank"><img src="https://badges.gitter.im/saenzramiro/rambox.svg" alt="Gitter" /></a>
-    <a href="https://github.com/saenzramiro/rambox/releases/latest" target="_blank">
-      <img src="https://img.shields.io/github/release/saenzramiro/rambox.svg" alt="Release" />
-    </a>
     <a target="_blank" href="https://crowdin.com/project/rambox"><img src="https://d322cqt584bo4o.cloudfront.net/rambox/localized.svg" /></a>
   </p>
+	<p>
+		<a target="_blank" href="https://github.com/LibreRambox/rambox-build/releases"> <img alt="Release" src="https://img.shields.io/github/v/release/LibreRambox/rambox-build"></a>
+	</p>
   <p>
-    <a href="https://travis-ci.org/saenzramiro/rambox" target="_blank"><img src="https://travis-ci.org/saenzramiro/rambox.svg?branch=master" alt="Travis CI" /></a>
-    <a href="https://ci.appveyor.com/project/saenzramiro/rambox" target="_blank"><img src="https://ci.appveyor.com/api/projects/status/3kk9ixjgxwrh7yfy?svg=true" alt="AppVeyor CI" /></a>
-    <a href="https://david-dm.org/saenzramiro/rambox" title="Dependency status"><img src="https://david-dm.org/saenzramiro/rambox.svg" /></a>
-    <a href="https://david-dm.org/saenzramiro/rambox#info=devDependencies" title="devDependency status"><img src="https://david-dm.org/saenzramiro/rambox/dev-status.svg" /></a>
+    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/LibreRambox/rambox-build/build.yml">
   </p>
 
   <h5>Available for Windows, Mac and Linux.</h5>
 
-  <h5><a href="https://rambox.pro/#ce" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE" /></a></h5>
+  <h5><a href="https://github.com/LibreRambox/rambox-build/releases" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE" /></a></h5>
 
   <h6>Logo designed by <a href="https://www.linkedin.com/in/andriyyurchenko/" target="_blank">Andriy Yurchenko</a></h6>
 </div>
