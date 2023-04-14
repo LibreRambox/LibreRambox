@@ -4,6 +4,9 @@
 	"version": "0.8.1",
 	"description": "Free and Open Source messaging and emailing app that combines common web applications into one.",
 	"main": "electron/main.js",
+	"engines": {
+		"node": ">=16.0.0"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/LibreRambox/community-edition.git"
@@ -202,14 +205,13 @@
 		}
 	},
 	"devDependencies": {
-		"asar": "0.12.4",
+		"asar": "^3.1.0",
 		"chai": "3.5.0",
-		"crowdin": "1.0.0",
 		"csvjson": "4.3.3",
-		"electron": "13.6.3",
-		"electron-builder": "23.3.0",
+		"electron": "^13.6.0",
+		"electron-builder": "^24.2.0",
 		"electron-packager": "15.5.1",
-		"mocha": "5.2.0"
+		"mocha": "^10.2.0"
 	},
 	"dependencies": {
 		"@exponent/electron-cookies": "2.0.0",
@@ -222,12 +224,10 @@
 		"is-online": "8.2.0",
 		"mime": "2.3.1",
 		"mousetrap": "1.6.3",
-		"request": "2.88.0",
-		"request-promise": "4.2.2",
 		"rimraf": "2.6.1",
 		"tmp": "0.0.28"
 	},
 	"volta": {
-		"node": "18.5.0"
+		"node": "18.16.0"
 	}
 }
