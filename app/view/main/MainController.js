@@ -159,7 +159,7 @@ Ext.define('Rambox.view.main.MainController', {
 		if ( config.default_service === rec.get('id') ) ipc.send('setConfig', Ext.apply(config, { default_service: 'ramboxTab' }));
 
 		function clearData(webview, tab) {
-			const currentWebView = require("electron").remote.webContents.fromId(
+			const currentWebView = require("@electron/remote").webContents.fromId(
 				webview.getWebContentsId()
 			);
 

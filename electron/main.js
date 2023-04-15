@@ -14,6 +14,7 @@ const updater = require('./updater');
 // File System
 var fs = require("fs");
 const path = require('path');
+const contextMenu = require('electron-context-menu');
 
 // Disk usage:
 // const disk = require('diskusage');
@@ -105,8 +106,7 @@ function createWindow () {
 		,show: !config.get('start_minimized')
 		,acceptFirstMouse: true
 		,webPreferences: {
-			 enableRemoteModule: true
-			,plugins: true
+			plugins: true
 			,partition: 'persist:rambox'
 			,nodeIntegration: true
 			,webviewTag: true
@@ -114,10 +114,11 @@ function createWindow () {
 			,spellcheck: false
 		}
 	});
+	require("@electron/remote/main").enable(mainWindow.webContents);
 
 	// Check if user has defined a custom User-Agent
 	if ( config.get('user_agent').length > 0 ) mainWindow.webContents.setUserAgent( config.get('user_agent') );
-	
+
 	// Wait for the mainWindow.loadURL(..) and the optional mainWindow.webContents.openDevTools()
 	// to be finished before minimizing
 	config.get('start_minimized') && mainWindow.webContents.once('did-finish-load', () => config.get('window_display_behavior') === 'show_trayIcon' ? mainWindow.hide() :  mainWindow.minimize());
@@ -234,9 +235,10 @@ function createMasterPasswordWindow() {
 		,frame: false
 		,webPreferences: {
 			 nodeIntegration: true
-			,enableRemoteModule: true
 		}
 	});
+	require("@electron/remote/main").enable(mainMasterPasswordWindow.webContents);
+
 	// Open the DevTools.
 	if ( isDev ) mainMasterPasswordWindow.webContents.openDevTools();
 
@@ -286,9 +288,9 @@ function formatBytes(bytes, decimals = 2) {
 				detail: `You've got just ${formatBytes(available)} space left.\n\nRambox has been frozen to prevent settings corruption.\n\nOnce you quit this dialog, Rambox will shutdown.\n\n1 GB of avalable disk space is required.\nFree up space on partition where Rambox is installed then start the app again.\n\nRambox path: \n${appPath}`,
 				message: `Running out of disk space! - Rambox shutting down`,
 			};
-		
+
 			dialog.showMessageBoxSync(null, options);
-			app.quit(); 
+			app.quit();
 		}
 	} catch (err) {
 		console.error(err)
@@ -422,7 +424,7 @@ app.on('web-contents-created', (webContentsCreatedEvent, contents) => {
 	// Block some Deep links to prevent that open its app (Ex: Slack)
 	contents.on('will-navigate', (event, url) => url.substring(0, 8) === 'slack://' && event.preventDefault());
 	// New Window handler
-	contents.on('new-window', (event, url, frameName, disposition, options, additionalFeatures, referrer, postBody) => {
+	contents.on('new-window', (event, url, _frameName, _disposition, options) => {
 		// If the url is about:blank we allow the window and handle it in 'did-create-window'
 		if (['about:blank', 'about:blank#blocked'].includes(url)) {
 			event.preventDefault();
@@ -644,6 +646,7 @@ if ( config.get('disable_gpu') ) app.disableHardwareAcceleration();
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
+	require('@electron/remote/main').initialize();
 	config.get('master_password') ? createMasterPasswordWindow() : createWindow();
 	// setInterval(availableSpaceWatchDog, 1000 * 60);
 });
