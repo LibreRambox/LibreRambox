@@ -4,7 +4,7 @@ const {app, BrowserWindow, shell, Menu, ipcMain, nativeImage, session} = require
 // Tray
 const tray = require('./tray');
 // AutoLaunch
-var AutoLaunch = require('auto-launch-patched');
+var AutoLaunch = require('auto-launch');
 // Configuration
 const Config = require('electron-store');
 // Development

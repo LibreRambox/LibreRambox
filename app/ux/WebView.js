@@ -213,8 +213,7 @@ Ext.define('Rambox.ux.WebView',{
 					,plugins: 'true'
 					,allowtransparency: 'on'
 					,autosize: 'on'
-					// TODO: remove nativeWindowOpen after electron 15
-					,webpreferences: 'nativeWindowOpen=yes, spellcheck=no, contextIsolation=no'
+					,webpreferences: 'spellcheck=no, contextIsolation=no'
 					,allowpopups: 'on'
 					// ,disablewebsecurity: 'on' // Disabled because some services (Like Google Drive) dont work with this enabled
 					,useragent: me.getUserAgent()

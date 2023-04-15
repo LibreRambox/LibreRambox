@@ -79,25 +79,11 @@ jobs:
           name: Rambox-linux-x64.zip
         if: matrix.job_name == 'linux'
 
-      - name: LINUX Publish zip ia32
-        uses: actions/upload-artifact@v3
-        with:
-          path: ${{ github.workspace }}/dist/Rambox-*-linux-ia32.zip
-          name: Rambox-linux-ia32.zip
-        if: matrix.job_name == 'linux'
-
       - name: LINUX Publish tar.gz x64
         uses: actions/upload-artifact@v3
         with:
           path: ${{ github.workspace }}/dist/Rambox-*-linux-x64.tar.gz
           name: Rambox-linux-x64.tar.gz
-        if: matrix.job_name == 'linux'
-
-      - name: LINUX Publish tar.gz ia32
-        uses: actions/upload-artifact@v3
-        with:
-          path: ${{ github.workspace }}/dist/Rambox-*-linux-ia32.tar.gz
-          name: Rambox-linux-ia32.tar.gz
         if: matrix.job_name == 'linux'
 
       - name: LINUX Publish deb amd64
@@ -107,20 +93,6 @@ jobs:
           name: Rambox-linux-amd64.deb
         if: matrix.job_name == 'linux'
 
-      - name: LINUX Publish deb i386
-        uses: actions/upload-artifact@v3
-        with:
-          path: ${{ github.workspace }}/dist/Rambox-*-linux-i386.deb
-          name: Rambox-linux-i386.deb
-        if: matrix.job_name == 'linux'
-
-      - name: LINUX Publish snap x64
-        uses: actions/upload-artifact@v3
-        with:
-          path: ${{ github.workspace }}/dist/Rambox-*-linux-x86_64.AppImage
-          name: Rambox-linux-x86_64.AppImage
-        if: matrix.job_name == 'linux'
-
       - name: LINUX Publish AppImage x64
         uses: actions/upload-artifact@v3
         with:
@@ -128,11 +100,11 @@ jobs:
           name: Rambox-linux-x86_64.AppImage
         if: matrix.job_name == 'linux'
 
-      - name: LINUX Publish AppImage x86_64
+      - name: LINUX Publish snap x64
         uses: actions/upload-artifact@v3
         with:
-          path: ${{ github.workspace }}/dist/Rambox-*-linux-i386.AppImage
-          name: Rambox-linux-i386.AppImage
+          path: ${{ github.workspace }}/dist/Rambox-*-linux-amd64.snap
+          name: Rambox-linux-x86_64.snap
         if: matrix.job_name == 'linux'
 
       - name: LINUX Publish rpm x86_64
@@ -142,25 +114,11 @@ jobs:
           name: Rambox-linux-x86_64.rpm
         if: matrix.job_name == 'linux'
 
-      - name: LINUX Publish rpm i686
-        uses: actions/upload-artifact@v3
-        with:
-          path: ${{ github.workspace }}/dist/Rambox-*-linux-i686.rpm
-          name: Rambox-linux-i686.rpm
-        if: matrix.job_name == 'linux'
-
       - name: LINUX Publish yml
         uses: actions/upload-artifact@v3
         with:
           path: ${{ github.workspace }}/dist/latest-linux.yml
           name: latest-linux.yml
-        if: matrix.job_name == 'linux'
-
-      - name: LINUX Publish yml ia32
-        uses: actions/upload-artifact@v3
-        with:
-          path: ${{ github.workspace }}/dist/latest-linux-ia32.yml
-          name: latest-linux-ia32.yml
         if: matrix.job_name == 'linux'
 
       # Build OSX
