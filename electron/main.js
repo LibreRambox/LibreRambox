@@ -234,7 +234,9 @@ function createMasterPasswordWindow() {
 		 backgroundColor: '#0675A0'
 		,frame: false
 		,webPreferences: {
-			 nodeIntegration: true
+			nodeIntegration: true,
+			enableRemoteModule: true,
+			contextIsolation: false
 		}
 	});
 	require("@electron/remote/main").enable(mainMasterPasswordWindow.webContents);
@@ -673,4 +675,38 @@ app.on('activate', function () {
 
 app.on('before-quit', function () {
 	isQuitting = true;
+});
+
+// Prevent the ability to create webview with nodeIntegration.
+app.on('web-contents-created', (event, contents) => {
+	require("@electron/remote/main").enable(contents);
+	const contextMenuWebContentsDispose = contextMenu({
+		window: contents,
+		showCopyImageAddress: true,
+		showSaveImage: false,
+		showSaveImageAs: true,
+	});
+
+	// contents.session.webRequest.onBeforeSendHeaders(
+	// 	{
+	// 		urls: [
+	// 			'https://accounts.google.com/',
+	// 			'https://accounts.google.com/*'
+	// 		]
+	// 	},
+	// 	(details, callback) => {
+	// 		details.requestHeaders['User-Agent'] =
+	// 			'Mozilla/5.0 (X11; Linux x86_64; rv:112.0) Gecko/20100101 Firefox/112.0';
+	// 		callback({ requestHeaders: details.requestHeaders });
+	// 	}
+	// );
+
+	contents.on('will-attach-webview', (event, webPreferences, params) => {
+		// Always prevent node integration
+		webPreferences.nodeIntegration = false;
+	});
+
+	contents.on('destroyed', function() {
+		contextMenuWebContentsDispose();
+	})
 });
