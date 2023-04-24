@@ -687,19 +687,20 @@ app.on('web-contents-created', (event, contents) => {
 		showSaveImageAs: true,
 	});
 
-	// contents.session.webRequest.onBeforeSendHeaders(
-	// 	{
-	// 		urls: [
-	// 			'https://accounts.google.com/',
-	// 			'https://accounts.google.com/*'
-	// 		]
-	// 	},
-	// 	(details, callback) => {
-	// 		details.requestHeaders['User-Agent'] =
-	// 			'Mozilla/5.0 (X11; Linux x86_64; rv:112.0) Gecko/20100101 Firefox/112.0';
-	// 		callback({ requestHeaders: details.requestHeaders });
-	// 	}
-	// );
+	// Workaround for Google (gmail) accounts, they forbid Electron User-Agent so we use Firefox ESR.
+	contents.session.webRequest.onBeforeSendHeaders(
+		{
+			urls: [
+				'https://accounts.google.com/',
+				'https://accounts.google.com/*'
+			]
+		},
+		(details, callback) => {
+			details.requestHeaders['User-Agent'] =
+				'Mozilla/5.0 (X11; Linux x86_64; rv:112.0) Gecko/20100101 Firefox/112.0';
+			callback({ requestHeaders: details.requestHeaders });
+		}
+	);
 
 	contents.on('will-attach-webview', (event, webPreferences, params) => {
 		// Always prevent node integration
