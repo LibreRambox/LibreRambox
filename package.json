@@ -1,7 +1,7 @@
 {
 	"name": "Rambox",
 	"productName": "Rambox",
-	"version": "0.8.1-fix-vulns",
+	"version": "0.8.1-fix-vulns-4",
 	"description": "Free and Open Source messaging and emailing app that combines common web applications into one.",
 	"main": "electron/main.js",
 	"engines": {
@@ -71,9 +71,9 @@
 		"productName": "Rambox",
 		"appId": "com.grupovrs.ramboxce",
 		"asar": true,
-		"electronVersion": "24.1.2",
+		"electronVersion": "25.3.2",
 		"electronDownload": {
-			"version": "24.1.2"
+			"version": "25.3.2"
 		},
 		"mac": {
 			"category": "public.app-category.productivity",
@@ -200,28 +200,27 @@
 		}
 	},
 	"devDependencies": {
-		"@electron/asar": "^3.2.0",
-		"electron": "^24.1.0",
-		"electron-builder": "^24.2.0",
-		"@electron/rebuild": "^3.2.12",
-		"electron-packager": "^17.1.0",
+		"@electron/asar": "^3.2.4",
+		"electron": "^25.3.2",
+		"electron-builder": "^24.6.3",
+		"@electron/rebuild": "^3.2.13",
+		"electron-packager": "^17.1.1",
 		"mocha": "^10.2.0"
 	},
 	"dependencies": {
-		"@electron/remote": "^2.0.1",
+		"@electron/remote": "^2.0.10",
 		"@exponent/electron-cookies": "2.0.0",
-		"auto-launch": "^5.0.5",
-		"electron-context-menu": "^3.1.1",
+		"auto-launch": "^5.0.6",
+		"electron-context-menu": "^3.6.1",
 		"electron-is-dev": "^2.0.0",
 		"electron-store": "^8.1.0",
-		"electron-updater": "^5.3.0",
-		"is-online": "^9.0.0",
-		"mime": "2.3.1",
-		"mousetrap": "1.6.3",
-		"rimraf": "2.6.1",
-		"tmp": "^0.2.0"
+		"electron-updater": "^6.1.4",
+		"is-online": "^9.0.1",
+		"mime": "3.0.0",
+		"mousetrap": "1.6.5",
+		"tmp": "^0.2.1"
 	},
 	"volta": {
-		"node": "18.16.0"
+		"node": "18.17.0"
 	}
 }

@@ -697,7 +697,7 @@ app.on('web-contents-created', (event, contents) => {
 		},
 		(details, callback) => {
 			details.requestHeaders['User-Agent'] =
-				'Mozilla/5.0 (X11; Linux x86_64; rv:112.0) Gecko/20100101 Firefox/112.0';
+				'Mozilla/5.0 (X11; Linux x86_64; rv:115.0) Gecko/20100101 Firefox/115.0';
 			callback({ requestHeaders: details.requestHeaders });
 		}
 	);
