@@ -30,6 +30,7 @@ bootstrap.jsonp
 # Electron
 node_modules/
 npm-debug.log
+sencha*.log
 
 # Vagrant
 .vagrant/
