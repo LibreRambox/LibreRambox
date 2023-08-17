@@ -13,15 +13,15 @@
     <a target="_blank" href="https://crowdin.com/project/rambox"><img src="https://d322cqt584bo4o.cloudfront.net/rambox/localized.svg" /></a>
   </p>
 	<p>
-		<a target="_blank" href="https://github.com/LibreRambox/rambox-build/releases"> <img alt="Release" src="https://img.shields.io/github/v/release/LibreRambox/rambox-build"></a>
+		<a target="_blank" href="https://github.com/LibreRambox/community-edition/releases"> <img alt="Release" src="https://img.shields.io/github/v/release/LibreRambox/community-edition"></a>
 	</p>
   <p>
-    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/LibreRambox/rambox-build/build.yml">
+    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/LibreRambox/community-edition/build.yml">
   </p>
 
   <h5>Available for Windows, Mac and Linux.</h5>
 
-  <h5><a href="https://github.com/LibreRambox/rambox-build/releases" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE" /></a></h5>
+  <h5><a href="https://github.com/LibreRambox/community-edition/releases" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE" /></a></h5>
 
   <h6>Logo designed by <a href="https://www.linkedin.com/in/andriyyurchenko/" target="_blank">Andriy Yurchenko</a></h6>
 </div>
