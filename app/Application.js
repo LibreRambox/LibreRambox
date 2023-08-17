@@ -61,7 +61,7 @@ Ext.define('Rambox.Application', {
 			})
 		})();
 
-		if ( !localStorage.getItem('hideMacPermissions') && process.platform === 'darwin' && (require('electron').remote.systemPreferences.getMediaAccessStatus('microphone') !== 'granted' || require('electron').remote.systemPreferences.getMediaAccessStatus('camera') !== 'granted') ) {
+		if ( !localStorage.getItem('hideMacPermissions') && process.platform === 'darwin' && (require('@electron/remote').systemPreferences.getMediaAccessStatus('microphone') !== 'granted' || require('@electron/remote').systemPreferences.getMediaAccessStatus('camera') !== 'granted') ) {
 			console.info('Checking mac permissions...');
 			Ext.cq1('app-main').addDocked({
 				xtype: 'toolbar'
@@ -78,8 +78,8 @@ Ext.define('Rambox.Application', {
 						,text: 'Grant permissions'
 						,ui: 'decline'
 						,handler: async function(btn) {
-							await require('electron').remote.systemPreferences.askForMediaAccess('microphone');
-							await require('electron').remote.systemPreferences.askForMediaAccess('camera');
+							await require('@electron/remote').systemPreferences.askForMediaAccess('microphone');
+							await require('@electron/remote').systemPreferences.askForMediaAccess('camera');
 							Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true);
 						}
 					}
@@ -149,7 +149,7 @@ Ext.define('Rambox.Application', {
 			];
 
 			// Shortcuts
-			const platform = require('electron').remote.process.platform;
+			const platform = require('@electron/remote').process.platform;
 			// Prevents default behaviour of Mousetrap, that prevents shortcuts in textareas
 			Mousetrap.prototype.stopCallback = function(e, element, combo) {
 				return false;

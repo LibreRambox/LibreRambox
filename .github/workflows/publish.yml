@@ -64,7 +64,7 @@ jobs:
           path: .
       - uses: actions/setup-node@v3
         with:
-          node-version: 18.16.0
+          node-version: lts/hydrogen
       - run: npm i
 
       # Build Linux
@@ -77,18 +77,12 @@ jobs:
         with:
           files: |
             dist/Rambox-*-linux-amd64.deb
-            dist/Rambox-*-linux-i386.deb
             dist/Rambox-*-linux-amd64.snap
             dist/Rambox-*-linux-x86_64.AppImage
-            dist/Rambox-*-linux-i386.AppImage
             dist/Rambox-*-linux-x86_64.rpm
-            dist/Rambox-*-linux-i686.rpm
             dist/Rambox-*-linux-x64.tar.gz
-            dist/Rambox-*-linux-ia32.tar.gz
             dist/Rambox-*-linux-x64.zip
-            dist/Rambox-*-linux-ia32.zip
             dist/latest-linux.yml
-            dist/latest-linux-ia32.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: matrix.job_name == 'linux'

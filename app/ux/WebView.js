@@ -213,7 +213,7 @@ Ext.define('Rambox.ux.WebView',{
 					,plugins: 'true'
 					,allowtransparency: 'on'
 					,autosize: 'on'
-					,webpreferences: 'nativeWindowOpen=yes, spellcheck=no, contextIsolation=no'
+					,webpreferences: 'spellcheck=no, contextIsolation=no'
 					,allowpopups: 'on'
 					// ,disablewebsecurity: 'on' // Disabled because some services (Like Google Drive) dont work with this enabled
 					,useragent: me.getUserAgent()
@@ -277,7 +277,7 @@ Ext.define('Rambox.ux.WebView',{
 		// Notifications in Webview
 		me.setNotifications(localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ? false : me.record.get('notifications'));
 
-		require('electron').remote.session.fromPartition('persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).sub : '')).webRequest.onBeforeSendHeaders((details, callback) => {
+		require('@electron/remote').session.fromPartition('persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).sub : '')).webRequest.onBeforeSendHeaders((details, callback) => {
 			const change = details.url.match(/^https:\/\/accounts\.google\.com(\/|$)/);
 			if ( change ) details.requestHeaders['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0';
 			callback({ cancel: false, requestHeaders: details.requestHeaders });
@@ -379,7 +379,7 @@ Ext.define('Rambox.ux.WebView',{
 			const { URL } = require('url');
 			const url = new URL(e.url);
 			const protocol = url.protocol;
-			// Block some Deep links to prevent that open its app (Ex: Slack) 
+			// Block some Deep links to prevent that open its app (Ex: Slack)
 			if ( ['slack:'].includes(protocol) ) return;
 			// Allow Deep links
 			if ( !['http:', 'https:', 'about:'].includes(protocol) ) return require('electron').shell.openExternal(url.href);
@@ -420,7 +420,7 @@ Ext.define('Rambox.ux.WebView',{
 			js_inject += 'document.body.scrollTop=0;';
 
 			// Handles Certificate Errors
-			require('electron').remote.webContents.fromId(webview.getWebContentsId()).on('certificate-error', function(event, url, error, certificate, callback) {
+			require('@electron/remote').webContents.fromId(webview.getWebContentsId()).on('certificate-error', function(event, url, error, certificate, callback) {
 				if (me.record.get('trust')) {
 					event.preventDefault();
 					callback(true);
@@ -436,7 +436,7 @@ Ext.define('Rambox.ux.WebView',{
 				me.down('statusbar').down('button').show();
 			});
 			if (!eventsOnDom) {
-				require('electron').remote.webContents.fromId(webview.getWebContentsId()).on('before-input-event', (event, input) => {
+				require('@electron/remote').webContents.fromId(webview.getWebContentsId()).on('before-input-event', (event, input) => {
 					if (input.type !== 'keyDown') return;
 
 					var modifiers = [];
@@ -449,7 +449,7 @@ Ext.define('Rambox.ux.WebView',{
 					if (input.key === 'Tab' && !(modifiers && modifiers.length)) return;
 
 					// Maps special keys to fire the correct event in Mac OS
-					if (require('electron').remote.process.platform === 'darwin') {
+					if (require('@electron/remote').process.platform === 'darwin') {
 						var keys = [];
 						keys['ƒ'] = 'f'; // Search
 						keys[' '] = 'l'; // Lock
@@ -468,7 +468,7 @@ Ext.define('Rambox.ux.WebView',{
 					)
 						return;
 
-					require('electron').remote.getCurrentWebContents().sendInputEvent({
+					require('@electron/remote').getCurrentWebContents().sendInputEvent({
 						type: input.type,
 						keyCode: input.key,
 						modifiers: modifiers,
@@ -521,7 +521,7 @@ Ext.define('Rambox.ux.WebView',{
 			}
 
 			function showWindowAndActivateTab(event) {
-				require('electron').remote.getCurrentWindow().show();
+				require('@electron/remote').getCurrentWindow().show();
 				var tabPanel = Ext.cq1('app-main');
 				// Temp fix missing cursor after upgrade to electron 3.x +
 				tabPanel.setActiveTab(me);
