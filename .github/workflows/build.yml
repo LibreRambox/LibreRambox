@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+  pull_request:
 jobs:
   sencha:
     name: Build Sencha app
