@@ -252,7 +252,7 @@ Ext.define('Rambox.view.add.Add',{
 						,items: [
 							{
 								 xtype: 'textarea'
-								,fieldLabel: locale['app.window[8]']+' (<a href="https://github.com/saenzramiro/rambox/wiki/Inject-JavaScript-Code" target="_blank">'+locale['app.window[9]']+'</a>)'
+								,fieldLabel: locale['app.window[8]']+' (<a href="https://github.com/LibreRambox/community-edition/wiki/Inject-JavaScript-Code" target="_blank">'+locale['app.window[9]']+'</a>)'
 								,allowBlank: true
 								,name: 'js_unread'
 								,value: me.edit ? me.record.get('js_unread') : ''

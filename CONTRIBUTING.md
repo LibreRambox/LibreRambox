@@ -2,13 +2,11 @@
 
 We welcome pull requests! Follow these steps to contribute:
 
-1. Find an [issue](https://github.com/ramboxapp/community-edition/issues) that needs assistance.
+1. Find an [issue](https://github.com/LibreRambox/community-edition/issues) that needs assistance.
 1. Let us know you are working on it by posting a comment on the issue.
 1. Follow the [Contribution Guidelines](#contribution-guidelines) to start working on the issue.
 
 Working on your first Pull Request? You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
-
-##### If you've found a bug that is not on the board, [follow these steps](README.md#found-a-bug).
 
 ---
 
@@ -19,7 +17,7 @@ Working on your first Pull Request? You can learn how from this *free* series [H
 - [Prerequisites](#prerequisites)
 - [Forking the Project](#forking-the-project)
 - [Create a Branch](#create-a-branch)
-- [Set Up rambox](#set-up-rambox)
+- [Set Up LibreRambox](#set-up-librerambox)
 
 ### Create
 
@@ -63,29 +61,29 @@ If your versions are lower than the prerequisite versions, you should update.
 1. Install [Git](https://git-scm.com/) or your favorite Git client.
 1. (Optional) [Setup an SSH Key](https://help.github.com/articles/generating-an-ssh-key/) for GitHub.
 
-#### Forking rambox
+#### Forking LibreRambox
 
-1. Go to the top level rambox repository: <https://github.com/ramboxapp/community-edition>
+1. Go to the top level LibreRambox repository: <https://github.com/LibreRambox/community-edition>
 1. Click the "Fork" Button in the upper right hand corner of the interface ([More Details Here](https://help.github.com/articles/fork-a-repo/))
-1. After the repository (repo) has been forked, you will be taken to your copy of the rambox repo at <https://github.com/yourUsername/community-edition>
+1. After the repository (repo) has been forked, you will be taken to your copy of the LibreRambox repo at <https://github.com/yourUsername/community-edition>
 
 #### Cloning Your Fork
 
 1. Open a Terminal / Command Line / Bash Shell in your projects directory (_i.e.: `/yourprojectdirectory/`_)
-1. Clone your fork of rambox
+1. Clone your fork of LibreRambox
     - `git clone https://github.com/yourUsername/community-edition.git`
 
 **(make sure to replace `yourUsername` with your GitHub username)**
 
-This will download the entire rambox repo to your projects directory.
+This will download the entire LibreRambox repo to your projects directory.
 
 #### Setup Your Upstream
 
-1. Change directory to the new rambox directory (`cd community-edition`)
-1. Add a remote to the official rambox repo:
-    - `git remote add upstream https://github.com/ramboxapp/community-edition.git`
+1. Change directory to the new LibreRambox directory (`cd community-edition`)
+1. Add a remote to the official LibreRambox repo:
+    - `git remote add upstream https://github.com/LibreRambox/community-edition.git`
 
-Congratulations, you now have a local copy of the rambox repo! :tada:
+Congratulations, you now have a local copy of the LibreRambox repo! :tada:
 
 ### Create a Branch
 
@@ -113,9 +111,9 @@ git push origin [name_of_your_new_branch]
 
 **If you need more help with branching, take a look at [this](https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches).**
 
-### Set Up rambox
+### Set Up LibreRambox
 
-Once you have rambox cloned, before you start the application, you first need to install all of the dependencies:
+Once you have LibreRambox cloned, before you start the application, you first need to install all of the dependencies:
 
 ```bash
 # Install NPM dependencies
@@ -132,7 +130,7 @@ npm start # in a new terminal
 
 This bit is up to you!
 
-#### How to find the code in the rambox codebase to fix/edit
+#### How to find the code in the LibreRambox codebase to fix/edit
 
 The best way to find out any code you wish to change/add or remove is using the GitHub search bar at the top of the repository page.
 For example, you could search for a challenge name and the results will display all the files along with line numbers.
@@ -141,9 +139,9 @@ Always feel free to reach out to the chat room when you are not certain of any t
 
 #### Adding or Editing Services
 
-The services are stored inside the file `./api/services.json` in the `gh-pages` branch:
+The services are stored inside the file `./resources/services.json`:
 
-https://github.com/ramboxapp/community-edition/blob/gh-pages/api/services.json
+https://github.com/LibreRambox/community-edition/blob/master/resources/services.json
 
 Add your service to the *BOTTOM* of the array.
 To see these changes you'll need to stop your `npm start` and `sencha app watch`, and then rerun those.
@@ -152,8 +150,8 @@ To see these changes you'll need to stop your `npm start` and `sencha app watch`
 
 #### What is a Pull Request?
 
-A pull request (PR) is a method of submitting proposed changes to the rambox repo (or any repo, for that matter).
-You will make changes to copies of thefiles which make up rambox in a personal fork, then apply to have them accepted by rambox proper.
+A pull request (PR) is a method of submitting proposed changes to the LibreRambox repo (or any repo, for that matter).
+You will make changes to copies of thefiles which make up LibreRambox in a personal fork, then apply to have them accepted by LibreRambox proper.
 
 #### Important: ALWAYS EDIT ON A BRANCH
 
@@ -164,8 +162,8 @@ This is critical, because your copy of `master` will be forever sullied and the 
 ### Common Steps
 
 1. Once the edits have been committed, you will be prompted to create a pull request on your fork's GitHub Page.
-1. By default, all pull requests should be against the rambox main repo, `master` branch.
-    - **Make sure that your Base Fork is set to ramboxapp/community-edition when raising a Pull Request.**
+1. By default, all pull requests should be against the LibreRambox main repo, `master` branch.
+    - **Make sure that your Base Fork is set to LibreRambox/community-edition when raising a Pull Request.**
 1. Submit a pull request.
 1. The title (also called the subject) of your PR should be descriptive of your changes and succinctly indicates what is being fixed.
     - **Do not add the issue number in the PR title or commit message.**
@@ -177,7 +175,7 @@ This is critical, because your copy of `master` will be forever sullied and the 
 
 ### How We Review and Merge Pull Requests
 
-Rambox has a team of volunteer Issue Moderators. These Issue Moderators routinely go through open pull requests in a process called [Quality Assurance](https://en.wikipedia.org/wiki/Quality_assurance) (QA).
+LibreRambox has a team of volunteer Issue Moderators. These Issue Moderators routinely go through open pull requests in a process called [Quality Assurance](https://en.wikipedia.org/wiki/Quality_assurance) (QA).
 
 1. If an Issue Moderator QA's a pull request and confirms that the new code does what it is supposed without seeming to introduce any new bugs, they will comment: `"LGTM" which means "Looks good to me."`
 1. Another Issue Moderator will QA the same pull request.

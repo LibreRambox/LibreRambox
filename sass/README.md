@@ -14,19 +14,19 @@ This folder contains misc. support code for Sass builds (global functions, mixin
 
 This folder contains Sass files defining CSS rules corresponding to classes
 included in the application's JavaScript code build. By default, files in this
-folder are mapped to the application's root namespace, 'Rambox'. This is set in
+folder are mapped to the application's root namespace, 'LibreRambox'. This is set in
 `app.json`:
 
 ```json
 "sass": {
-    "namespace": "Rambox"
+    "namespace": "LibreRambox"
 }
 ```
 
 ### ./sass/var
 
 This folder contains Sass files defining Sass variables corresponding to classes included in the application's JavaScript code build.
-By default, files in this folder are mapped to the application's root namespace, 'Rambox' in the same way as `Rambox/sass/src`.
+By default, files in this folder are mapped to the application's root namespace, 'LibreRambox' in the same way as `LibreRambox/sass/src`.
 
 ## Slicing
 

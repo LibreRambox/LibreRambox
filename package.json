@@ -1,6 +1,6 @@
 {
-	"name": "Rambox",
-	"productName": "Rambox",
+	"name": "LibreRambox",
+	"productName": "LibreRambox",
 	"version": "0.9.0",
 	"description": "Free and Open Source messaging and emailing app that combines common web applications into one.",
 	"main": "electron/main.js",
@@ -16,7 +16,7 @@
 	},
 	"homepage": "https://github.com/LibreRambox/community-edition",
 	"keywords": [
-		"Rambox",
+		"LibreRambox",
 		"messaging",
 		"app",
 		"slack",
@@ -35,21 +35,21 @@
 		"start:debug": "electron electron/main.js --enable-logging",
 		"dev": "electron electron/main.js",
 		"sencha:clean": "rm -rf ./build/production",
-		"sencha:compile": "sencha app build && npm --prefix ./build/production/Rambox/ install ./build/production/Rambox/",
+		"sencha:compile": "sencha app build && npm --prefix ./build/production/LibreRambox/ install ./build/production/LibreRambox/",
 		"sencha:compile:build": "sencha app build",
 		"clean": "rm -rf ./dist",
-		"clean:osx": "rm -rf ./dist/Rambox-darwin-*",
-		"clean:win": "rm -rf ./dist/Rambox-win32-*",
+		"clean:osx": "rm -rf ./dist/LibreRambox-darwin-*",
+		"clean:win": "rm -rf ./dist/LibreRambox-win32-*",
 		"pack": "npm run pack:osx && npm run pack:win",
 		"pack:osx": "npm run pack:osx64 && npm run pack:osxarm64",
-		"pack:osx64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=darwin --arch=x64 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
-		"pack:osxarm64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=darwin --arch=arm64 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:osx64": "electron-packager \"./build/production/LibreRambox/\" \"LibreRambox\" --out=dist --platform=darwin --arch=x64 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:osxarm64": "electron-packager \"./build/production/LibreRambox/\" \"LibreRambox\" --out=dist --platform=darwin --arch=arm64 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
 		"pack:win": "npm run pack:win32 && npm run pack:win64",
-		"pack:win32": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=ia32 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=32-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
-		"pack:win64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=x64 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:win32": "electron-packager \"./build/production/LibreRambox/\" \"LibreRambox\" --out=dist --platform=win32 --arch=ia32 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=32-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:win64": "electron-packager \"./build/production/LibreRambox/\" \"LibreRambox\" --out=dist --platform=win32 --arch=x64 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
 		"pack:linux": "npm run pack:linux32 && npm run pack:linux64",
-		"pack:linux32": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=ia32 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
-		"pack:linux64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=x64 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:linux32": "electron-packager \"./build/production/LibreRambox/\" \"LibreRambox\" --out=dist --platform=linux --arch=ia32 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:linux64": "electron-packager \"./build/production/LibreRambox/\" \"LibreRambox\" --out=dist --platform=linux --arch=x64 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
 		"build": "npm run build:linux && npm run build:osx && npm run build:win",
 		"build:osx": "electron-builder -p never --macos --universal",
 		"build:osx64": "electron-builder --macos --x64",
@@ -68,8 +68,8 @@
 		"translations:generate": "node languages.js generate"
 	},
 	"build": {
-		"productName": "Rambox",
-		"appId": "com.grupovrs.ramboxce",
+		"productName": "LibreRambox",
+		"appId": "eu.roebert.librerambox",
 		"asar": true,
 		"electronVersion": "25.3.2",
 		"electronDownload": {
@@ -77,7 +77,7 @@
 		},
 		"mac": {
 			"category": "public.app-category.productivity",
-			"artifactName": "Rambox-${version}-mac-${arch}.${ext}",
+			"artifactName": "LibreRambox-${version}-mac-${arch}.${ext}",
 			"target": [
 				{
 					"target": "default",
@@ -91,12 +91,12 @@
 			"entitlements": "resources/installer/entitlements.mac.plist",
 			"entitlementsInherit": "resources/installer/entitlements.mac.plist",
 			"extendInfo": {
-				"NSMicrophoneUsageDescription": "Apps inside Rambox CE may need access to your microphone. Please, grant access to have a better experience.",
-				"NSCameraUsageDescription": "Apps inside Rambox CE may need access to your camera. Please, grant access to have a better experience."
+				"NSMicrophoneUsageDescription": "Apps inside LibreRambox may need access to your microphone. Please, grant access to have a better experience.",
+				"NSCameraUsageDescription": "Apps inside LibreRambox may need access to your camera. Please, grant access to have a better experience."
 			}
 		},
 		"dmg": {
-			"title": "Rambox",
+			"title": "LibreRambox",
 			"iconSize": 128,
 			"sign": false,
 			"contents": [
@@ -114,7 +114,7 @@
 			]
 		},
 		"win": {
-			"artifactName": "Rambox-${version}-win-${arch}.${ext}",
+			"artifactName": "LibreRambox-${version}-win-${arch}.${ext}",
 			"target": [
 				"nsis",
 				"zip"
@@ -151,7 +151,7 @@
 				"Type": "Application",
 				"Categories": "GTK;GNOME;Network;Email;Chat;InstantMessaging;"
 			},
-			"artifactName": "Rambox-${version}-linux-${arch}.${ext}",
+			"artifactName": "LibreRambox-${version}-linux-${arch}.${ext}",
 			"executableArgs": [
 				"--no-sandbox"
 			],
