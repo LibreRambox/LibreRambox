@@ -71,9 +71,9 @@
 		"productName": "LibreRambox",
 		"appId": "eu.roebert.librerambox",
 		"asar": true,
-		"electronVersion": "26.2.2",
+		"electronVersion": "25.3.2",
 		"electronDownload": {
-			"version": "26.2.2"
+			"version": "25.3.2"
 		},
 		"mac": {
 			"category": "public.app-category.productivity",
@@ -197,7 +197,7 @@
 	"devDependencies": {
 		"@electron/asar": "^3.2.4",
 		"@electron/rebuild": "^3.2.13",
-		"electron": "^26.2.2",
+		"electron": "^25.3.2",
 		"electron-builder": "^24.6.3",
 		"electron-packager": "^17.1.1",
 		"mocha": "^10.2.0"
@@ -211,7 +211,7 @@
 		"electron-is-dev": "^2.0.0",
 		"electron-store": "^8.1.0",
 		"electron-updater": "^6.1.4",
-		"is-online": "^10.0.0",
+		"is-online": "^9.0.1",
 		"mime": "3.0.0",
 		"mousetrap": "1.6.5",
 		"tmp": "^0.2.1"
