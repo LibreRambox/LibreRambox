@@ -1,7 +1,7 @@
 {
 	"name": "LibreRambox",
 	"productName": "LibreRambox",
-	"version": "0.9.0",
+	"version": "0.10.0",
 	"description": "Free and Open Source messaging and emailing app that combines common web applications into one.",
 	"main": "electron/main.js",
 	"engines": {
@@ -71,9 +71,9 @@
 		"productName": "LibreRambox",
 		"appId": "eu.roebert.librerambox",
 		"asar": true,
-		"electronVersion": "25.3.2",
+		"electronVersion": "26.2.2",
 		"electronDownload": {
-			"version": "25.3.2"
+			"version": "26.2.2"
 		},
 		"mac": {
 			"category": "public.app-category.productivity",
@@ -127,11 +127,6 @@
 			"runAfterFinish": true
 		},
 		"snap": {
-			"publish": [
-				{
-					"provider": "github"
-				}
-			],
 			"plugs": [
 				"default",
 				"camera",
@@ -202,7 +197,7 @@
 	"devDependencies": {
 		"@electron/asar": "^3.2.4",
 		"@electron/rebuild": "^3.2.13",
-		"electron": "^25.3.2",
+		"electron": "^26.2.2",
 		"electron-builder": "^24.6.3",
 		"electron-packager": "^17.1.1",
 		"mocha": "^10.2.0"
@@ -216,7 +211,7 @@
 		"electron-is-dev": "^2.0.0",
 		"electron-store": "^8.1.0",
 		"electron-updater": "^6.1.4",
-		"is-online": "^9.0.1",
+		"is-online": "^10.0.0",
 		"mime": "3.0.0",
 		"mousetrap": "1.6.5",
 		"tmp": "^0.2.1"
