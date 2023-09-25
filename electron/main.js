@@ -47,6 +47,7 @@ const config = new Config({
 		,user_agent: ''
 		,default_service: 'ramboxTab'
 		,sendStatistics: false
+		,migrated: false
 
 		,x: undefined
 		,y: undefined
@@ -651,6 +652,9 @@ app.on('ready', function() {
 	require('@electron/remote/main').initialize();
 	config.get('master_password') ? createMasterPasswordWindow() : createWindow();
 	// setInterval(availableSpaceWatchDog, 1000 * 60);
+
+	const { migrate } = require('./utils/migrationAssistant');
+	migrate(mainWindow, config);
 });
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
