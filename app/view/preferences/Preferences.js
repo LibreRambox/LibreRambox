@@ -321,7 +321,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					}
 					,{
 						 xtype: 'fieldset'
-						,title: 'Proxy (needs to relaunch) - <a href="https://github.com/LibreRambox/community-edition/wiki/FREE-PROXY-SERVERS" target="_blank">Free Proxy Servers</a>'
+						,title: 'Proxy (needs to relaunch) - <a href="https://github.com/LibreRambox/LibreRambox/wiki/FREE-PROXY-SERVERS" target="_blank">Free Proxy Servers</a>'
 						,collapsed: !config.proxy
 						,checkboxToggle: true
 						,checkboxName: 'proxy'

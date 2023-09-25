@@ -14,7 +14,7 @@ init:
 install:
   - ps: Update-NodeJsInstallation $env:nodejs_version x64
   - cmd: >-
-      git clone https://github.com/LibreRambox/community-edition.git %APPVEYOR_BUILD_FOLDER%\build\production\LibreRambox\
+      git clone https://github.com/LibreRambox/LibreRambox.git %APPVEYOR_BUILD_FOLDER%\build\production\LibreRambox\
 
       cd %APPVEYOR_BUILD_FOLDER%\build\production\LibreRambox\
 

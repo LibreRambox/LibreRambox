@@ -1165,7 +1165,7 @@
 		"manual_notifications": false,
 		"js_unread": "",
 		"userAgent": "Mozilla/5.0 (X11; Fedora; Fedora; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36",
-		"note": "Text and Audio calls are supported only. Be sure to disable Links Previews to make them work. <a href=\"https://github.com/ramboxapp/community-edition/wiki/Skype\" target=\"_blank\">Read more...</a>",
+		"note": "Text and Audio calls are supported only. Be sure to disable Links Previews to make them work. <a href=\"https://github.com/LibreRambox/LibreRambox/wiki/Skype\" target=\"_blank\">Read more...</a>",
 		"titleBlink": false,
 		"custom_domain": false
 	},

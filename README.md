@@ -13,15 +13,15 @@
     <a target="_blank" href="https://crowdin.com/project/rambox"><img src="https://d322cqt584bo4o.cloudfront.net/rambox/localized.svg" /></a>
   </p>
 	<p>
-		<a target="_blank" href="https://github.com/LibreRambox/community-edition/releases"> <img alt="Release" src="https://img.shields.io/github/v/release/LibreRambox/community-edition"></a>
+		<a target="_blank" href="https://github.com/LibreRambox/LibreRambox/releases"> <img alt="Release" src="https://img.shields.io/github/v/release/LibreRambox/LibreRambox"></a>
 	</p>
   <p>
-    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/LibreRambox/community-edition/build.yml">
+    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/LibreRambox/LibreRambox/build.yml">
   </p>
 
   <h5>Available for Windows, Mac and Linux.</h5>
 
-  <h5><a href="https://github.com/LibreRambox/community-edition/releases" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE" /></a></h5>
+  <h5><a href="https://github.com/LibreRambox/LibreRambox/releases" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE" /></a></h5>
 
   <h6>Logo designed by <a href="https://www.linkedin.com/in/andriyyurchenko/" target="_blank">Andriy Yurchenko</a></h6>
 </div>
@@ -49,7 +49,7 @@
 
 ## Apps available
 
-Visit our website https://rambox.app/#apps and select the "Community-Edition" filter to see all the apps available.
+Visit our website https://rambox.app/#apps and select the "LibreRambox" filter to see all the apps available.
 
 ## Features
 
@@ -84,7 +84,7 @@ You are always welcome to check the code! ;)
 
 Help us translate Rambox on <https://crowdin.com/project/rambox/invite>.
 
-## [Install on Linux - Steps](https://github.com/ramboxapp/community-edition/wiki/Install-on-Linux)
+## [Install on Linux - Steps](https://github.com/ramboxapp/LibreRambox/wiki/Install-on-Linux)
 
 ## [Contributing](./CONTRIBUTING.md)
 
@@ -95,8 +95,8 @@ Fork and work!
 ### Quickstart
 
 ```shell
-git clone https://github.com/LibreRambox/community-edition.git
-cd community-edition
+git clone https://github.com/LibreRambox/LibreRambox.git
+cd LibreRambox
 npm install
 sencha app watch
 npm start
@@ -112,4 +112,4 @@ LibreRambox is not affiliated with any of the messaging apps offered.
 
 ## Licence
 
-[GNU GPL v3](https://github.com/LibreRambox/community-edition/blob/master/LICENSE)
+[GNU GPL v3](https://github.com/LibreRambox/LibreRambox/blob/master/LICENSE)

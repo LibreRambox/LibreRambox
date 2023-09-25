@@ -9,12 +9,12 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/LibreRambox/community-edition.git"
+		"url": "https://github.com/LibreRambox/LibreRambox.git"
 	},
 	"bugs": {
-		"url": "https://github.com/LibreRambox/community-edition/issues"
+		"url": "https://github.com/LibreRambox/LibreRambox/issues"
 	},
-	"homepage": "https://github.com/LibreRambox/community-edition",
+	"homepage": "https://github.com/LibreRambox/LibreRambox",
 	"keywords": [
 		"LibreRambox",
 		"messaging",
@@ -201,9 +201,9 @@
 	},
 	"devDependencies": {
 		"@electron/asar": "^3.2.4",
+		"@electron/rebuild": "^3.2.13",
 		"electron": "^25.3.2",
 		"electron-builder": "^24.6.3",
-		"@electron/rebuild": "^3.2.13",
 		"electron-packager": "^17.1.1",
 		"mocha": "^10.2.0"
 	},
@@ -212,6 +212,7 @@
 		"@exponent/electron-cookies": "2.0.0",
 		"auto-launch": "^5.0.6",
 		"electron-context-menu": "^3.6.1",
+		"electron-dialog": "2.0.0",
 		"electron-is-dev": "^2.0.0",
 		"electron-store": "^8.1.0",
 		"electron-updater": "^6.1.4",

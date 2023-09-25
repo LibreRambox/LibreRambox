@@ -65,7 +65,7 @@ ipc.on('autoUpdater:update-downloaded', function(e, info) {
 				 xtype: 'button'
 				,text: 'Changelog'
 				,ui: 'decline'
-				,href: 'https://github.com/LibreRambox/community-edition/releases/latest'
+				,href: 'https://github.com/LibreRambox/Libre-Rambox/releases/latest'
 			}
 			,'->'
 			,{

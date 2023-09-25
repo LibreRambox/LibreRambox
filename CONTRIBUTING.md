@@ -2,7 +2,7 @@
 
 We welcome pull requests! Follow these steps to contribute:
 
-1. Find an [issue](https://github.com/LibreRambox/community-edition/issues) that needs assistance.
+1. Find an [issue](https://github.com/LibreRambox/LibreRambox/issues) that needs assistance.
 1. Let us know you are working on it by posting a comment on the issue.
 1. Follow the [Contribution Guidelines](#contribution-guidelines) to start working on the issue.
 
@@ -63,15 +63,15 @@ If your versions are lower than the prerequisite versions, you should update.
 
 #### Forking LibreRambox
 
-1. Go to the top level LibreRambox repository: <https://github.com/LibreRambox/community-edition>
+1. Go to the top level LibreRambox repository: <https://github.com/LibreRambox/LibreRambox>
 1. Click the "Fork" Button in the upper right hand corner of the interface ([More Details Here](https://help.github.com/articles/fork-a-repo/))
-1. After the repository (repo) has been forked, you will be taken to your copy of the LibreRambox repo at <https://github.com/yourUsername/community-edition>
+1. After the repository (repo) has been forked, you will be taken to your copy of the LibreRambox repo at <https://github.com/yourUsername/LibreRambox>
 
 #### Cloning Your Fork
 
 1. Open a Terminal / Command Line / Bash Shell in your projects directory (_i.e.: `/yourprojectdirectory/`_)
 1. Clone your fork of LibreRambox
-    - `git clone https://github.com/yourUsername/community-edition.git`
+    - `git clone https://github.com/yourUsername/LibreRambox.git`
 
 **(make sure to replace `yourUsername` with your GitHub username)**
 
@@ -79,9 +79,9 @@ This will download the entire LibreRambox repo to your projects directory.
 
 #### Setup Your Upstream
 
-1. Change directory to the new LibreRambox directory (`cd community-edition`)
+1. Change directory to the new LibreRambox directory (`cd LibreRambox`)
 1. Add a remote to the official LibreRambox repo:
-    - `git remote add upstream https://github.com/LibreRambox/community-edition.git`
+    - `git remote add upstream https://github.com/LibreRambox/LibreRambox.git`
 
 Congratulations, you now have a local copy of the LibreRambox repo! :tada:
 
@@ -141,7 +141,7 @@ Always feel free to reach out to the chat room when you are not certain of any t
 
 The services are stored inside the file `./resources/services.json`:
 
-https://github.com/LibreRambox/community-edition/blob/master/resources/services.json
+https://github.com/LibreRambo/LibreRambox/blob/master/resources/services.json
 
 Add your service to the *BOTTOM* of the array.
 To see these changes you'll need to stop your `npm start` and `sencha app watch`, and then rerun those.
@@ -163,7 +163,7 @@ This is critical, because your copy of `master` will be forever sullied and the 
 
 1. Once the edits have been committed, you will be prompted to create a pull request on your fork's GitHub Page.
 1. By default, all pull requests should be against the LibreRambox main repo, `master` branch.
-    - **Make sure that your Base Fork is set to LibreRambox/community-edition when raising a Pull Request.**
+    - **Make sure that your Base Fork is set to LibreRambox/LibreRambox when raising a Pull Request.**
 1. Submit a pull request.
 1. The title (also called the subject) of your PR should be descriptive of your changes and succinctly indicates what is being fixed.
     - **Do not add the issue number in the PR title or commit message.**
