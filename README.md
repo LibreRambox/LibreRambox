@@ -49,7 +49,7 @@
 
 ## Apps available
 
-Visit our website https://rambox.app/#apps and select the "LibreRambox" filter to see all the apps available.
+A full list is available [here](services.md).
 
 ## Features
 
