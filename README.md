@@ -5,6 +5,7 @@
     LibreRambox
     <br /><br/>
   </h1>
+	LibreRambox is a Fork from Rambox Community Edition v0.8. No Rambox-Account requirement, no subscription plans. 
 
   <h4>Unleash Seamless Communication: The Ultimate Open-Source Messaging & Emailing Fusion.</h4>
 
