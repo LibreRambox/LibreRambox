@@ -1,0 +1,450 @@
+preferences[0]:
+  text: Preferences
+preferences[1]:
+  text: Auto-hide Menu bar
+preferences[2]:
+  text: Show in Taskbar
+preferences[3]:
+  text: Keep LibreRambox in the taskbar when closing it
+preferences[4]:
+  text: Start minimized
+preferences[5]:
+  text: Start automatically on system startup
+preferences[6]:
+  text: Don't need to see the menu bar all the time?
+preferences[7]:
+  text: To temporarily show the menu bar, just press the Alt key.
+app.update[0]:
+  text: New version is available!
+app.update[1]:
+  text: Download
+app.update[2]:
+  text: Changelog
+app.update[3]:
+  text: You are up to date!
+app.update[4]:
+  text: You have the latest version of LibreRambox.
+app.about[0]:
+  text: About LibreRambox
+app.about[1]:
+  text: Free and Open Source messaging and emailing app that combines common web
+    applications into one.
+app.about[2]:
+  text: Version
+app.about[3]:
+  text: Platform
+app.about[4]:
+  text: Developed by
+app.main[0]:
+  text: Add a new Service
+app.main[1]:
+  text: Messaging
+app.main[2]:
+  text: Email
+app.main[3]:
+  text: No services found... Try another search.
+app.main[4]:
+  text: Enabled Services
+app.main[5]:
+  text: ALIGN
+app.main[6]:
+  text: Left
+app.main[7]:
+  text: Right
+app.main[8]:
+  text: Item
+app.main[9]:
+  text: Items
+app.main[10]:
+  text: Remove all Services
+app.main[11]:
+  text: Prevent notifications
+app.main[12]:
+  text: Muted
+app.main[13]:
+  text: Configure
+app.main[14]:
+  text: Remove
+app.main[15]:
+  text: No services added...
+app.main[16]:
+  text: Don't Disturb
+app.main[17]:
+  text: Disable notifications and sounds in all services. Perfect to be
+    concentrated and focused.
+app.main[18]:
+  text: Shortcut key
+app.main[19]:
+  text: Lock LibreRambox
+app.main[20]:
+  text: Lock this app if you will be away for a period of time.
+app.main[21]:
+  text: Logout
+app.main[22]:
+  text: Login
+app.main[23]:
+  text: Login to save your configuration (no credentials stored) to sync with all
+    your computers.
+app.main[24]:
+  text: Powered by
+app.main[25]:
+  text: Donate
+app.main[26]:
+  text: with
+app.main[27]:
+  text: from Argentina as an Open Source project.
+app.window[0]:
+  text: Add
+app.window[1]:
+  text: Edit
+app.window[2]:
+  text: Name
+app.window[3]:
+  text: Options
+app.window[4]:
+  text: Align to Right
+app.window[5]:
+  text: Show notifications
+app.window[6]:
+  text: Mute all sounds
+app.window[7]:
+  text: Advanced
+app.window[8]:
+  text: Custom Code
+app.window[9]:
+  text: read more...
+app.window[10]:
+  text: Add service
+app.window[11]:
+  text: team
+app.window[12]:
+  text: Please confirm...
+app.window[13]:
+  text: Are you sure you want to remove
+app.window[14]:
+  text: Are you sure you want to remove all services?
+app.window[15]:
+  text: Add Custom Service
+app.window[16]:
+  text: Edit Custom Service
+app.window[17]:
+  text: URL
+app.window[18]:
+  text: Logo
+app.window[19]:
+  text: Trust invalid authority certificates
+app.window[20]:
+  text: ON
+app.window[21]:
+  text: OFF
+app.window[22]:
+  text: Enter a temporal password to unlock it later
+app.window[23]:
+  text: Repeat the temporal password
+app.window[24]:
+  text: Warning
+app.window[25]:
+  text: Passwords are not the same. Please try again...
+app.window[26]:
+  text: LibreRambox is locked
+app.window[27]:
+  text: UNLOCK
+app.window[28]:
+  text: Connecting...
+app.window[29]:
+  text: Please wait until we get your configuration.
+app.window[30]:
+  text: Import
+app.window[31]:
+  text: You don't have any service saved. Do you want to import your current
+    services?
+app.window[32]:
+  text: Clear services
+app.window[33]:
+  text: Do you want to remove all your current services to start over?
+app.window[34]:
+  text: If no, you will be logged out.
+app.window[35]:
+  text: Confirm
+app.window[36]:
+  text: To import your configuration, LibreRambox needs to remove all your current
+    services. Do you want to continue?
+app.window[37]:
+  text: Closing your session...
+app.window[38]:
+  text: Are you sure you want to logout?
+app.webview[0]:
+  text: Reload
+app.webview[1]:
+  text: Go Online
+app.webview[2]:
+  text: Go Offline
+app.webview[3]:
+  text: Toggle Developer Tools
+app.webview[4]:
+  text: Loading...
+preferences[8]:
+  text: Enable HiDPI support (needs to relaunch)
+preferences[9]:
+  text: Flash Taskbar on new message
+preferences[10]:
+  text: Bounce Dock on new message
+preferences[11]:
+  text: Service bar location
+preferences[12]:
+  text: Default service to display when LibreRambox starts
+preferences[13]:
+  text: Display behaviour
+preferences[14]:
+  text: Show in Taskbar
+preferences[15]:
+  text: Show Tray Icon
+preferences[16]:
+  text: Show in Taskbar and Tray Icon
+preferences[17]:
+  text: When closing the main window
+preferences[18]:
+  text: Keep in tray
+preferences[19]:
+  text: Keep in tray and/or taskbar
+preferences[20]:
+  text: Quit
+preferences[21]:
+  text: Always on top
+preferences[22]:
+  text: Show System Tray indicator on unread messages
+preferences[23]:
+  text: Disable Hardware Acceleration (needs to relaunch)
+preferences[24]:
+  text: Master Password - Ask for password on startup
+preferences[25]:
+  text: Password
+preferences[26]:
+  text: Repeat Password
+preferences[27]:
+  text: Send anonymous usage statistics to help us improve LibreRambox (needs to
+    relaunch)
+preferences[28]:
+  text: Hide service bar labels (requires restart)
+button[0]:
+  text: Ok
+button[1]:
+  text: Cancel
+button[2]:
+  text: Yes
+button[3]:
+  text: No
+button[4]:
+  text: Save
+main.dialog[0]:
+  text: Certification Error
+main.dialog[1]:
+  text: The service with the following URL has an invalid authority certification.
+main.dialog[2]:
+  text: You have to remove the service and add it again
+menu.help[0]:
+  text: Visit LibreRambox Website
+menu.help[1]:
+  text: Report an Issue...
+menu.help[2]:
+  text: Ask for Help
+menu.help[3]:
+  text: Donate
+menu.help[4]:
+  text: Help
+menu.edit[0]:
+  text: Edit
+menu.edit[1]:
+  text: Undo
+menu.edit[2]:
+  text: Redo
+menu.edit[3]:
+  text: Cut
+menu.edit[4]:
+  text: Copy
+menu.edit[5]:
+  text: Paste
+menu.edit[6]:
+  text: Select All
+menu.view[0]:
+  text: View
+menu.view[1]:
+  text: Reload
+menu.view[2]:
+  text: Toggle Full Screen
+menu.view[3]:
+  text: Toggle Developer Tools
+menu.window[0]:
+  text: Window
+menu.window[1]:
+  text: Minimize
+menu.window[2]:
+  text: Close
+menu.window[3]:
+  text: Always on top
+menu.help[5]:
+  text: Check for updates...
+menu.help[6]:
+  text: About LibreRambox
+menu.osx[0]:
+  text: Services
+menu.osx[1]:
+  text: Hide LibreRambox
+menu.osx[2]:
+  text: Hide Others
+menu.osx[3]:
+  text: Show All
+menu.file[0]:
+  text: File
+menu.file[1]:
+  text: Quit LibreRambox
+tray[0]:
+  text: Show/Hide Window
+tray[1]:
+  text: Quit
+services[0]:
+  text: WhatsApp is a cross-platform mobile messaging app for iPhone, BlackBerry,
+    Android, Windows Phone and Nokia. Send text, video, images, audio for free.
+services[1]:
+  text: Slack brings all your communication together in one place. It’s real-time
+    messaging, archiving and search for modern teams.
+services[2]:
+  text: Noysi is a communication tool for teams where privacy is guaranteed. With
+    Noysi you can access all your conversations and files in seconds from
+    anywhere and unlimited.
+services[3]:
+  text: Instantly reach the people in your life for free. Messenger is just like
+    texting, but you don't have to pay for every message.
+services[4]:
+  text: Stay in touch with family and friends for free. Get international calling,
+    free online calls and Skype for Business on desktop and mobile.
+services[5]:
+  text: Hangouts bring conversations to life with photos, emoji, and even group
+    video calls for free. Connect with friends across computers, Android, and
+    Apple devices.
+services[6]:
+  text: HipChat is hosted group chat and video chat built for teams. Supercharge
+    real-time collaboration with persistent chat rooms, file sharing, and screen
+    sharing.
+services[7]:
+  text: Telegram is a messaging app with a focus on speed and security. It’s
+    super-fast, simple, secure and free.
+services[8]:
+  text: WeChat is a free messaging calling app that allows you to easily connect
+    with family; friends across countries. It’s the all-in-one communications
+    app for free text (SMS/MMS), voice; video calls, moments, photo sharing, and
+    games.
+services[9]:
+  text: Gmail, Google's free email service, is one of the world's most popular
+    email programs.
+services[10]:
+  text: Inbox by Gmail is a new app from the Gmail team. Inbox is an organized
+    place to get things done and get back to what matters. Bundles keep emails
+    organized.
+services[11]:
+  text: ChatWork is a group chat app for business. Secure messaging, video chat,
+    task management and file sharing. Real-time communication and increase
+    productivity for teams.
+services[12]:
+  text: GroupMe brings group text messaging to every phone. Group message with the
+    people in your life that are important to you.
+services[13]:
+  text: The world's most advanced team chat meets enterprise search.
+services[14]:
+  text: Gitter is built on top of GitHub and is tightly integrated with your
+    organizations, repositories, issues and activity.
+services[15]:
+  text: Steam is a digital distribution platform developed by Valve Corporation
+    offering digital rights management (DRM), multiplayer gaming and social
+    networking services.
+services[16]:
+  text: Step up your game with a modern voice & text chat app. Crystal clear
+    voice, multiple server and channel support, mobile apps, and more.
+services[17]:
+  text: Take control. Do more. Outlook is the free email and calendar service that
+    helps you stay on top of what matters and get things done.
+services[18]:
+  text: Outlook for Business
+services[19]:
+  text: Web-based email service offered by the American company Yahoo!. The
+    service is free for personal use, and paid-for business email plans are
+    available.
+services[20]:
+  text: Free and web-based encrypted email service founded in 2013 at the CERN
+    research facility. ProtonMail is designed as a zero-knowledge system, using
+    client-side encryption to protect emails and user data before they are sent
+    to ProtonMail servers, in contrast to other common webmail services such as
+    Gmail and Hotmail.
+services[21]:
+  text: Tutanota is an open-source end-to-end encrypted email software and
+    freemium hosted secure email service based on this software.
+services[22]:
+  text: versions of service. Hushmail uses OpenPGP standards and the source is
+    available for download.
+services[23]:
+  text: Collaborative email and threaded group chat for productive teams. A single
+    app for all your internal and external communication.
+services[24]:
+  text: From group messages and video calls all the way to helpdesk killer
+    features our goal is to become the number one cross-platform open source
+    chat solution.
+services[25]:
+  text: HD quality calls, private and group chats with inline photos, music and
+    video. Also available for your phone or tablet.
+services[26]:
+  text: Sync is a business chat tool that will boost productivity for your team.
+services[27]:
+  text: No description...
+services[28]:
+  text: Allows you to instant message with anyone on the Yahoo server. Tells you
+    when you get mail, and gives stock quotes.
+services[29]:
+  text: Voxer is a messaging app for your smartphone with live voice (like a PTT
+    walkie talkie), text, photo and location sharing.
+services[30]:
+  text: Dasher lets you say what you really want with pics, GIFs, links and more.
+    Take a poll to find out what your friends really think of your new boo.
+services[31]:
+  text: Flowdock is your team's chat with a shared inbox. Teams using Flowdock
+    stay up-to-date, react in seconds instead of days, and never forget
+    anything.
+services[32]:
+  text: Mattermost is an open source, self-hosted Slack-alternative. As an
+    alternative to proprietary SaaS messaging, Mattermost brings all your team
+    communication into one place, making it searchable and accessible anywhere.
+services[33]:
+  text: DingTalk is a multi-sided platform empowers small and medium-sized
+    business to communicate effectively.
+services[34]:
+  text: The mysms family of applications helps you text anywhere and enhances your
+    messaging experience on your smartphone, tablet and computer.
+services[35]:
+  text: ICQ is an open source instant messaging computer program that was first
+    developed and popularized.
+services[36]:
+  text: TweetDeck is a social media dashboard application for management of
+    Twitter accounts.
+services[37]:
+  text: Custom Service
+services[38]:
+  text: Add a custom service if is not listed above.
+services[39]:
+  text: Zinc is a secure communication app for mobile workers, with text, voice,
+    video, file sharing and more.
+services[40]:
+  text: Freenode, formerly known as Open Projects Network, is an IRC network used
+    to discuss peer-directed projects.
+services[41]:
+  text: Text from your computer, sync'd with your Android phone & number.
+services[42]:
+  text: Free and open source webmail software for the masses, written in PHP.
+services[43]:
+  text: Horde is a free and open source web-based groupware.
+services[44]:
+  text: SquirrelMail is a standards-based webmail package written in PHP.
+services[45]:
+  text: Ad-free business Email Hosting with a clean, minimalist interface.
+    Integrated Calendar, Contacts, Notes, Tasks apps.
+services[46]:
+  text: Zoho chat is a secure and scalable real-time communication and
+    collaboration platform for teams to improve their productivity.
