@@ -31,7 +31,7 @@ ipc.on('autoUpdater:check-update', function() {
 ipc.on('autoUpdater:update-not-available', function() {
 	Ext.Msg.show({
 		 title: 'You are up to date!'
-		,message: 'You have the latest version of Rambox.'
+		,message: 'You have the latest version of LibreRambox.'
 		,icon: Ext.Msg.INFO
 		,buttons: Ext.Msg.OK
 	});
@@ -39,7 +39,7 @@ ipc.on('autoUpdater:update-not-available', function() {
 ipc.on('autoUpdater:update-available', function() {
 	Ext.Msg.show({
 		 title: 'New Version available!'
-		,message: 'Please wait until Rambox download the new version and ask you for install it.'
+		,message: 'Please wait until LibreRambox download the new version and ask you for install it.'
 		,icon: Ext.Msg.INFO
 		,buttons: Ext.Msg.OK
 	});
@@ -65,7 +65,7 @@ ipc.on('autoUpdater:update-downloaded', function(e, info) {
 				 xtype: 'button'
 				,text: 'Changelog'
 				,ui: 'decline'
-				,href: 'https://github.com/LibreRambox/rambox-build/releases/latest'
+				,href: 'https://github.com/LibreRambox/LibreRambox/releases/latest'
 			}
 			,'->'
 			,{

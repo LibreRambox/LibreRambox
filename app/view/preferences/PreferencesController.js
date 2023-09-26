@@ -47,7 +47,7 @@ Ext.define('Rambox.view.preferences.PreferencesController', {
 
 		// User Agent
 		if ( values.user_agent !== ipc.sendSync('getConfig').user_agent ) {
-			Ext.Msg.confirm('Action required', 'To change the user agent of Rambox, you need to reload the app. Do you want to do it now?', function(btnId) {
+			Ext.Msg.confirm('Action required', 'To change the user agent of LibreRambox, you need to reload the app. Do you want to do it now?', function(btnId) {
 				if ( btnId === 'yes' ) ipc.send('relaunchApp');
 			});
 		}
@@ -56,7 +56,7 @@ Ext.define('Rambox.view.preferences.PreferencesController', {
 		if ( values.locale !== ipc.sendSync('getConfig').locale ) {
 			localStorage.setItem('locale', values.locale);
 			localStorage.setItem('locale-extjs', me.getView().down('form').down('combo[name="locale"]').getSelection().get('extjs'));
-			Ext.Msg.confirm('Action required', 'To change the language of Rambox, you need to reload the app. Do you want to do it now?', function(btnId) {
+			Ext.Msg.confirm('Action required', 'To change the language of LibreRambox, you need to reload the app. Do you want to do it now?', function(btnId) {
 				if ( btnId === 'yes' ) ipc.send('relaunchApp');
 			});
 		}

@@ -1,7 +1,7 @@
 {
-	"name": "Rambox",
-	"productName": "Rambox",
-	"version": "0.9.0",
+	"name": "LibreRambox",
+	"productName": "LibreRambox",
+	"version": "0.10.0",
 	"description": "Free and Open Source messaging and emailing app that combines common web applications into one.",
 	"main": "electron/main.js",
 	"engines": {
@@ -9,14 +9,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/LibreRambox/community-edition.git"
+		"url": "https://github.com/LibreRambox/LibreRambox.git"
 	},
 	"bugs": {
-		"url": "https://github.com/LibreRambox/community-edition/issues"
+		"url": "https://github.com/LibreRambox/LibreRambox/issues"
 	},
-	"homepage": "https://github.com/LibreRambox/community-edition",
+	"homepage": "https://github.com/LibreRambox/LibreRambox",
 	"keywords": [
-		"Rambox",
+		"LibreRambox",
 		"messaging",
 		"app",
 		"slack",
@@ -35,21 +35,21 @@
 		"start:debug": "electron electron/main.js --enable-logging",
 		"dev": "electron electron/main.js",
 		"sencha:clean": "rm -rf ./build/production",
-		"sencha:compile": "sencha app build && npm --prefix ./build/production/Rambox/ install ./build/production/Rambox/",
+		"sencha:compile": "sencha app build && npm --prefix ./build/production/LibreRambox/ install ./build/production/LibreRambox/",
 		"sencha:compile:build": "sencha app build",
 		"clean": "rm -rf ./dist",
-		"clean:osx": "rm -rf ./dist/Rambox-darwin-*",
-		"clean:win": "rm -rf ./dist/Rambox-win32-*",
+		"clean:osx": "rm -rf ./dist/LibreRambox-darwin-*",
+		"clean:win": "rm -rf ./dist/LibreRambox-win32-*",
 		"pack": "npm run pack:osx && npm run pack:win",
 		"pack:osx": "npm run pack:osx64 && npm run pack:osxarm64",
-		"pack:osx64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=darwin --arch=x64 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
-		"pack:osxarm64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=darwin --arch=arm64 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:osx64": "electron-packager \"./build/production/LibreRambox/\" \"LibreRambox\" --out=dist --platform=darwin --arch=x64 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:osxarm64": "electron-packager \"./build/production/LibreRambox/\" \"LibreRambox\" --out=dist --platform=darwin --arch=arm64 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
 		"pack:win": "npm run pack:win32 && npm run pack:win64",
-		"pack:win32": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=ia32 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=32-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
-		"pack:win64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=x64 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:win32": "electron-packager \"./build/production/LibreRambox/\" \"LibreRambox\" --out=dist --platform=win32 --arch=ia32 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=32-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:win64": "electron-packager \"./build/production/LibreRambox/\" \"LibreRambox\" --out=dist --platform=win32 --arch=x64 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
 		"pack:linux": "npm run pack:linux32 && npm run pack:linux64",
-		"pack:linux32": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=ia32 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
-		"pack:linux64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=x64 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:linux32": "electron-packager \"./build/production/LibreRambox/\" \"LibreRambox\" --out=dist --platform=linux --arch=ia32 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:linux64": "electron-packager \"./build/production/LibreRambox/\" \"LibreRambox\" --out=dist --platform=linux --arch=x64 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
 		"build": "npm run build:linux && npm run build:osx && npm run build:win",
 		"build:osx": "electron-builder -p never --macos --universal",
 		"build:osx64": "electron-builder --macos --x64",
@@ -65,11 +65,12 @@
 		"all:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run zip:win32 && npm run zip:win64 && npm run build:win",
 		"all:linux": "npm run sencha:clean && npm run sencha:compile && npm run build:linux",
 		"translations:download": "node languages.js download",
-		"translations:generate": "node languages.js generate"
+		"translations:generate": "node languages.js generate",
+		"generate-services": "node generate-services.js"
 	},
 	"build": {
-		"productName": "Rambox",
-		"appId": "com.grupovrs.ramboxce",
+		"productName": "LibreRambox",
+		"appId": "eu.roebert.librerambox",
 		"asar": true,
 		"electronVersion": "25.3.2",
 		"electronDownload": {
@@ -77,7 +78,7 @@
 		},
 		"mac": {
 			"category": "public.app-category.productivity",
-			"artifactName": "Rambox-${version}-mac-${arch}.${ext}",
+			"artifactName": "LibreRambox-${version}-mac-${arch}.${ext}",
 			"target": [
 				{
 					"target": "default",
@@ -91,12 +92,12 @@
 			"entitlements": "resources/installer/entitlements.mac.plist",
 			"entitlementsInherit": "resources/installer/entitlements.mac.plist",
 			"extendInfo": {
-				"NSMicrophoneUsageDescription": "Apps inside Rambox CE may need access to your microphone. Please, grant access to have a better experience.",
-				"NSCameraUsageDescription": "Apps inside Rambox CE may need access to your camera. Please, grant access to have a better experience."
+				"NSMicrophoneUsageDescription": "Apps inside LibreRambox may need access to your microphone. Please, grant access to have a better experience.",
+				"NSCameraUsageDescription": "Apps inside LibreRambox may need access to your camera. Please, grant access to have a better experience."
 			}
 		},
 		"dmg": {
-			"title": "Rambox",
+			"title": "LibreRambox",
 			"iconSize": 128,
 			"sign": false,
 			"contents": [
@@ -114,7 +115,7 @@
 			]
 		},
 		"win": {
-			"artifactName": "Rambox-${version}-win-${arch}.${ext}",
+			"artifactName": "LibreRambox-${version}-win-${arch}.${ext}",
 			"target": [
 				"nsis",
 				"zip"
@@ -127,11 +128,6 @@
 			"runAfterFinish": true
 		},
 		"snap": {
-			"publish": [
-				{
-					"provider": "github"
-				}
-			],
 			"plugs": [
 				"default",
 				"camera",
@@ -151,7 +147,7 @@
 				"Type": "Application",
 				"Categories": "GTK;GNOME;Network;Email;Chat;InstantMessaging;"
 			},
-			"artifactName": "Rambox-${version}-linux-${arch}.${ext}",
+			"artifactName": "LibreRambox-${version}-linux-${arch}.${ext}",
 			"executableArgs": [
 				"--no-sandbox"
 			],
@@ -201,9 +197,9 @@
 	},
 	"devDependencies": {
 		"@electron/asar": "^3.2.4",
+		"@electron/rebuild": "^3.2.13",
 		"electron": "^25.3.2",
 		"electron-builder": "^24.6.3",
-		"@electron/rebuild": "^3.2.13",
 		"electron-packager": "^17.1.1",
 		"mocha": "^10.2.0"
 	},
@@ -212,6 +208,7 @@
 		"@exponent/electron-cookies": "2.0.0",
 		"auto-launch": "^5.0.6",
 		"electron-context-menu": "^3.6.1",
+		"electron-dialog": "2.0.0",
 		"electron-is-dev": "^2.0.0",
 		"electron-store": "^8.1.0",
 		"electron-updater": "^6.1.4",

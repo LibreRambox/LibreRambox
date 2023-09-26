@@ -28,7 +28,7 @@ window.rambox.clearUnreadCount = function() {
 }
 
 /**
- * Override to add notification click event to display Rambox window and activate service tab
+ * Override to add notification click event to display LibreRambox window and activate service tab
  */
 var NativeNotification = Notification;
 Notification = function(title, options) {

@@ -9,7 +9,7 @@ const { autoUpdater } = require("electron-updater");
 autoUpdater.setFeedURL({
 	"provider": "github",
 	"owner": "LibreRambox",
-	"repo": "rambox-build",
+	"repo": "LibreRambox",
 	"vPrefixedTagName": true
 });
 

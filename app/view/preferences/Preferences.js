@@ -42,7 +42,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 		var config = ipc.sendSync('getConfig');
 
 		var defaultServiceOptions = [];
-		defaultServiceOptions.push({ value: 'ramboxTab', label: 'Rambox Tab' });
+		defaultServiceOptions.push({ value: 'ramboxTab', label: 'LibreRambox Tab' });
 		defaultServiceOptions.push({ value: 'last', label: 'Last Active Service' });
 		Ext.getStore('Services').each(function(rec) {
 			defaultServiceOptions.push({
@@ -321,7 +321,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					}
 					,{
 						 xtype: 'fieldset'
-						,title: 'Proxy (needs to relaunch) - <a href="https://github.com/saenzramiro/rambox/wiki/FREE-PROXY-SERVERS" target="_blank">Free Proxy Servers</a>'
+						,title: 'Proxy (needs to relaunch) - <a href="https://github.com/LibreRambox/LibreRambox/wiki/FREE-PROXY-SERVERS" target="_blank">Free Proxy Servers</a>'
 						,collapsed: !config.proxy
 						,checkboxToggle: true
 						,checkboxName: 'proxy'

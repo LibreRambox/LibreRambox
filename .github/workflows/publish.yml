@@ -27,7 +27,7 @@ jobs:
       - run: /tmp/SenchaCmd-6.6.0.13-linux-amd64.sh -q -Dall=true -dir /opt/Sencha/Cmd/6.6.0.13
 
       - name: Customizing the Sencha's output dir
-        run: sed -i.bak 's/..\/rambox-build/rambox-build/' app.json
+        run: sed -i.bak 's/..\/librerambox-build/librerambox-build/' app.json
 
       - name: Build Sencha app
         run: /opt/Sencha/Cmd/sencha app build
@@ -35,8 +35,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          path: ${{ github.workspace }}/rambox-build
-          name: rambox-build
+          path: ${{ github.workspace }}/librerambox-build
+          name: librerambox-build
 
   build:
     needs: sencha
@@ -60,7 +60,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          name: rambox-build
+          name: librerambox-build
           path: .
       - uses: actions/setup-node@v3
         with:
@@ -76,12 +76,12 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            dist/Rambox-*-linux-amd64.deb
-            dist/Rambox-*-linux-amd64.snap
-            dist/Rambox-*-linux-x86_64.AppImage
-            dist/Rambox-*-linux-x86_64.rpm
-            dist/Rambox-*-linux-x64.tar.gz
-            dist/Rambox-*-linux-x64.zip
+            dist/LibreRambox-*-linux-amd64.deb
+            dist/LibreRambox-*-linux-amd64.snap
+            dist/LibreRambox-*-linux-x86_64.AppImage
+            dist/LibreRambox-*-linux-x86_64.rpm
+            dist/LibreRambox-*-linux-x64.tar.gz
+            dist/LibreRambox-*-linux-x64.zip
             dist/latest-linux.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -96,9 +96,9 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            dist/Rambox-*-mac-universal.zip
-            dist/Rambox-*-mac-universal.dmg
-            dist/Rambox-*-mac-universal.dmg.blockmap
+            dist/LibreRambox-*-mac-universal.zip
+            dist/LibreRambox-*-mac-universal.dmg
+            dist/LibreRambox-*-mac-universal.dmg.blockmap
             dist/latest-mac.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -113,10 +113,10 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            dist/Rambox-*-win.exe
-            dist/Rambox-*-win-x64.zip
-            dist/Rambox-*-win-ia32.zip
-            dist/Rambox-*-win.exe.blockmap
+            dist/LibreRambox-*-win.exe
+            dist/LibreRambox-*-win-x64.zip
+            dist/LibreRambox-*-win-ia32.zip
+            dist/LibreRambox-*-win.exe.blockmap
             dist/latest.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

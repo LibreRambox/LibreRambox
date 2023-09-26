@@ -20,6 +20,6 @@ ENTRYPOINT [ "/opt/Sencha/Cmd/sencha" ]
 
 # docker build -f Dockerfile.sencha -t sencha-cmd:6.6.0 .
 
-# docker run --rm -v $(pwd):/app -v $(pwd)/../rambox-build-docker:/rambox-build -w /app sencha-cmd:6.6.0 app build
+# docker run --rm -v $(pwd):/app -v $(pwd)/../librerambox-build-docker:/librerambox-build -w /app sencha-cmd:6.6.0 app build
 
-# docker run --rm -v $(pwd):/app -v $(pwd)/../rambox-build-docker:/rambox-build -w /app sencha-cmd:6.6.0 app watch
+# docker run --rm -v $(pwd):/app -v $(pwd)/../librerambox-build-docker:/librerambox-build -w /app sencha-cmd:6.6.0 app watch

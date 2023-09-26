@@ -26,6 +26,6 @@ Ext.define('Rambox.view.main.About', {
 		,'<div><b>Chromium:</b> {chromium}</div>'
 		,'<div><b>Node:</b> {node}</div>'
 		,'<br />'
-		,'<div style="text-align:center;"><a href="https://github.com/LibreRambox/community-edition" target="_blank">GitHub</a></div>'
+		,'<div style="text-align:center;"><a href="https://github.com/LibreRambox/LibreRambox" target="_blank">GitHub</a></div>'
 	]
 });

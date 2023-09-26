@@ -47,6 +47,7 @@ const config = new Config({
 		,user_agent: ''
 		,default_service: 'ramboxTab'
 		,sendStatistics: false
+		,migrated: false
 
 		,x: undefined
 		,y: undefined
@@ -70,7 +71,7 @@ app.commandLine.appendSwitch('disable-features', 'CrossOriginOpenerPolicy');
 
 // Because we build it using Squirrel, it will assign UserModelId automatically, so we match it here to display notifications correctly.
 // https://github.com/electron-userland/electron-builder/issues/362
-app.setAppUserModelId('com.grupovrs.ramboxce');
+app.setAppUserModelId('eu.roebert.librerambox');
 
 // Menu
 const appMenu = require('./menu')(config);
@@ -79,7 +80,7 @@ const appMenu = require('./menu')(config);
 let appLauncher;
 if ( !isDev ) {
 	appLauncher = new AutoLaunch({
-		 name: 'Rambox'
+		 name: 'LibreRambox'
 		,isHidden: config.get('start_minimized')
 	});
 	config.get('auto_launch') ? appLauncher.enable() : appLauncher.disable();
@@ -93,7 +94,7 @@ let isQuitting = false;
 function createWindow () {
 	// Create the browser window using the state information
 	mainWindow = new BrowserWindow({
-		 title: 'Rambox'
+		 title: 'LibreRambox'
 		,icon: __dirname + '/../resources/Icon.' + (process.platform === 'linux' ? 'png' : 'ico')
 		,backgroundColor: '#FFF'
 		,x: config.get('x')
@@ -286,9 +287,9 @@ function formatBytes(bytes, decimals = 2) {
 				type: 'warning',
 				buttons: ['OK, quit'],
 				defaultId: 0,
-				title: `Running out of disk space! - Rambox shutting down`,
-				detail: `You've got just ${formatBytes(available)} space left.\n\nRambox has been frozen to prevent settings corruption.\n\nOnce you quit this dialog, Rambox will shutdown.\n\n1 GB of avalable disk space is required.\nFree up space on partition where Rambox is installed then start the app again.\n\nRambox path: \n${appPath}`,
-				message: `Running out of disk space! - Rambox shutting down`,
+				title: `Running out of disk space! - LibreRambox shutting down`,
+				detail: `You've got just ${formatBytes(available)} space left.\n\LibreRambox has been frozen to prevent settings corruption.\n\nOnce you quit this dialog, LibreRambox will shutdown.\n\n1 GB of avalable disk space is required.\nFree up space on partition where LibreRambox is installed then start the app again.\n\LibreRambox path: \n${appPath}`,
+				message: `Running out of disk space! - LibreRambox shutting down`,
 			};
 
 			dialog.showMessageBoxSync(null, options);
@@ -583,7 +584,7 @@ ipcMain.on('toggleWin', function(event, allwaysShow) {
 // ScreenShare
 ipcMain.on('screenShare:show', (event, screenList) => {
 	let tmpWindow = new BrowserWindow({
-		title: 'Rambox - Select screen',
+		title: 'LibreRambox - Select screen',
 		width: 600,
 		height: 500,
 		icon: __dirname + '/../resources/Icon.ico',
@@ -651,6 +652,9 @@ app.on('ready', function() {
 	require('@electron/remote/main').initialize();
 	config.get('master_password') ? createMasterPasswordWindow() : createWindow();
 	// setInterval(availableSpaceWatchDog, 1000 * 60);
+
+	const { migrate } = require('./utils/migrationAssistant');
+	migrate(mainWindow, config);
 });
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {

@@ -6,22 +6,22 @@
     <br /><br/>
   </h1>
 
-  <h4>Free, Open Source and Cross Platform messaging and emailing app that combines common web applications into one.</h4>
+  <h4>Unleash Seamless Communication: The Ultimate Open-Source Messaging & Emailing Fusion.</h4>
 
   <p>
     <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"><img src="https://img.shields.io/github/license/saenzramiro/rambox.svg" alt="GNU GPL v3" /></a>
     <a target="_blank" href="https://crowdin.com/project/rambox"><img src="https://d322cqt584bo4o.cloudfront.net/rambox/localized.svg" /></a>
   </p>
 	<p>
-		<a target="_blank" href="https://github.com/LibreRambox/community-edition/releases"> <img alt="Release" src="https://img.shields.io/github/v/release/LibreRambox/community-edition"></a>
+		<a target="_blank" href="https://github.com/LibreRambox/LibreRambox/releases"> <img alt="Release" src="https://img.shields.io/github/v/release/LibreRambox/LibreRambox"></a>
 	</p>
   <p>
-    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/LibreRambox/community-edition/build.yml">
+    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/LibreRambox/LibreRambox/build.yml">
   </p>
 
   <h5>Available for Windows, Mac and Linux.</h5>
 
-  <h5><a href="https://github.com/LibreRambox/community-edition/releases" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE" /></a></h5>
+  <h5><a href="https://github.com/LibreRambox/LibreRambox/releases" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE" /></a></h5>
 
   <h6>Logo designed by <a href="https://www.linkedin.com/in/andriyyurchenko/" target="_blank">Andriy Yurchenko</a></h6>
 </div>
@@ -34,7 +34,6 @@
 - [Apps available](#apps-available)
 - [Features](#features)
 - [Privacy](#privacy)
-- [Donations](#donations)
 - [Translations](#translations)
 - [Install on Linux - Steps](#install-on-linux---steps)
 - [Contributing](#contributing)
@@ -50,7 +49,7 @@
 
 ## Apps available
 
-Visit our website https://rambox.app/#apps and select the "Community-Edition" filter to see all the apps available.
+A full list is available [here](services.md).
 
 ## Features
 
@@ -81,18 +80,11 @@ So every time you open Rambox, your sessions will keep alive until you remove th
 Sync feature use Auth0 for Single Sign On & Token Based Authentication and to store the services that user is using (and the configuration for each service).
 You are always welcome to check the code! ;)
 
-## Donations
-
-| Type             | URL/Wallet                                                                                 |
-| ---------------- | :----------------------------------------------------------------------------------------: |
-| Credit Cards     | [HERE](https://rambox.app/donate.html) |
-| Cryptocurrencies | [HERE](https://www.vaulty.io/v/b6480279-af28-4855-868c-17e5cb0ae7fa)                       |
-
 ## Translations
 
 Help us translate Rambox on <https://crowdin.com/project/rambox/invite>.
 
-## [Install on Linux - Steps](https://github.com/ramboxapp/community-edition/wiki/Install-on-Linux)
+## [Install on Linux - Steps](https://github.com/ramboxapp/LibreRambox/wiki/Install-on-Linux)
 
 ## [Contributing](./CONTRIBUTING.md)
 
@@ -103,8 +95,8 @@ Fork and work!
 ### Quickstart
 
 ```shell
-git clone https://github.com/saenzramiro/rambox.git
-cd rambox
+git clone https://github.com/LibreRambox/LibreRambox.git
+cd LibreRambox
 npm install
 sencha app watch
 npm start
@@ -116,8 +108,8 @@ See [Contributing.md](./CONTRIBUTING.md) for more detailed information about get
 
 ## Disclosure
 
-Rambox is not affiliated with any of the messaging apps offered.
+LibreRambox is not affiliated with any of the messaging apps offered.
 
 ## Licence
 
-[GNU GPL v3](https://github.com/ramboxapp/community-edition/blob/master/LICENSE)
+[GNU GPL v3](https://github.com/LibreRambox/LibreRambox/blob/master/LICENSE)

@@ -251,7 +251,7 @@
      *
      */
     "output": {
-        "base": "../rambox-build",
+        "base": "../librerambox-build",
         "appCache": {
             "enable": true
         }

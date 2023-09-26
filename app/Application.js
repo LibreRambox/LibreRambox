@@ -71,7 +71,7 @@ Ext.define('Rambox.Application', {
 					'->'
 					,{
 						xtype: 'label'
-						,html: '<b>Rambox CE needs permissions to use Microphone and Camera for the apps.</b>'
+						,html: '<b>LibreRambox needs permissions to use Microphone and Camera for the apps.</b>'
 					}
 					,{
 						xtype: 'button'
@@ -116,7 +116,7 @@ Ext.define('Rambox.Application', {
 						'->'
 						,{
 							 xtype: 'label'
-							,html: '<b>Services couldn\'t be loaded, some Rambox features will not be available.</b>'
+							,html: '<b>Services couldn\'t be loaded, some LibreRambox features will not be available.</b>'
 						}
 						,{
 							 xtype: 'button'
@@ -195,7 +195,7 @@ Ext.define('Rambox.Application', {
 				btn.toggle();
 				Ext.cq1('app-main').getController().dontDisturb(btn, true);
 			});
-			// Add shortcut to Lock Rambox
+			// Add shortcut to Lock LibreRambox
 			Mousetrap.bind(platform === 'darwin' ? ['command+alt+l'] : ['shift+alt+l'], (e, combo) => {
 				var btn = Ext.getCmp('lockRamboxBtn');
 				Ext.cq1('app-main').getController().lockRambox(btn);
@@ -222,7 +222,7 @@ Ext.define('Rambox.Application', {
 			ipc.send('setDontDisturb', localStorage.getItem('dontDisturb')); // We store it in config
 
 			if ( localStorage.getItem('locked') ) {
-				console.info('Lock Rambox:', 'Enabled');
+				console.info('Lock LibreRambox:', 'Enabled');
 				Ext.cq1('app-main').getController().showLockWindow();
 			}
 			Ext.getStore('Services').load();
@@ -233,15 +233,15 @@ Ext.define('Rambox.Application', {
 		newValue = parseInt(newValue);
 		if ( newValue > 0 )	{
 			if ( Ext.cq1('app-main').getActiveTab().record ) {
-				document.title = 'Rambox (' + Rambox.util.Format.formatNumber(newValue) + ') - '+Ext.cq1('app-main').getActiveTab().record.get('name');
+				document.title = 'LibreRambox (' + Rambox.util.Format.formatNumber(newValue) + ') - '+Ext.cq1('app-main').getActiveTab().record.get('name');
 			} else {
-				document.title = 'Rambox (' + Rambox.util.Format.formatNumber(newValue) + ')';
+				document.title = 'LibreRambox (' + Rambox.util.Format.formatNumber(newValue) + ')';
 			}
 		} else {
 			if ( Ext.cq1('app-main') && Ext.cq1('app-main').getActiveTab().record ) {
-				document.title = 'Rambox - '+Ext.cq1('app-main').getActiveTab().record.get('name');
+				document.title = 'LibreRambox - '+Ext.cq1('app-main').getActiveTab().record.get('name');
 			} else {
-				document.title = 'Rambox';
+				document.title = 'LibreRambox';
 			}
 		}
 	}

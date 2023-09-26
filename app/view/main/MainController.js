@@ -29,7 +29,7 @@ Ext.define('Rambox.view.main.MainController', {
 			if ( Rambox.app.getTotalNotifications() > 0 ) {
 				document.title = 'Rambox ('+ Rambox.app.getTotalNotifications() +')';
 			} else {
-				document.title = 'Rambox';
+				document.title = 'LibreRambox';
 			}
 			return;
 		}
@@ -49,9 +49,9 @@ Ext.define('Rambox.view.main.MainController', {
 
 		// Update the main window so it includes the active tab title.
 		if ( Rambox.app.getTotalNotifications() > 0 ) {
-			document.title = 'Rambox ('+ Rambox.app.getTotalNotifications() +') - ' + newTab.record.get('name');
+			document.title = 'LibreRambox ('+ LibreRambox.app.getTotalNotifications() +') - ' + newTab.record.get('name');
 		} else {
-			document.title = 'Rambox - ' + newTab.record.get('name');
+			document.title = 'LibreRambox - ' + newTab.record.get('name');
 		}
 	}
 
@@ -201,7 +201,7 @@ Ext.define('Rambox.view.main.MainController', {
 			Ext.Msg.confirm(locale['app.window[12]'], locale['app.window[14]'], function(btnId) {
 				if ( btnId === 'yes' ) {
 					// Clear counter for unread messaging
-					document.title = 'Rambox';
+					document.title = 'LibreRambox';
 
 					Ext.cq1('app-main').suspendEvent('remove');
 					Ext.getStore('Services').load();
@@ -386,7 +386,7 @@ Ext.define('Rambox.view.main.MainController', {
 				document.body.removeChild(iframeFix);
 				`);
 			}
-			console.info('Lock Rambox:', 'Enabled');
+			console.info('Lock LibreRambox:', 'Enabled');
 
 			// Save encrypted password in localStorage to show locked when app is reopen
 			localStorage.setItem('locked', text);
@@ -403,7 +403,7 @@ Ext.define('Rambox.view.main.MainController', {
 
 		var validateFn = function() {
 			if ( localStorage.getItem('locked') === Rambox.util.MD5.encypt(winLock.down('textfield').getValue()) ) {
-				console.info('Lock Rambox:', 'Disabled');
+				console.info('Lock LibreRambox:', 'Disabled');
 				localStorage.removeItem('locked');
 				winLock.close();
 				me.lookupReference('disturbBtn').setPressed(false);
