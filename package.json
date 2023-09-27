@@ -70,7 +70,7 @@
 	},
 	"build": {
 		"productName": "LibreRambox",
-		"appId": "eu.roebert.librerambox",
+		"appId": "io.github.librerambox",
 		"asar": true,
 		"electronVersion": "25.3.2",
 		"electronDownload": {
