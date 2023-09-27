@@ -148,26 +148,9 @@ function createWindow () {
 	updater.initialize(mainWindow);
 
 	// Open links in default browser
-	mainWindow.webContents.on('new-window', function(e, url, frameName, disposition, options) {
-		const protocol = require('url').parse(url).protocol;
-		switch ( disposition ) {
-			case 'new-window':
-				e.preventDefault();
-				const win = new BrowserWindow(options);
-				if ( config.get('user_agent').length > 0 ) win.webContents.setUserAgent( config.get('user_agent') );
-				win.once('ready-to-show', () => win.show());
-				win.loadURL(url);
-				e.newGuest = win;
-				break;
-			case 'foreground-tab':
-				if (protocol === 'http:' || protocol === 'https:' || protocol === 'mailto:') {
-					e.preventDefault();
-					shell.openExternal(url);
-				}
-				break;
-			default:
-				break;
-		}
+	mainWindow.webContents.setWindowOpenHandler(( url ) => { 
+		shell.openExternal(url);
+  		return { action: 'deny' };
 	});
 
 	mainWindow.webContents.on('will-navigate', function(event, url) {
@@ -426,37 +409,54 @@ app.on('web-contents-created', (webContentsCreatedEvent, contents) => {
 	if (contents.getType() !== 'webview') return;
 	// Block some Deep links to prevent that open its app (Ex: Slack)
 	contents.on('will-navigate', (event, url) => url.substring(0, 8) === 'slack://' && event.preventDefault());
-	// New Window handler
-	contents.on('new-window', (event, url, _frameName, _disposition, options) => {
-		// If the url is about:blank we allow the window and handle it in 'did-create-window'
-		if (['about:blank', 'about:blank#blocked'].includes(url)) {
-			event.preventDefault();
-			Object.assign(options, { show: false });
-			const win = new BrowserWindow(options);
-			win.center();
-			let once = false;
-			win.webContents.on('will-navigate', (e, nextURL) => {
-				if (once) return;
-				if (['about:blank', 'about:blank#blocked'].includes(nextURL)) return;
-				once = true;
-				let allow = false;
-				allowPopUp.forEach(url => nextURL.indexOf(url) > -1 && (allow = true));
-				// If the url is in aboutBlankOnlyWindow we handle this as a popup window
-				if (allow) return win.show();
-				shell.openExternal(nextURL);
-				win.close()
-			})
-			event.newGuest = win;
-			return;
-		}
-		// We check if url is in the allowPopUpLoginURLs or allowForegroundTabURLs in Firebase to open a as a popup,
-		// if it is not we send this to the app
+	
+	// Old  Window handler Electron < 22
+	// contents.on('new-window', (event, url, _frameName, _disposition, options) => {
+	// 	// If the url is about:blank we allow the window and handle it in 'did-create-window'
+	// 	if (['about:blank', 'about:blank#blocked'].includes(url)) {
+	// 		event.preventDefault();
+	// 		Object.assign(options, { show: false });
+	// 		const win = new BrowserWindow(options);
+	// 		win.center();
+	// 		let once = false;
+	// 		win.webContents.on('will-navigate', (e, nextURL) => {
+	// 			if (once) return;
+	// 			if (['about:blank', 'about:blank#blocked'].includes(nextURL)) return;
+	// 			once = true;
+	// 			let allow = false;
+	// 			allowPopUp.forEach(url => nextURL.indexOf(url) > -1 && (allow = true));
+	// 			// If the url is in aboutBlankOnlyWindow we handle this as a popup window
+	// 			if (allow) return win.show();
+	// 			shell.openExternal(nextURL);
+	// 			win.close()
+	// 		})
+	// 		event.newGuest = win;
+	// 		return;
+	// 	}
+	// 	// We check if url is in the allowPopUpLoginURLs or allowForegroundTabURLs in Firebase to open a as a popup,
+	// 	// if it is not we send this to the app
+	// 	let allow = false;
+	// 	allowPopUp.forEach(allowed => url.indexOf(allowed) > -1 && (allow = true));
+	// 	if (allow) return;
+	// 	shell.openExternal(url);
+	// 	event.preventDefault();
+	// });
+	// New Window handler Electron >=22
+	contents.setWindowOpenHandler(({url, frameName}) => {
+		
 		let allow = false;
-		allowPopUp.forEach(allowed => url.indexOf(allowed) > -1 && (allow = true));
-		if (allow) return;
-		shell.openExternal(url);
-		event.preventDefault();
+		allowPopUp.forEach(allowUrl => url.indexOf(allowUrl) > -1 && (allow = true));
+		if (!allow) {
+			shell.openExternal(url);
+		}
+		else {
+			// do we need to open windows internally somewhere? #shrugemoji
+			// const win = new BrowserWindow();
+			// win.loadURL(url);
+			// return win.show();
+		}
 	});
+
 	contents.on('did-create-window', (win, details) => {
 		// Here we center the new window.
 		win.center();
