@@ -71,7 +71,7 @@ app.commandLine.appendSwitch('disable-features', 'CrossOriginOpenerPolicy');
 
 // Because we build it using Squirrel, it will assign UserModelId automatically, so we match it here to display notifications correctly.
 // https://github.com/electron-userland/electron-builder/issues/362
-app.setAppUserModelId('eu.roebert.librerambox');
+app.setAppUserModelId('io.github.librerambox');
 
 // Menu
 const appMenu = require('./menu')(config);
