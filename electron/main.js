@@ -148,8 +148,8 @@ function createWindow () {
 	updater.initialize(mainWindow);
 
 	// Open links in default browser
-	mainWindow.webContents.setWindowOpenHandler(( url ) => { 
-		shell.openExternal(url);
+	mainWindow.webContents.setWindowOpenHandler(( handlerDetails ) => { 
+		shell.openExternal(handlerDetails.url);
   		return { action: 'deny' };
 	});
 
