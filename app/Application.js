@@ -37,7 +37,7 @@ Ext.define('Rambox.Application', {
 					Ext.get('background') ? Ext.get('background').destroy() : null;
 					Ext.Msg.show({
 						title: 'No Internet Connection'
-						,msg: 'Please, check your internet connection. If you use a Proxy, please go to Preferences to configure it. Rambox will try to re-connect in 10 seconds'
+						,msg: 'Please, check your internet connection. If you use a Proxy, please go to Preferences to configure it. LibreRambox will try to re-connect in 10 seconds'
 						,width: 300
 						,closable: false
 						,buttons: Ext.Msg.YESNO
