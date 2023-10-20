@@ -20,9 +20,14 @@
     <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/LibreRambox/LibreRambox/build.yml">
   </p>
 
-  <h5>Available for Windows, Mac and Linux.</h5>
+  <h5>Releases for Windows, Mac and Linux.</h5>
 
-  <h5><a href="https://github.com/LibreRambox/LibreRambox/releases" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE" /></a></h5>
+  <a href="https://github.com/LibreRambox/LibreRambox/releases" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD NOW" /></a>
+
+  <h5>Nightly Builds for Windows, Mac and Linux</h5>
+
+  <a href="https://github.com/LibreRambox/LibreRambox/actions/workflows/build.yml" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="150" alt="DOWNLOAD NOW" /></a>
+
 
   <h6>Logo designed by <a href="https://www.linkedin.com/in/andriyyurchenko/" target="_blank">Andriy Yurchenko</a></h6>
 </div>
