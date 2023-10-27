@@ -1,11 +1,11 @@
-Ext.define('Rambox.view.main.Main', {
+Ext.define('LibreRambox.view.main.Main', {
 	 extend: 'Ext.tab.Panel'
 	,requires: [
-		 'Rambox.view.main.MainController'
-		,'Rambox.view.main.MainModel'
-		,'Rambox.ux.WebView'
-		,'Rambox.ux.mixin.Badge'
-		,'Rambox.view.add.Add'
+		 'LibreRambox.view.main.MainController'
+		,'LibreRambox.view.main.MainModel'
+		,'LibreRambox.ux.WebView'
+		,'LibreRambox.ux.mixin.Badge'
+		,'LibreRambox.view.add.Add'
 		,'Ext.ux.TabReorderer'
 	]
 
@@ -32,7 +32,7 @@ Ext.define('Rambox.view.main.Main', {
 	,items: [
 		{
 			 icon: 'resources/IconTray@2x.png'
-			,id: 'ramboxTab'
+			,id: 'libreRamboxTab'
 			,closable: false
 			,reorderable: false
 			,autoScroll: true
