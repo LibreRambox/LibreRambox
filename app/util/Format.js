@@ -1,7 +1,7 @@
 /**
  * Created by vsxed on 7/11/2016.
  */
-Ext.define('Rambox.util.Format', {
+Ext.define('LibreRambox.util.Format', {
 	 singleton: true
 
 	,formatNumber: function(n) {

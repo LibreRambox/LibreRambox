@@ -1,4 +1,4 @@
-Ext.define('Rambox.profile.Online', {
+Ext.define('LibreRambox.profile.Online', {
 	 extend: 'Ext.app.Profile'
 	,isActive: function() {
 		return localStorage.getItem('id_token');

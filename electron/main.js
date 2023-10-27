@@ -45,7 +45,7 @@ const config = new Config({
 		,locale: 'en'
 		,enable_hidpi_support: false
 		,user_agent: ''
-		,default_service: 'ramboxTab'
+		,default_service: 'libreRamboxTab'
 		,sendStatistics: false
 		,migrated: false
 
@@ -108,7 +108,7 @@ function createWindow () {
 		,acceptFirstMouse: true
 		,webPreferences: {
 			plugins: true
-			,partition: 'persist:rambox'
+			,partition: 'persist:librerambox'
 			,nodeIntegration: true
 			,webviewTag: true
 			,contextIsolation: false
@@ -262,7 +262,7 @@ function formatBytes(bytes, decimals = 2) {
 }
 
 /* async function availableSpaceWatchDog() {
-	// optionally render this information also in rambox window
+	// optionally render this information also in librerambox window
 	try {
 		const { available } = await disk.check(appPath);
 		if (available < 1073741824) { // 1 GB

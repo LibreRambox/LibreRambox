@@ -1,9 +1,9 @@
-Ext.define('Rambox.view.add.AddController', {
+Ext.define('LibreRambox.view.add.AddController', {
 	extend: 'Ext.app.ViewController',
 	alias: 'controller.add-add',
 
 	requires: [
-		'Rambox.util.UnreadCounter'
+		'LibreRambox.util.UnreadCounter'
 	],
 
 	doCancel: function( btn ) {
@@ -82,7 +82,7 @@ Ext.define('Rambox.view.add.AddController', {
 				formValues.url = formValues.cycleValue === '1' ? win.record.get('url').replace('___', formValues.url) : formValues.url;
 			}
 
-			var service = Ext.create('Rambox.model.Service', {
+			var service = Ext.create('LibreRambox.model.Service', {
 				 type: win.record.get('id')
 				,logo: formValues.logo
 				,name: formValues.serviceName

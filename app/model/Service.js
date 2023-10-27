@@ -1,4 +1,4 @@
-Ext.define('Rambox.model.Service', {
+Ext.define('LibreRambox.model.Service', {
 	 extend: 'Ext.data.Model'
 
 	,identifier: 'sequential'

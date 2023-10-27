@@ -1,4 +1,4 @@
-Ext.define('Rambox.view.preferences.PreferencesController', {
+Ext.define('LibreRambox.view.preferences.PreferencesController', {
 	 extend: 'Ext.app.ViewController'
 	,alias: 'controller.preferences-preferences'
 
@@ -26,7 +26,7 @@ Ext.define('Rambox.view.preferences.PreferencesController', {
 			Ext.isEmpty(values.master_password1) === false &&
 			Ext.isEmpty(values.master_password2) === false) {
 
-			values.master_password = Rambox.util.MD5.encypt(values.master_password1);
+			values.master_password = LibreRambox.util.MD5.encypt(values.master_password1);
 			delete values.master_password1;
 			delete values.master_password2;
 		}

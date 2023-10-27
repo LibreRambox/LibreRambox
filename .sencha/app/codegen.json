@@ -32,24 +32,24 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "Rambox",
+        "appName": "LibreRambox",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "Rambox.controller",
+        "controllerNamespace": "LibreRambox.controller",
         "frameworkKey": "ext",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "Rambox.model",
-        "name": "Rambox",
+        "modelNamespace": "LibreRambox.model",
+        "name": "LibreRambox",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
         "uniqueId": "0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "Rambox.view"
+        "viewNamespace": "LibreRambox.view"
       }
     },
     ".sencha/app/development.properties": {
@@ -58,24 +58,24 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "Rambox",
+        "appName": "LibreRambox",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "Rambox.controller",
+        "controllerNamespace": "LibreRambox.controller",
         "frameworkKey": "ext",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "Rambox.model",
-        "name": "Rambox",
+        "modelNamespace": "LibreRambox.model",
+        "name": "LibreRambox",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
         "uniqueId": "0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "Rambox.view"
+        "viewNamespace": "LibreRambox.view"
       }
     },
     ".sencha/app/native.properties": {
@@ -84,24 +84,24 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "Rambox",
+        "appName": "LibreRambox",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "Rambox.controller",
+        "controllerNamespace": "LibreRambox.controller",
         "frameworkKey": "ext",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "Rambox.model",
-        "name": "Rambox",
+        "modelNamespace": "LibreRambox.model",
+        "name": "LibreRambox",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
         "uniqueId": "0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "Rambox.view"
+        "viewNamespace": "LibreRambox.view"
       }
     },
     ".sencha/app/package.properties": {
@@ -110,24 +110,24 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "Rambox",
+        "appName": "LibreRambox",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "Rambox.controller",
+        "controllerNamespace": "LibreRambox.controller",
         "frameworkKey": "ext",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "Rambox.model",
-        "name": "Rambox",
+        "modelNamespace": "LibreRambox.model",
+        "name": "LibreRambox",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
         "uniqueId": "0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "Rambox.view"
+        "viewNamespace": "LibreRambox.view"
       }
     },
     ".sencha/app/production.properties": {
@@ -136,24 +136,24 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "Rambox",
+        "appName": "LibreRambox",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "Rambox.controller",
+        "controllerNamespace": "LibreRambox.controller",
         "frameworkKey": "ext",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "Rambox.model",
-        "name": "Rambox",
+        "modelNamespace": "LibreRambox.model",
+        "name": "LibreRambox",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
         "uniqueId": "0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "Rambox.view"
+        "viewNamespace": "LibreRambox.view"
       }
     },
     ".sencha/app/sencha.cfg": {
@@ -162,24 +162,24 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "Rambox",
+        "appName": "LibreRambox",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "Rambox.controller",
+        "controllerNamespace": "LibreRambox.controller",
         "frameworkKey": "ext",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "Rambox.model",
-        "name": "Rambox",
+        "modelNamespace": "LibreRambox.model",
+        "name": "LibreRambox",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
         "uniqueId": "0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "Rambox.view"
+        "viewNamespace": "LibreRambox.view"
       }
     },
     ".sencha/app/testing.properties": {
@@ -188,24 +188,24 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "Rambox",
+        "appName": "LibreRambox",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "Rambox.controller",
+        "controllerNamespace": "LibreRambox.controller",
         "frameworkKey": "ext",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "Rambox.model",
-        "name": "Rambox",
+        "modelNamespace": "LibreRambox.model",
+        "name": "LibreRambox",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
         "uniqueId": "0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "Rambox.view"
+        "viewNamespace": "LibreRambox.view"
       }
     },
     "sass/config.rb": {
@@ -214,24 +214,24 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "Rambox",
+        "appName": "LibreRambox",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "Rambox.controller",
+        "controllerNamespace": "LibreRambox.controller",
         "frameworkKey": "ext",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "Rambox.model",
-        "name": "Rambox",
+        "modelNamespace": "LibreRambox.model",
+        "name": "LibreRambox",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
         "uniqueId": "0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "Rambox.view"
+        "viewNamespace": "LibreRambox.view"
       }
     }
   }
