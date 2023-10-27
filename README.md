@@ -1,7 +1,7 @@
 <div align="center">
   <h1>
     <br />
-    <a href="https://rambox.pro"><img src="./resources/Icon.png" width="256px" alt="Rambox" /></a><br />
+    <a href="https://github.com/LibreRambox/LibreRambox"><img src="./resources/Icon.png" width="256px" alt="LibreRambox" /></a><br />
     LibreRambox
     <br /><br/>
   </h1>
@@ -10,7 +10,7 @@
   <h4>Unleash Seamless Communication: The Ultimate Open-Source Messaging & Emailing Fusion.</h4>
 
   <p>
-    <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"><img src="https://img.shields.io/github/license/saenzramiro/rambox.svg" alt="GNU GPL v3" /></a>
+    <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"><img src="https://img.shields.io/github/license/librerambox/librerambox.svg" alt="GNU GPL v3" /></a>
     <a title="Crowdin" target="_blank" href="https://crowdin.com/project/librerambox"><img src="https://badges.crowdin.net/librerambox/localized.svg"></a>
   </p>
 	<p>
@@ -51,7 +51,7 @@
 
 ## Screenshot
 
-![Rambox](./resources/screenshots/mac.png)
+![LibreRambox](./resources/screenshots/mac.png)
 
 ## Apps available
 
@@ -62,7 +62,7 @@ A full list is available [here](services.md).
 - [x] Multi-language.
 - [x] Sync your configuration between multiple computers.
 - [x] Master Password.
-- [x] Lock Rambox if you will be away for a period of time.
+- [x] Lock LibreRambox if you will be away for a period of time.
 - [x] Don't disturb mode.
 - [x] Reorder applications in the tab bar.
 - [x] Notification badge in the tab.
@@ -81,7 +81,7 @@ A full list is available [here](services.md).
 No personal information will be saved
 
 Sessions will persist using the [partition:persist](https://electronjs.org/docs/api/webview-tag#partition) attribute for Webviews.
-So every time you open Rambox, your sessions will keep alive until you remove the service.
+So every time you open LibreRambox, your sessions will keep alive until you remove the service.
 
 Sync feature use Auth0 for Single Sign On & Token Based Authentication and to store the services that user is using (and the configuration for each service).
 You are always welcome to check the code! ;)
@@ -94,7 +94,7 @@ Help us translate LibreRambox on [https://crowdin.com/project/librerambox/invite
 
 ## [Contributing](./CONTRIBUTING.md)
 
-Want to report a bug, request a feature, contribute to or translate Rambox?
+Want to report a bug, request a feature, contribute to or translate LibreRambox?
 We need all the help we can get!
 Fork and work!
 
