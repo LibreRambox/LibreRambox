@@ -64,6 +64,7 @@ We currently support the following apps out of the box:
 * <img src="resources/icons/movim.png" alt="Movim" height="25" /> <a href="https://___.movim.eu/">Movim</a>
 * <img src="resources/icons/mysms.png" alt="mysms" height="25" /> <a href="https://app.mysms.com/">mysms</a>
 * <img src="resources/icons/noysi.png" alt="Noysi" height="25" /> <a href="https://noysi.com/site-en/sign-in">Noysi</a>
+* <img src="resources/icons/notion.png" alt="Notion" height="25" /> <a href="https://www.notion.so">Notion</a>
 * <img src="resources/icons/okru.png" alt="OK.RU" height="25" /> <a href="https://ok.ru/">OK.RU</a>
 * <img src="resources/icons/openmailbox.png" alt="Openmailbox" height="25" /> <a href="https://app.openmailbox.org/">Openmailbox</a>
 * <img src="resources/icons/outlook.png" alt="Outlook" height="25" /> <a href="https://mail.live.com/">Outlook</a>
