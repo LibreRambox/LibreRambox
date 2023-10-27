@@ -945,6 +945,21 @@
 		"custom_domain": false
 	},
 	{
+		"id": "notion",
+		"logo": "notion.png",
+		"name": "Notion",
+		"description": "Notion is a freemium productivity and note-taking web application developed by Notion Labs Inc. It offers organizational tools including task management, project tracking, to-do lists, and bookmarking. Additional offline features are offered by desktop and mobile applications available for Windows, macOS, Android, and iOS. Users can create custom templates, embed videos and web content, and collaborate with others in real-time.",
+		"url": "https://www.notion.so",
+		"type": "messaging",
+		"allow_popups": false,
+		"manual_notifications": false,
+		"js_unread": "",
+		"userAgent": "",
+		"note": "",
+		"titleBlink": false,
+		"custom_domain": false
+	},
+	{
 		"id": "okru",
 		"logo": "okru.png",
 		"name": "OK.RU",
