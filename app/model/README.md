@@ -22,4 +22,4 @@ While by default the unread count is determined by looking for ` (COUNT)` to the
 
 Code provided by `js_unread` will be injected into the service website.
 You can retrieve the unread count in this JavaScript code e.g. by parsing elements.
-Set the unread count by calling `rambox.setUnreadCount(COUNT)` or clear it by calling `rambox.clearUnreadCount()`. 
+Set the unread count by calling `librerambox.setUnreadCount(COUNT)` or clear it by calling `librerambox.clearUnreadCount()`. 

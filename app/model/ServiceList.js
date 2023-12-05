@@ -1,4 +1,4 @@
-Ext.define('Rambox.model.ServiceList', {
+Ext.define('LibreRambox.model.ServiceList', {
 	 extend: 'Ext.data.Model'
 
 	,fields: [{
