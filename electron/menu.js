@@ -248,7 +248,7 @@ module.exports = function(config) {
 			click(item, win) {
 				const webContents = win.webContents;
 				const send = webContents.send.bind(win.webContents);
-				send('grantPermissions');
+				//send('grantPermissions');
 			}
 		});
 	} else {
