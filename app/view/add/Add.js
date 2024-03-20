@@ -1,9 +1,9 @@
-Ext.define('Rambox.view.add.Add',{
+Ext.define('LibreRambox.view.add.Add',{
 	 extend: 'Ext.window.Window'
 
 	,requires: [
-		 'Rambox.view.add.AddController'
-		,'Rambox.view.add.AddModel'
+		 'LibreRambox.view.add.AddController'
+		,'LibreRambox.view.add.AddModel'
 	]
 
 	,controller: 'add-add'

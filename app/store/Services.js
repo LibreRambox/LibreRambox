@@ -1,4 +1,4 @@
-Ext.define('Rambox.store.Services', {
+Ext.define('LibreRambox.store.Services', {
 	 extend: 'Ext.data.Store'
 	,alias: 'store.services'
 
@@ -6,7 +6,7 @@ Ext.define('Rambox.store.Services', {
 		'Ext.data.proxy.LocalStorage'
 	]
 
-	,model: 'Rambox.model.Service'
+	,model: 'LibreRambox.model.Service'
 
 	,autoLoad: false
 	,autoSync: true
@@ -66,7 +66,7 @@ Ext.define('Rambox.store.Services', {
 				case 'last':
 					Ext.cq1('app-main').setActiveTab(localStorage.getItem('last_active_service'));
 					break;
-				case 'ramboxTab':
+				case 'libreRamboxTab':
 					break;
 				default:
 					if ( Ext.getCmp('tab_'+config.default_service) ) Ext.cq1('app-main').setActiveTab('tab_'+config.default_service);
