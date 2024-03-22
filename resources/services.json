@@ -24,7 +24,7 @@
 		"allow_popups": false,
 		"manual_notifications": false,
 		"js_unread": "function checkUnread(){var e=0;document.querySelectorAll(\".text-content.unread\").forEach(function(n){n.querySelector(\".notifications-off\")||e++}),updateBadge(e)}function updateBadge(e){1<=e?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);",
-		"userAgent": "",
+		"userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0",
 		"note": "",
 		"titleBlink": false,
 		"custom_domain": false
@@ -99,7 +99,7 @@
 		"allow_popups": false,
 		"manual_notifications": false,
 		"js_unread": "",
-		"userAgent": "",
+		"userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0",
 		"note": "",
 		"titleBlink": false,
 		"custom_domain": false
@@ -234,7 +234,7 @@
 		"allow_popups": false,
 		"manual_notifications": false,
 		"js_unread": "",
-		"userAgent": "",
+		"userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0",
 		"note": "",
 		"titleBlink": false,
 		"custom_domain": false
@@ -414,7 +414,7 @@
 		"allow_popups": false,
 		"manual_notifications": false,
 		"js_unread": "function checkUnread(){var e=document.querySelector(\".aim .aio\").querySelector(\"span\").querySelector(\"a\").getAttribute(\"aria-label\").replace(/\\D/g,\"\");updateBadge(e?parseInt(e):0)}function updateBadge(e){1<=e?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);",
-		"userAgent": "",
+		"userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0",
 		"note": "To enable desktop notifications, you have to go to Settings inside Gmail. <a href=\"https://support.google.com/mail/answer/1075549?ref_topic=3394466\" target=\"_blank\">Read more...</a>",
 		"titleBlink": false,
 		"custom_domain": false
@@ -429,7 +429,7 @@
 		"allow_popups": false,
 		"manual_notifications": false,
 		"js_unread": "",
-		"userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36",
+		"userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0",
 		"note": "",
 		"titleBlink": false,
 		"custom_domain": false
@@ -444,7 +444,7 @@
 		"allow_popups": false,
 		"manual_notifications": false,
 		"js_unread": "function parseIntOrZero(e){return isNaN(parseInt(e))?0:parseInt(e)}function checkUnread() {var e = document.querySelectorAll(\"a[gv-test-id=\\'sidenav-calls\\'] .navItemBadge, a[gv-test-id=\\'sidenav-messages\\'] .navItemBadge, a[gv-test-id=\\'sidenav-voicemail\\'] .navItemBadge\"), n = 0; e.forEach(function(elem) { var bounding = elem.getBoundingClientRect(); if (bounding.top >= 0 && bounding.left >= 0 && bounding.right <= (window.innerWidth || document.documentElement.clientWidth) && bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) ) { n += parseIntOrZero(elem.innerHTML.replace(/[\\(\\) ]/gi,\"\")); } }); updateBadge(n); }function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);",
-		"userAgent": "",
+		"userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0",
 		"note": "",
 		"titleBlink": false,
 		"custom_domain": false
@@ -504,7 +504,7 @@
 		"allow_popups": false,
 		"manual_notifications": true,
 		"js_unread": "function checkUnread(){updateBadge(document.getElementById(\"hangout-landing-chat\").lastChild.contentWindow.document.body.getElementsByClassName(\"ee\").length)}function updateBadge(e){e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3000);window.trustedTypes&&window.trustedTypes.createPolicy&&window.trustedTypes.createPolicy(\"default\",{createHTML:(e,t)=>e});",
-		"userAgent": "",
+		"userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0",
 		"note": "",
 		"titleBlink": true,
 		"custom_domain": false
@@ -519,7 +519,7 @@
 		"allow_popups": false,
 		"manual_notifications": false,
 		"js_unread": "function checkUnread(){if(document.querySelectorAll(\".akt .XU\").length>0){let e=0;document.querySelectorAll(\".akt .XU\").forEach(t=>e+=t.innerText&&parseInt(t.innerText)),updateBadge(e)}else updateBadge(document.querySelectorAll(\".SSPGKf.EyyDtb.Q6oXP:not(.oCHqfe) .PIw6Oe.EdWvwd.FVKzAb .SaMfhe.m9MHid\").length||0)}function updateBadge(e){1<=e?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3),window.trustedTypes&&window.trustedTypes.createPolicy&&window.trustedTypes.createPolicy(\"default\",{createHTML:(e,t)=>e});",
-		"userAgent": "",
+		"userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0",
 		"note": "",
 		"titleBlink": true,
 		"custom_domain": false
@@ -639,7 +639,7 @@
 		"allow_popups": false,
 		"manual_notifications": false,
 		"js_unread": "function checkUnread(){var e=document.querySelector(\".aim .aio\").querySelector(\"span\").querySelector(\"a\").getAttribute(\"aria-label\").replace(/\\D/g,\"\");updateBadge(e?parseInt(e):0)}function updateBadge(e){1<=e?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);",
-		"userAgent": "",
+		"userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0",
 		"note": "Please be sure to sign out of Hangouts inside Inbox, as it causes problems. <a href=\"https://github.com/saenzramiro/rambox/wiki/Inbox\" target=\"_blank\">Read more...</a>",
 		"titleBlink": false,
 		"custom_domain": false
