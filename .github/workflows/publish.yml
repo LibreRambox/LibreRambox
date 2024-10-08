@@ -51,7 +51,7 @@ jobs:
           - job_name: linux
             os: ubuntu-latest
           - job_name: osx
-            os: macos-11
+            os: macos-12
           - job_name: win
             os: windows-latest
 
