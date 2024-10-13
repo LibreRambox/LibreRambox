@@ -519,7 +519,7 @@
 		"allow_popups": false,
 		"manual_notifications": false,
 		"js_unread": "function checkUnread(){if(document.querySelectorAll(\".akt .XU\").length>0){let e=0;document.querySelectorAll(\".akt .XU\").forEach(t=>e+=t.innerText&&parseInt(t.innerText)),updateBadge(e)}else updateBadge(document.querySelectorAll(\".SSPGKf.EyyDtb.Q6oXP:not(.oCHqfe) .PIw6Oe.EdWvwd.FVKzAb .SaMfhe.m9MHid\").length||0)}function updateBadge(e){1<=e?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3),window.trustedTypes&&window.trustedTypes.createPolicy&&window.trustedTypes.createPolicy(\"default\",{createHTML:(e,t)=>e});",
-		"userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0",
+		"userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0",
 		"note": "",
 		"titleBlink": true,
 		"custom_domain": false
