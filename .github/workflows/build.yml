@@ -34,7 +34,7 @@ jobs:
         run: /opt/Sencha/Cmd/sencha app build
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/librerambox-build
           name: librerambox-build
@@ -59,7 +59,7 @@ jobs:
     name: '${{ matrix.job_name }}'
     runs-on: '${{ matrix.os }}'
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: librerambox-build
           path: .
@@ -74,49 +74,49 @@ jobs:
         if: success() && matrix.job_name == 'linux'
 
       - name: LINUX Publish zip x64
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/dist/LibreRambox-*-linux-x64.zip
           name: LibreRambox-linux-x64.zip
         if: matrix.job_name == 'linux'
 
       - name: LINUX Publish tar.gz x64
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/dist/LibreRambox-*-linux-x64.tar.gz
           name: LibreRambox-linux-x64.tar.gz
         if: matrix.job_name == 'linux'
 
       - name: LINUX Publish deb amd64
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/dist/LibreRambox-*-linux-amd64.deb
           name: LibreRambox-linux-amd64.deb
         if: matrix.job_name == 'linux'
 
       - name: LINUX Publish AppImage x64
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/dist/LibreRambox-*-linux-x86_64.AppImage
           name: LibreRambox-linux-x86_64.AppImage
         if: matrix.job_name == 'linux'
 
       - name: LINUX Publish snap x64
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/dist/LibreRambox-*-linux-amd64.snap
           name: LibreRambox-linux-x86_64.snap
         if: matrix.job_name == 'linux'
 
       - name: LINUX Publish rpm x86_64
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/dist/LibreRambox-*-linux-x86_64.rpm
           name: LibreRambox-linux-x86_64.rpm
         if: matrix.job_name == 'linux'
 
       - name: LINUX Publish yml
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/dist/latest-linux.yml
           name: latest-linux.yml
@@ -128,28 +128,28 @@ jobs:
         if: success() && matrix.job_name == 'osx'
 
       - name: OSX Publish zip
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/dist/LibreRambox-*-mac-universal.zip
           name: LibreRambox-mac-universal.zip
         if: matrix.job_name == 'osx'
 
       - name: OSX Publish dmg
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/dist/LibreRambox-*-mac-universal.dmg
           name: LibreRambox-mac-universal.dmg
         if: matrix.job_name == 'osx'
 
       - name: OSX Publish blockmap
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/dist/LibreRambox-*-mac-universal.dmg.blockmap
           name: LibreRambox-mac-universal.dmg.blockmap
         if: matrix.job_name == 'osx'
 
       - name: OSX Publish yml
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/dist/latest-mac.yml
           name: latest-mac.yml
@@ -161,35 +161,35 @@ jobs:
         if: success() && matrix.job_name == 'win'
 
       - name: WIN Publish exe
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/dist/LibreRambox-*-win.exe
           name: LibreRambox-win.exe
         if: matrix.job_name == 'win'
 
       - name: WIN Publish zip x64
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/dist/LibreRambox-*-win-x64.zip
           name: LibreRambox-win-x64.zip
         if: matrix.job_name == 'win'
 
       - name: WIN Publish zip ia32
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/dist/LibreRambox-*-win-ia32.zip
           name: LibreRambox-win-ia32.zip
         if: matrix.job_name == 'win'
 
       - name: WIN Publish blockmap
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/dist/LibreRambox-*-win.exe.blockmap
           name: LibreRambox-win.exe.blockmap
         if: matrix.job_name == 'win'
 
       - name: WIN Publish yml
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/dist/latest.yml
           name: latest.yml
