@@ -33,7 +33,7 @@ jobs:
         run: /opt/Sencha/Cmd/sencha app build
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/librerambox-build
           name: librerambox-build
@@ -58,7 +58,7 @@ jobs:
     name: '${{ matrix.job_name }}'
     runs-on: '${{ matrix.os }}'
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: librerambox-build
           path: .
