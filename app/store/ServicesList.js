@@ -1,4 +1,4 @@
-Ext.define('Rambox.store.ServicesList', {
+Ext.define('LibreRambox.store.ServicesList', {
 	 extend: 'Ext.data.Store'
 	,alias: 'store.serviceslist'
 
@@ -6,7 +6,7 @@ Ext.define('Rambox.store.ServicesList', {
 		'Ext.data.proxy.LocalStorage'
 	]
 
-	,model: 'Rambox.model.ServiceList'
+	,model: 'LibreRambox.model.ServiceList'
 
 	,proxy: {
 		type: 'ajax',

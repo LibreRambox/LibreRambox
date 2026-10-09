@@ -5,28 +5,28 @@ ElectronCookies.enable({ origin: 'localhost' });
 // Sencha App
 Ext.setGlyphFontFamily('FontAwesome');
 Ext.application({
-	 name: 'Rambox'
+	 name: 'LibreRambox'
 
-	,extend: 'Rambox.Application'
+	,extend: 'LibreRambox.Application'
 
-	,autoCreateViewport: 'Rambox.view.main.Main'
+	,autoCreateViewport: 'LibreRambox.view.main.Main'
 });
 
 // auto update logic
 const ipc = require('electron').ipcRenderer;
 
 ipc.on('showAbout', function(event, message) {
-	!Ext.cq1('about') ? Ext.create('Rambox.view.main.About') : '';
+	!Ext.cq1('about') ? Ext.create('LibreRambox.view.main.About') : '';
 });
 ipc.on('showPreferences', function(event, message) {
-	!Ext.cq1('preferences') ? Ext.create('Rambox.view.preferences.Preferences').show() : '';
+	!Ext.cq1('preferences') ? Ext.create('LibreRambox.view.preferences.Preferences').show() : '';
 });
 ipc.on('grantPermissions', async function() {
 	await require('@electron/remote').systemPreferences.askForMediaAccess('microphone');
 	await require('@electron/remote').systemPreferences.askForMediaAccess('camera');
 });
 ipc.on('autoUpdater:check-update', function() {
-	Rambox.app.checkUpdate();
+	LibreRambox.app.checkUpdate();
 });
 ipc.on('autoUpdater:update-not-available', function() {
 	Ext.Msg.show({
@@ -130,13 +130,13 @@ ipc.on('setBadge', function(event, messageCount) {
 // Reload Current Service
 ipc.on('reloadCurrentService', function(e) {
 	var tab = Ext.cq1('app-main').getActiveTab();
-	if ( tab.id !== 'ramboxTab' ) tab.reloadService();
+	if ( tab.id !== 'libreRamboxTab' ) tab.reloadService();
 });
 // Toggle Status Bar
 ipc.on('toggleStatusBar', function() {
 	var tab = Ext.cq1('app-main').getActiveTab();
 
-	if ( tab.id !== 'ramboxTab' ) {
+	if ( tab.id !== 'libreRamboxTab' ) {
 		tab.down('statusbar').closed ? tab.setStatusBar(tab.record.get('statusbar')) : tab.closeStatusBar();
 	}
 });

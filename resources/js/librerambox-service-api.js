@@ -1,31 +1,37 @@
 /**
- * This file is loaded in the service web views to provide a Rambox API.
+ * This file is loaded in the service web views to provide a LibreRambox API.
  */
 
 const { desktopCapturer, ipcRenderer } = require('electron');
 
 /**
- * Make the Rambox API available via a global "rambox" variable.
+ * Make the LibreRambox API available via a global "librerambox" variable.
  *
  * @type {{}}
  */
-window.rambox = {};
+window.librerambox = {};
 
 /**
  * Sets the unread count of the tab.
  *
  * @param {*} count	The unread count
  */
-window.rambox.setUnreadCount = function(count) {
-	ipcRenderer.sendToHost('rambox.setUnreadCount', count);
+window.librerambox.setUnreadCount = function(count) {
+	ipcRenderer.sendToHost('librerambox.setUnreadCount', count);
 };
 
 /**
  * Clears the unread count.
  */
-window.rambox.clearUnreadCount = function() {
-	ipcRenderer.sendToHost('rambox.clearUnreadCount');
+window.librerambox.clearUnreadCount = function() {
+	ipcRenderer.sendToHost('librerambox.clearUnreadCount');
 }
+
+/**
+ * Deprecated alias for js_unread scripts saved before the namespace change
+ * (e.g. in custom services defined with older versions).
+ */
+window.rambox = window.librerambox;
 
 /**
  * Override to add notification click event to display LibreRambox window and activate service tab
@@ -35,7 +41,7 @@ Notification = function(title, options) {
 	var notification = new NativeNotification(title, options);
 
 	notification.addEventListener('click', function() {
-		ipcRenderer.sendToHost('rambox.showWindowAndActivateTab');
+		ipcRenderer.sendToHost('librerambox.showWindowAndActivateTab');
 	});
 
 	//It seems that gmail is checking if such event handler func are available. Just remplacing them by a void function that is always returning true is making the thing right!

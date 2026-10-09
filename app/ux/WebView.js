@@ -2,15 +2,15 @@
  * Default config for all webviews created
  */
 
-Ext.define('Rambox.ux.WebView',{
+Ext.define('LibreRambox.ux.WebView',{
 	 extend: 'Ext.panel.Panel'
 	,xtype: 'webview'
 
 	,requires: [
-		 'Rambox.util.Format'
-		,'Rambox.util.Notifier'
-		,'Rambox.util.UnreadCounter'
-		,'Rambox.util.IconLoader'
+		 'LibreRambox.util.Format'
+		,'LibreRambox.util.Notifier'
+		,'LibreRambox.util.UnreadCounter'
+		,'LibreRambox.util.IconLoader'
 	]
 
 	// private
@@ -217,7 +217,7 @@ Ext.define('Rambox.ux.WebView',{
 					,allowpopups: 'on'
 					// ,disablewebsecurity: 'on' // Disabled because some services (Like Google Drive) dont work with this enabled
 					,useragent: me.getUserAgent()
-					,preload: './resources/js/rambox-service-api.js'
+					,preload: './resources/js/librerambox-service-api.js'
 				}
 			}];
 		}
@@ -297,7 +297,7 @@ Ext.define('Rambox.ux.WebView',{
 		});
 
 		webview.addEventListener("did-finish-load", function(e) {
-			Rambox.app.setTotalServicesLoaded( Rambox.app.getTotalServicesLoaded() + 1 );
+			LibreRambox.app.setTotalServicesLoaded( LibreRambox.app.getTotalServicesLoaded() + 1 );
 
 			// Apply saved zoom level
 			webview.setZoomLevel(me.record.get('zoomLevel'));
@@ -309,7 +309,7 @@ Ext.define('Rambox.ux.WebView',{
 				webview.focus();
 			}
 			// Set special icon for some service (like Slack)
-			Rambox.util.IconLoader.loadServiceIconUrl(me, webview);
+			LibreRambox.util.IconLoader.loadServiceIconUrl(me, webview);
 		});
 
 		// On search text
@@ -476,7 +476,7 @@ Ext.define('Rambox.ux.WebView',{
 				});
 				eventsOnDom = true;
 
-				Rambox.app.config.googleURLs.forEach((loginURL) => {	if ( webview.getURL().indexOf(loginURL) > -1 ) webview.reload() })
+				LibreRambox.app.config.googleURLs.forEach((loginURL) => {	if ( webview.getURL().indexOf(loginURL) > -1 ) webview.reload() })
 			}
 			webview.executeJavaScript(js_inject).then(result => {} ).catch(err => { console.log(err) })
 		});
@@ -484,18 +484,18 @@ Ext.define('Rambox.ux.WebView',{
 		webview.addEventListener('ipc-message', function(event) {
 			var channel = event.channel;
 			switch (channel) {
-				case 'rambox.setUnreadCount':
+				case 'librerambox.setUnreadCount':
 					handleSetUnreadCount(event);
 					break;
-				case 'rambox.clearUnreadCount':
+				case 'librerambox.clearUnreadCount':
 					handleClearUnreadCount(event);
 					break;
-				case 'rambox.showWindowAndActivateTab':
+				case 'librerambox.showWindowAndActivateTab':
 					showWindowAndActivateTab(event);
 					break;
 			}
 			/**
-			 * Handles 'rambox.clearUnreadCount' messages.
+			 * Handles 'librerambox.clearUnreadCount' messages.
 			 * Clears the unread count.
 			 */
 			function handleClearUnreadCount() {
@@ -505,7 +505,7 @@ Ext.define('Rambox.ux.WebView',{
 			}
 
 			/**
-			 * Handles 'rambox.setUnreadCount' messages.
+			 * Handles 'librerambox.setUnreadCount' messages.
 			 * Sets the badge text if the event contains an integer or a '•' (indicating non-zero but unknown number of unreads) as first argument.
 			 *
 			 * @param event
@@ -557,12 +557,12 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 
 		if ( !isNaN(newUnreadCount) && (function(x) { return (x | 0) === x; })(parseFloat(newUnreadCount)) && me.record.get('includeInGlobalUnreadCounter') === true) {
-			Rambox.util.UnreadCounter.setUnreadCountForService(me.record.get('id'), newUnreadCount);
+			LibreRambox.util.UnreadCounter.setUnreadCountForService(me.record.get('id'), newUnreadCount);
 		} else {
-			Rambox.util.UnreadCounter.clearUnreadCountForService(me.record.get('id'));
+			LibreRambox.util.UnreadCounter.clearUnreadCountForService(me.record.get('id'));
 		}
 
-		me.setTabBadgeText(Rambox.util.Format.formatNumber(newUnreadCount));
+		me.setTabBadgeText(LibreRambox.util.Format.formatNumber(newUnreadCount));
 
 		me.doManualNotification(parseInt(newUnreadCount));
 	}
@@ -573,7 +573,7 @@ Ext.define('Rambox.ux.WebView',{
 
 	/**
 	 * Dispatch manual notification if
-	 * • service doesn't have notifications, so Rambox does them
+	 * • service doesn't have notifications, so LibreRambox does them
 	 * • count increased
 	 * • not in dnd mode
 	 * • notifications enabled
@@ -584,7 +584,7 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 		var manualNotifications = Ext.getStore('ServicesList').getById(me.type) ? Ext.getStore('ServicesList').getById(me.type).get('manual_notifications') : false;
 		if ( manualNotifications && me.currentUnreadCount < count && me.record.get('notifications') && !JSON.parse(localStorage.getItem('dontDisturb'))) {
-			Rambox.util.Notifier.dispatchNotification(me, count);
+			LibreRambox.util.Notifier.dispatchNotification(me, count);
 		}
 
 		me.currentUnreadCount = count;
@@ -612,7 +612,7 @@ Ext.define('Rambox.ux.WebView',{
 	,clearUnreadCounter: function() {
 		var me = this;
 		me.tab.setBadgeText('');
-		Rambox.util.UnreadCounter.clearUnreadCountForService(me.record.get('id'));
+		LibreRambox.util.UnreadCounter.clearUnreadCountForService(me.record.get('id'));
 	}
 
 	,reloadService: function(btn) {

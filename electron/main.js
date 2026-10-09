@@ -45,7 +45,7 @@ const config = new Config({
 		,locale: 'en'
 		,enable_hidpi_support: false
 		,user_agent: ''
-		,default_service: 'ramboxTab'
+		,default_service: 'libreRamboxTab'
 		,sendStatistics: false
 		,migrated: false
 
@@ -56,6 +56,9 @@ const config = new Config({
 		,maximized: false
 	}
 });
+
+// Migrate the home tab id renamed along with the app namespace
+if ( config.get('default_service') === 'ramboxTab' ) config.set('default_service', 'libreRamboxTab');
 
 // Fix issues with HiDPI scaling on Windows platform
 if (config.get('enable_hidpi_support') && (process.platform === 'win32')) {
@@ -108,6 +111,8 @@ function createWindow () {
 		,acceptFirstMouse: true
 		,webPreferences: {
 			plugins: true
+			// Keep the legacy partition name: it holds the main window's localStorage
+			// (services, preferences). Renaming it would silently drop all settings.
 			,partition: 'persist:rambox'
 			,nodeIntegration: true
 			,webviewTag: true
@@ -262,7 +267,7 @@ function formatBytes(bytes, decimals = 2) {
 }
 
 /* async function availableSpaceWatchDog() {
-	// optionally render this information also in rambox window
+	// optionally render this information also in librerambox window
 	try {
 		const { available } = await disk.check(appPath);
 		if (available < 1073741824) { // 1 GB

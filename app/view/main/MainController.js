@@ -1,4 +1,4 @@
-Ext.define('Rambox.view.main.MainController', {
+Ext.define('LibreRambox.view.main.MainController', {
 	 extend: 'Ext.app.ViewController'
 
 	,alias: 'controller.main'
@@ -25,9 +25,9 @@ Ext.define('Rambox.view.main.MainController', {
 
 		localStorage.setItem('last_active_service', newTab.id);
 
-		if ( newTab.id === 'ramboxTab' ) {
-			if ( Rambox.app.getTotalNotifications() > 0 ) {
-				document.title = 'Rambox ('+ Rambox.app.getTotalNotifications() +')';
+		if ( newTab.id === 'libreRamboxTab' ) {
+			if ( LibreRambox.app.getTotalNotifications() > 0 ) {
+				document.title = 'LibreRambox ('+ LibreRambox.app.getTotalNotifications() +')';
 			} else {
 				document.title = 'LibreRambox';
 			}
@@ -48,7 +48,7 @@ Ext.define('Rambox.view.main.MainController', {
 		}, 300);
 
 		// Update the main window so it includes the active tab title.
-		if ( Rambox.app.getTotalNotifications() > 0 ) {
+		if ( LibreRambox.app.getTotalNotifications() > 0 ) {
 			document.title = 'LibreRambox ('+ LibreRambox.app.getTotalNotifications() +') - ' + newTab.record.get('name');
 		} else {
 			document.title = 'LibreRambox - ' + newTab.record.get('name');
@@ -56,7 +56,7 @@ Ext.define('Rambox.view.main.MainController', {
 	}
 
 	,updatePositions: function(tabPanel, tab) {
-		if ( tab.id === 'ramboxTab' || tab.id === 'tbfill' ) return true;
+		if ( tab.id === 'libreRamboxTab' || tab.id === 'tbfill' ) return true;
 
 		console.log('Updating Tabs positions...');
 
@@ -64,7 +64,7 @@ Ext.define('Rambox.view.main.MainController', {
 		var align = 'left';
 		store.suspendEvent('remove');
 		Ext.each(tabPanel.items.items, function(t, i) {
-			if ( t.id !== 'ramboxTab' && t.id !== 'tbfill' && t.record.get('enabled') ) {
+			if ( t.id !== 'libreRamboxTab' && t.id !== 'tbfill' && t.record.get('enabled') ) {
 				var rec = store.getById(t.record.get('id'));
 				if ( align === 'right' ) i--;
 				rec.set('align', align);
@@ -124,7 +124,7 @@ Ext.define('Rambox.view.main.MainController', {
 	}
 
 	,onNewServiceSelect: function( view, record, item, index, e ) {
-		Ext.create('Rambox.view.add.Add', {
+		Ext.create('LibreRambox.view.add.Add', {
 			record: record
 		});
 	}
@@ -156,7 +156,7 @@ Ext.define('Rambox.view.main.MainController', {
 		}
 
 		const config = ipc.sendSync('getConfig');
-		if ( config.default_service === rec.get('id') ) ipc.send('setConfig', Ext.apply(config, { default_service: 'ramboxTab' }));
+		if ( config.default_service === rec.get('id') ) ipc.send('setConfig', Ext.apply(config, { default_service: 'libreRamboxTab' }));
 
 		function clearData(webview, tab) {
 			const currentWebView = require("@electron/remote").webContents.fromId(
@@ -229,7 +229,7 @@ Ext.define('Rambox.view.main.MainController', {
 	}
 
 	,configureService: function( gridView, rowIndex, colIndex, col, e, rec, rowEl ) {
-		Ext.create('Rambox.view.add.Add', {
+		Ext.create('LibreRambox.view.add.Add', {
 			 record: rec
 			,service: Ext.getStore('ServicesList').getById(rec.get('type'))
 			,edit: true
@@ -334,7 +334,7 @@ Ext.define('Rambox.view.main.MainController', {
 		});
 	}
 
-	,lockRambox: function(btn) {
+	,lockLibreRambox: function(btn) {
 		var me = this;
 
 		if ( ipc.sendSync('getConfig').master_password ) {
@@ -360,12 +360,12 @@ Ext.define('Rambox.view.main.MainController', {
 									,message: locale['app.window[25]']
 									,icon: Ext.Msg.WARNING
 									,buttons: Ext.Msg.OK
-									,fn: me.lockRambox
+									,fn: me.lockLibreRambox
 								});
 								return false;
 							}
 
-							setLock(Rambox.util.MD5.encypt(text));
+							setLock(LibreRambox.util.MD5.encypt(text));
 						}
 					});
 					msgbox2.textField.inputEl.dom.type = 'password';
@@ -375,11 +375,11 @@ Ext.define('Rambox.view.main.MainController', {
 		}
 
 		function setLock(text) {
-			var ramboxTab = Ext.cq1('#ramboxTab');
+			var libreRamboxTab = Ext.cq1('#libreRamboxTab');
 
 			// Related to issue #2065. Focusing in an sub frame is a workaround
-			if (ramboxTab.getWebView) {
-				ramboxTab.down('component').el.dom.executeJavaScript(`
+			if (libreRamboxTab.getWebView) {
+				libreRamboxTab.down('component').el.dom.executeJavaScript(`
 				var iframeFix = document.createElement('iframe');
 				document.body.appendChild(iframeFix);
 				iframeFix.focus();
@@ -402,7 +402,7 @@ Ext.define('Rambox.view.main.MainController', {
 		var me = this;
 
 		var validateFn = function() {
-			if ( localStorage.getItem('locked') === Rambox.util.MD5.encypt(winLock.down('textfield').getValue()) ) {
+			if ( localStorage.getItem('locked') === LibreRambox.util.MD5.encypt(winLock.down('textfield').getValue()) ) {
 				console.info('Lock LibreRambox:', 'Disabled');
 				localStorage.removeItem('locked');
 				winLock.close();
@@ -478,6 +478,6 @@ Ext.define('Rambox.view.main.MainController', {
 	}
 
 	,openPreferences: function( btn ) {
-		Ext.create('Rambox.view.preferences.Preferences').show();
+		Ext.create('LibreRambox.view.preferences.Preferences').show();
 	}
 });

@@ -1,10 +1,10 @@
-Ext.define('Rambox.Application', {
+Ext.define('LibreRambox.Application', {
 	 extend: 'Ext.app.Application'
 
-	,name: 'Rambox'
+	,name: 'LibreRambox'
 
 	,requires: [
-		'Rambox.util.MD5'
+		'LibreRambox.util.MD5'
 		,'Ext.window.Toast'
 		,'Ext.util.Cookies'
 	]
@@ -138,7 +138,7 @@ Ext.define('Rambox.Application', {
 			Ext.Loader.loadScript({url: Ext.util.Format.format("ext/packages/ext-locale/build/ext-locale-{0}.js", localStorage.getItem('locale-extjs') || 'en')});
 
 			// Set Google URLs
-			Rambox.app.config.googleURLs = [
+			LibreRambox.app.config.googleURLs = [
 				"accounts.google.com/ServiceLogin",
 				"accounts.google.com/signin",
 				"accounts.google.com/_/lookup/accountlookup",
@@ -233,9 +233,9 @@ Ext.define('Rambox.Application', {
 		newValue = parseInt(newValue);
 		if ( newValue > 0 )	{
 			if ( Ext.cq1('app-main').getActiveTab().record ) {
-				document.title = 'LibreRambox (' + Rambox.util.Format.formatNumber(newValue) + ') - '+Ext.cq1('app-main').getActiveTab().record.get('name');
+				document.title = 'LibreRambox (' + LibreRambox.util.Format.formatNumber(newValue) + ') - '+Ext.cq1('app-main').getActiveTab().record.get('name');
 			} else {
-				document.title = 'LibreRambox (' + Rambox.util.Format.formatNumber(newValue) + ')';
+				document.title = 'LibreRambox (' + LibreRambox.util.Format.formatNumber(newValue) + ')';
 			}
 		} else {
 			if ( Ext.cq1('app-main') && Ext.cq1('app-main').getActiveTab().record ) {

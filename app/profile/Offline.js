@@ -1,4 +1,4 @@
-Ext.define('Rambox.profile.Offline', {
+Ext.define('LibreRambox.profile.Offline', {
 	 extend: 'Ext.app.Profile'
 	,isActive: function() {
 		return !localStorage.getItem('id_token');
