@@ -1,6 +1,4 @@
-// Enable Cookies
-var ElectronCookies = require('@exponent/electron-cookies');
-ElectronCookies.enable({ origin: 'localhost' });
+// Cookies are persisted natively by Electron's `persist:` partition sessions
 
 // Sencha App
 Ext.setGlyphFontFamily('FontAwesome');

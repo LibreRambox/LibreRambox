@@ -62,9 +62,9 @@ jobs:
         with:
           name: librerambox-build
           path: .
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: lts/hydrogen
+          node-version: lts/krypton
       - run: npm i
 
       # Build Linux
@@ -115,7 +115,6 @@ jobs:
           files: |
             dist/LibreRambox-*-win.exe
             dist/LibreRambox-*-win-x64.zip
-            dist/LibreRambox-*-win-ia32.zip
             dist/LibreRambox-*-win.exe.blockmap
             dist/latest.yml
         env:

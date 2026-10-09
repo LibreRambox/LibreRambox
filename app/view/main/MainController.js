@@ -163,7 +163,7 @@ Ext.define('LibreRambox.view.main.MainController', {
 				webview.getWebContentsId()
 			);
 
-			currentWebView.clearHistory();
+			currentWebView.navigationHistory.clear();
 			currentWebView.session.flushStorageData();
 			currentWebView.session.clearCache().then(() => {
 				currentWebView.session.clearStorageData().then(() => {

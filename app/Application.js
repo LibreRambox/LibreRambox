@@ -27,38 +27,48 @@ Ext.define('LibreRambox.Application', {
 
 	,launch: function () {
 
-		const isOnline = require('is-online');
 		const Mousetrap = require('mousetrap');
 		(async () => {
-			await isOnline().then(res => {
-				var hideNoConnection = ipc.sendSync('getConfig').hideNoConnectionDialog
-				if ( !res && !hideNoConnection ) {
-					Ext.get('spinner') ? Ext.get('spinner').destroy() : null;
-					Ext.get('background') ? Ext.get('background').destroy() : null;
-					Ext.Msg.show({
-						title: 'No Internet Connection'
-						,msg: 'Please, check your internet connection. If you use a Proxy, please go to Preferences to configure it. LibreRambox will try to re-connect in 10 seconds'
-						,width: 300
-						,closable: false
-						,buttons: Ext.Msg.YESNO
-						,buttonText: {
-							yes: 'Ok'
-							,no: 'Never show this again'
-						}
-						,multiline: false
-						,fn: function(buttonValue, inputText, showConfig) {
-							if ( buttonValue === 'no' ) {
-								ipc.send('sConfig', { hideNoConnectionDialog: true });
-								hideNoConnection = true;
-							}
-						}
-						,icon: Ext.Msg.QUESTION
-					});
-					setTimeout(function() {
-						if ( !hideNoConnection ) ipc.send('reloadApp')
-					}, 10000)
+			// Replaces the ESM-only `is-online` package: navigator.onLine fast-path
+			// plus a real HTTP probe (some networks report online without connectivity).
+			const res = await (async () => {
+				if ( !navigator.onLine ) return false;
+				try {
+					const controller = new AbortController();
+					setTimeout(() => controller.abort(), 5000);
+					await fetch('https://www.gstatic.com/generate_204', { method: 'HEAD', mode: 'no-cors', cache: 'no-store', signal: controller.signal });
+					return true;
+				} catch (e) {
+					return false;
 				}
-			})
+			})();
+			var hideNoConnection = ipc.sendSync('getConfig').hideNoConnectionDialog
+			if ( !res && !hideNoConnection ) {
+				Ext.get('spinner') ? Ext.get('spinner').destroy() : null;
+				Ext.get('background') ? Ext.get('background').destroy() : null;
+				Ext.Msg.show({
+					title: 'No Internet Connection'
+					,msg: 'Please, check your internet connection. If you use a Proxy, please go to Preferences to configure it. LibreRambox will try to re-connect in 10 seconds'
+					,width: 300
+					,closable: false
+					,buttons: Ext.Msg.YESNO
+					,buttonText: {
+						yes: 'Ok'
+						,no: 'Never show this again'
+					}
+					,multiline: false
+					,fn: function(buttonValue, inputText, showConfig) {
+						if ( buttonValue === 'no' ) {
+							ipc.send('sConfig', { hideNoConnectionDialog: true });
+							hideNoConnection = true;
+						}
+					}
+					,icon: Ext.Msg.QUESTION
+				});
+				setTimeout(function() {
+					if ( !hideNoConnection ) ipc.send('reloadApp')
+				}, 10000)
+			}
 		})();
 
 		if ( !localStorage.getItem('hideMacPermissions') && process.platform === 'darwin' && (require('@electron/remote').systemPreferences.getMediaAccessStatus('microphone') !== 'granted' || require('@electron/remote').systemPreferences.getMediaAccessStatus('camera') !== 'granted') ) {
