@@ -57,6 +57,9 @@ const config = new Config({
 	}
 });
 
+// Migrate the home tab id renamed along with the app namespace
+if ( config.get('default_service') === 'ramboxTab' ) config.set('default_service', 'libreRamboxTab');
+
 // Fix issues with HiDPI scaling on Windows platform
 if (config.get('enable_hidpi_support') && (process.platform === 'win32')) {
 	app.commandLine.appendSwitch('high-dpi-support', 'true')
@@ -108,7 +111,9 @@ function createWindow () {
 		,acceptFirstMouse: true
 		,webPreferences: {
 			plugins: true
-			,partition: 'persist:librerambox'
+			// Keep the legacy partition name: it holds the main window's localStorage
+			// (services, preferences). Renaming it would silently drop all settings.
+			,partition: 'persist:rambox'
 			,nodeIntegration: true
 			,webviewTag: true
 			,contextIsolation: false

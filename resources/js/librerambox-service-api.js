@@ -28,6 +28,12 @@ window.librerambox.clearUnreadCount = function() {
 }
 
 /**
+ * Deprecated alias for js_unread scripts saved before the namespace change
+ * (e.g. in custom services defined with older versions).
+ */
+window.rambox = window.librerambox;
+
+/**
  * Override to add notification click event to display LibreRambox window and activate service tab
  */
 var NativeNotification = Notification;
