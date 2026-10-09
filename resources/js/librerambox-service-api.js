@@ -4,6 +4,10 @@
 
 const { desktopCapturer, ipcRenderer } = require('electron');
 
+// In sandboxed webview preloads `desktopCapturer` is not whitelisted in the
+// electron module. Guard so the preload keeps working everywhere else.
+const screenshareSupported = typeof desktopCapturer !== 'undefined';
+
 /**
  * Make the LibreRambox API available via a global "librerambox" variable.
  *
@@ -56,16 +60,24 @@ Notification.prototype = NativeNotification.prototype;
 Notification.permission = NativeNotification.permission;
 Notification.requestPermission = NativeNotification.requestPermission.bind(Notification);
 
-const mousetrap = require('mousetrap');
-mousetrap.bind(process.platform === 'darwin' ? ['command+left', 'command+right'] : ['alt+left', 'alt+right'], e => {
-	if (location.href.indexOf('slack.com') !== -1) return;
-	e.key === 'ArrowLeft' ? history.back() : history.forward();
+// Navigation shortcuts inside services. Replaces the `mousetrap` module,
+// which is not available in sandboxed webview preloads and used to break
+// this whole preload script (and with it the ScreenShare hook below).
+document.addEventListener('keydown', e => {
+	if ( location.href.indexOf('slack.com') !== -1 ) return;
+	const modifier = process.platform === 'darwin' ? e.metaKey : e.altKey;
+	if ( !modifier || e.shiftKey || e.ctrlKey ) return;
+	if ( e.key === 'ArrowLeft' ) history.back();
+	else if ( e.key === 'ArrowRight' ) history.forward();
 });
 
-
 // ScreenShare
-window.navigator.mediaDevices.getDisplayMedia = () =>
+if ( window.navigator.mediaDevices ) window.navigator.mediaDevices.getDisplayMedia = () =>
   new Promise(async (resolve, reject) => {
+    if ( !screenshareSupported ) {
+      reject(new Error('Screen sharing is not available in this context'));
+      return;
+    }
     try {
       const sources = await desktopCapturer.getSources({
         types: ['screen', 'window'],

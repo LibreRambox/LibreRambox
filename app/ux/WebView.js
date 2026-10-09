@@ -373,17 +373,8 @@ Ext.define('LibreRambox.ux.WebView',{
 			}
 		});
 
-		// Open links in default browser
-		webview.addEventListener('new-window', function(e) {
-			e.preventDefault();
-			const { URL } = require('url');
-			const url = new URL(e.url);
-			const protocol = url.protocol;
-			// Block some Deep links to prevent that open its app (Ex: Slack)
-			if ( ['slack:'].includes(protocol) ) return;
-			// Allow Deep links
-			if ( !['http:', 'https:', 'about:'].includes(protocol) ) return require('electron').shell.openExternal(url.href);
-		});
+		// New windows are handled in the main process via setWindowOpenHandler
+		// (the <webview> 'new-window' event was removed in Electron 22)
 
 		webview.addEventListener('will-navigate', function(e, url) {
 			e.preventDefault();

@@ -37,7 +37,6 @@ We currently support the following apps out of the box:
 * <img src="resources/icons/hangouts.png" alt="Hangouts" height="25" /> <a href="https://hangouts.google.com/">Hangouts</a>
 * <img src="resources/icons/hangoutschat.png" alt="Google Chat" height="25" /> <a href="https://chat.google.com/">Google Chat</a>
 * <img src="resources/icons/hibox.png" alt="Hibox" height="25" /> <a href="https://app.hibox.co/">Hibox</a>
-* <img src="resources/icons/honeypot.png" alt="Honeypot.io" height="25" /> <a href="https://app.honeypot.io/">Honeypot.io</a>
 * <img src="resources/icons/hootsuite.png" alt="Hootsuite" height="25" /> <a href="https://hootsuite.com/dashboard">Hootsuite</a>
 * <img src="resources/icons/horde.png" alt="Horde" height="25" /> <a href="___">Horde</a>
 * <img src="resources/icons/hushmail.png" alt="Hushmail" height="25" /> <a href="https://www.hushmail.com/hushmail/index.php">Hushmail</a>
