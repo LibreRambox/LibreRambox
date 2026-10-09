@@ -25,6 +25,10 @@ Ext.define('LibreRambox.model.ServiceList', {
 		,type: 'string'
 		,defaultValue: ''
 	},{
+		 name: 'js_unread_iframes'
+		,type: 'boolean'
+		,defaultValue: false
+	},{
 		 name: 'titleBlink'
 		,type: 'boolean'
 		,defaultValue: false

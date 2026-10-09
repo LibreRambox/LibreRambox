@@ -470,6 +470,45 @@ Ext.define('LibreRambox.ux.WebView',{
 				LibreRambox.app.config.googleURLs.forEach((loginURL) => {	if ( webview.getURL().indexOf(loginURL) > -1 ) webview.reload() })
 			}
 			webview.executeJavaScript(js_inject).then(result => {} ).catch(err => { console.log(err) })
+
+			// Unread detection in subframes (opt-in per service via "js_unread_iframes").
+			// Some services embed their UI in cross-origin iframes - e.g. Google Chat, when
+			// chat.google.com redirects to mail.google.com/chat. Their unread indicators are
+			// then unreachable from the main frame, where js_unread normally runs. The preload
+			// bridge is not available in subframes either, so a shim collects the count inside
+			// each matching frame and the highest count found is applied once per interval.
+			var serviceTemplate = me.record && Ext.getStore('ServicesList').getById(me.record.get('type'));
+			if ( js_unread !== '' && serviceTemplate && serviceTemplate.get('js_unread_iframes') && !me.unreadFramesTimer ) {
+				var serviceHost = new URL(me.record.get('url')).host;
+				var subframeScript = 'if(!window.__lrUnreadInjected){window.__lrUnreadInjected=true;' +
+					'window.librerambox||(window.librerambox={_c:null' +
+					',setUnreadCount:function(c){this._c=(c==="•"?999999:parseInt(c))||0}' +
+					',clearUnreadCount:function(){this._c=0}});' + js_unread + '}';
+				var lastFrameCount = 0;
+				me.unreadFramesTimer = setInterval(function() {
+					if ( !webview.isConnected ) { clearInterval(me.unreadFramesTimer); me.unreadFramesTimer = null; return; }
+					var wc = require('@electron/remote').webContents.fromId(webview.getWebContentsId());
+					if ( !wc || wc.isDestroyed() ) return;
+					var frames = wc.mainFrame.framesInSubtree.filter(function(frame) {
+						if ( frame === wc.mainFrame ) return false; // main frame runs js_unread via the preload bridge
+						try { return new URL(frame.url).host === serviceHost; } catch ( err ) { return false; }
+					});
+					frames.forEach(function(frame) { frame.executeJavaScript(subframeScript).catch(function() {}); });
+					Promise.all(frames.map(function(frame) {
+						return frame.executeJavaScript('window.librerambox?window.librerambox._c:null').catch(function() { return null; });
+					})).then(function(counts) {
+						counts = counts.filter(function(count) { return typeof count === 'number'; });
+						if ( !counts.length ) return;
+						var count = Math.max.apply(null, counts);
+						// Forward zero only after a non-zero count, so unrelated same-host
+						// frames that never match anything cannot clobber the actual badge.
+						if ( count > 0 || lastFrameCount > 0 ) {
+							lastFrameCount = count;
+							me.setUnreadCount(count);
+						}
+					});
+				}, 3000);
+			}
 		});
 
 		webview.addEventListener('ipc-message', function(event) {
