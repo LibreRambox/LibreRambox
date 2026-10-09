@@ -251,7 +251,7 @@
      *
      */
     "output": {
-        "base": "../librerambox-build",
+        "base": "${workspace.build.dir}/${build.environment}/${app.name}",
         "appCache": {
             "enable": true
         }

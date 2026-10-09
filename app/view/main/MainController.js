@@ -423,7 +423,7 @@ Ext.define('LibreRambox.view.main.MainController', {
 			,draggable: false
 			,onEsc: Ext.emptyFn
 			,layout: 'center'
-			,bodyStyle: 'background-color:#2e658e;'
+			,bodyStyle: 'background-color:#0B2444;'
 			,items: [
 				{
 					 xtype: 'container'

@@ -224,7 +224,7 @@ function createWindow () {
 let mainMasterPasswordWindow;
 function createMasterPasswordWindow() {
 	mainMasterPasswordWindow = new BrowserWindow({
-		 backgroundColor: '#0675A0'
+		 backgroundColor: '#0B2444'
 		,frame: false
 		,webPreferences: {
 			nodeIntegration: true,

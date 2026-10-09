@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="LibreRambox alternative, even more geometric ram mark">
+<title>LibreRambox alternative, even more geometric ram mark</title>
+<g id="LR-ram-mark">
+<path id="L" d="M30 32 H59 Q67 32 67 40 V159 C67 177 76 185 94 185 H111 Q120 185 120 194 V221 H89 C52 221 30 199 30 159 Z" fill="#00B7AB"/>
+<path id="R" d="M116 33 H159 C205 33 231 59 231 100 C231 126 219 147 196 159 L236 221 H190 L156 168 H150 V221 H116 V129 H159 C180 129 193 119 193 100 C193 81 181 69 159 69 H116 Z" fill="#116EB5"/>
+<path id="single-horn" d="M167 105 C160 85 143 75 125 82 C108 89 113 109 127 110" fill="none" stroke="#00B7AB" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="ram-head-and-neck" d="M165 102 C179 101 188 109 195 119 L209 125 L200 134 L184 141 L179 153 L190 181 H172 L153 149 L152 123 Z" fill="#FFFFFF"/>
+<path id="ram-ear" d="M160 114 L148 104 Q145 103 146 110 L151 122 Z" fill="#FFFFFF"/>
+
+</g>
+</svg>

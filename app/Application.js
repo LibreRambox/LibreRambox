@@ -76,7 +76,7 @@ Ext.define('LibreRambox.Application', {
 			Ext.cq1('app-main').addDocked({
 				xtype: 'toolbar'
 				,dock: 'top'
-				,style: {background: '#30BBF3'}
+				,style: {background: '#00B7AB'}
 				,items: [
 					'->'
 					,{

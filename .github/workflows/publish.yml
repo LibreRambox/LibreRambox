@@ -26,17 +26,15 @@ jobs:
       - run: chmod o+x /tmp/SenchaCmd-6.6.0.13-linux-amd64.sh
       - run: /tmp/SenchaCmd-6.6.0.13-linux-amd64.sh -q -Dall=true -dir /opt/Sencha/Cmd/6.6.0.13
 
-      - name: Customizing the Sencha's output dir
-        run: sed -i.bak 's/..\/librerambox-build/librerambox-build/' app.json
-
       - name: Build Sencha app
         run: /opt/Sencha/Cmd/sencha app build
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          path: ${{ github.workspace }}/librerambox-build
+          path: ${{ github.workspace }}/build/production/LibreRambox
           name: librerambox-build
+          if-no-files-found: error
 
   build:
     needs: sencha
@@ -58,6 +56,7 @@ jobs:
     name: '${{ matrix.job_name }}'
     runs-on: '${{ matrix.os }}'
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
           name: librerambox-build
