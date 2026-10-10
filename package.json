@@ -1,7 +1,7 @@
 {
 	"name": "LibreRambox",
 	"productName": "LibreRambox",
-	"version": "0.10.5",
+	"version": "0.11.0",
 	"description": "Free and Open Source messaging and emailing app that combines common web applications into one.",
 	"main": "electron/main.mjs",
 	"engines": {
