@@ -1,7 +1,7 @@
 <div align="center">
   <h1>
     <br />
-    <a href="https://github.com/LibreRambox/LibreRambox"><img src="./resources/Icon.png" width="256px" alt="LibreRambox" /></a><br />
+    <a href="https://github.com/LibreRambox/LibreRambox"><img src="./resources/logo/librerambox-v2-logo-horizontal.svg" width="384px" alt="LibreRambox" /></a><br />
     LibreRambox
     <br /><br/>
   </h1>
@@ -29,7 +29,7 @@
   <a href="https://github.com/LibreRambox/LibreRambox/actions/workflows/build.yml" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="150" alt="DOWNLOAD NOW" /></a>
 
 
-  <h6>Logo designed by <a href="https://www.linkedin.com/in/andriyyurchenko/" target="_blank">Andriy Yurchenko</a></h6>
+  <h6>Logo created with ChatGPT Image</h6>
 </div>
 
 ---

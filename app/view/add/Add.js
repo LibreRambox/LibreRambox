@@ -266,7 +266,7 @@ Ext.define('LibreRambox.view.add.Add',{
 						,hidden: (me.edit ? Ext.getStore('ServicesList').getById(me.record.get('type')).get('note') === '' : me.record.get('note') === '')
 						,data: { note: (me.edit ? Ext.getStore('ServicesList').getById(me.record.get('type')).get('note') : me.record.get('note')) }
 						,margin: '10 0 0 0'
-						,style: 'background-color:#93CFE0;color:#053767;border-radius:6px;'
+						,style: 'background-color:#F4F8FC;color:#0B2444;border-radius:6px;'
 						,tpl: [
 							 '<i class="fa fa-info-circle" aria-hidden="true" style="font-size:40px;margin:20px;"></i>'
 							,'<span style="font-size: 15px;position: absolute;padding: 10px 10px 10px 0;">{note}</span>'

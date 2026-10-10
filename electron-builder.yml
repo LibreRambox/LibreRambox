@@ -1,6 +1,7 @@
 productName: LibreRambox
 appId: io.github.librerambox
 asar: true
+artifactName: LibreRambox-${version}-${os}-${arch}.${ext}
 mac:
   category: public.app-category.productivity
   artifactName: LibreRambox-${version}-mac-${arch}.${ext}
@@ -18,6 +19,7 @@ mac:
     NSAudioCaptureUsageDescription: Apps inside LibreRambox may need access to system audio for screen sharing. Please, grant access to have a better experience.
 dmg:
   title: LibreRambox
+  artifactName: LibreRambox-${version}-mac-${arch}.${ext}
   iconSize: 128
   contents:
     - x: 355
@@ -33,6 +35,7 @@ win:
     - nsis
     - zip
 nsis:
+  artifactName: LibreRambox-${version}-win.${ext}
   deleteAppDataOnUninstall: true
   oneClick: false
   perMachine: false
