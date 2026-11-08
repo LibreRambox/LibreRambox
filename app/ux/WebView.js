@@ -62,10 +62,8 @@ Ext.define('LibreRambox.ux.WebView',{
 					 plain: true
 					,listeners: {
 						beforeshow: function(menu) {
-							var item = menu.down('#hibernateMenuItem');
-							item.setText(me.hibernated ? locale['app.hibernation[11]'] : locale['app.hibernation[10]']);
-							item.setGlyph(me.hibernated ? 'xf185@FontAwesome' : 'xf186@FontAwesome');
-							item.setDisabled(!me.record.get('enabled'));
+							menu.down('#hibernateMenuItem').setHidden(me.hibernated || !me.record.get('enabled'));
+							menu.down('#wakeMenuItem').setHidden(!me.hibernated || !me.record.get('enabled'));
 						}
 					}
 					,items: [
@@ -126,6 +124,14 @@ Ext.define('LibreRambox.ux.WebView',{
 							 text: locale['app.hibernation[10]']
 							,itemId: 'hibernateMenuItem'
 							,glyph: 'xf186@FontAwesome'
+							,scope: me
+							,handler: me.toggleHibernation
+						}
+						,{
+							 text: locale['app.hibernation[11]']
+							,itemId: 'wakeMenuItem'
+							,glyph: 'xf185@FontAwesome'
+							,hidden: true
 							,scope: me
 							,handler: me.toggleHibernation
 						}
@@ -1036,7 +1042,7 @@ Ext.define('LibreRambox.ux.WebView',{
 					 xtype: 'button'
 					,text: locale['app.hibernation[11]']
 					,glyph: 'xf185@FontAwesome'
-					,scale: 'large'
+					,scale: 'medium'
 					,margin: '10 0 0 0'
 					,handler: function() { me.wake(); }
 				}
