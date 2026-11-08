@@ -145,7 +145,7 @@ Ext.define('LibreRambox.Application', {
 			}
 
 			// Load language for Ext JS library
-			Ext.Loader.loadScript({url: Ext.util.Format.format("ext/packages/ext-locale/build/ext-locale-{0}.js", localStorage.getItem('locale-extjs') || 'en')});
+			Ext.Loader.loadScript({url: Ext.util.Format.format("build/renderer/ext-locale/ext-locale-{0}.js", localStorage.getItem('locale-extjs') || 'en')});
 
 			// Set Google URLs
 			LibreRambox.app.config.googleURLs = [

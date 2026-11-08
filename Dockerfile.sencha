@@ -1,3 +1,7 @@
+# Sencha Cmd is no longer needed to build or run LibreRambox (see CONTRIBUTING.md,
+# "How the UI is built"). This image is only kept to regenerate the prebuilt theme
+# (resources/LibreRambox-all.css, resources/images, resources/fonts) from the Sass sources.
+
 FROM openjdk:8-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \

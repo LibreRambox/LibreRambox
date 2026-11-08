@@ -37,19 +37,15 @@ Working on your first Pull Request? You can learn how from this *free* series [H
 
 | Prerequisite                                                  | Version |
 | ------------------------------------------------------------- | ------- |
-| [Sencha](https://www.sencha.com/products/extjs/cmd-download/) | `=6.6.0.13`  |
-| [Ruby](https://www.ruby-lang.org/en/downloads/)               | `=2.3` |
-| [Node.js](https://nodejs.org)                                 | `~ ^4.0.0`  |
-| npm (comes with Node)                                         | `~ ^3.8.7`  |
+| [Node.js](https://nodejs.org)                                 | `>= 22`  |
+| npm (comes with Node)                                         | `>= 10`  |
 
 > _Updating to the latest releases is recommended_.
 
-If Node.js, ruby, or sencha cmd is already installed on your machine, run the following commands to validate the versions:
+If Node.js is already installed on your machine, run the following command to validate the version:
 
 ```shell
 node -v
-ruby -v
-sencha
 ```
 
 If your versions are lower than the prerequisite versions, you should update.
@@ -121,10 +117,22 @@ npm install
 ```
 
 ```bash
-# Compile the files...
-sencha app watch
-npm start # in a new terminal
+# Bundle the UI and start the app
+npm start
 ```
+
+#### How the UI is built
+
+The UI uses [Ext JS 5.1](https://docs.sencha.com/extjs/5.1/) (in `ext/`), but Sencha Cmd is **not** needed:
+
+- `npm run build:renderer` (`scripts/build-renderer.mjs`) copies the prebuilt framework and bundles
+  `overrides/`, `app/` and `app.js` into `build/renderer/`, ordering the classes by their
+  `extend`/`requires`/`mixins` dependencies. `npm start` and all `npm run build:*` scripts run it automatically.
+- New classes in `app/` are picked up automatically; make sure they `require`/`extend` what they need at definition time.
+- The theme is prebuilt: `resources/LibreRambox-all.css` with `resources/images/` and `resources/fonts/`
+  (built from `packages/local/librerambox-default-theme` and `sass/`). Small style changes can be added
+  as plain CSS. Regenerating it from the Sass sources still requires Sencha Cmd (see `Dockerfile.sencha`)
+  with the Sencha microloader temporarily restored in `index.html`.
 
 ### Make Changes
 
@@ -144,7 +152,7 @@ The services are stored inside the file `./resources/services.json`:
 https://github.com/LibreRambo/LibreRambox/blob/master/resources/services.json
 
 Add your service to the *BOTTOM* of the array.
-To see these changes you'll need to stop your `npm start` and `sencha app watch`, and then rerun those.
+To see these changes you'll need to stop your `npm start`, and then rerun it.
 
 ### Creating a Pull Request
 

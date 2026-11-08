@@ -8,18 +8,8 @@
 
 	<title>LibreRambox</title>
 
-	<!-- The line below must be kept intact for Sencha Cmd to build your application -->
-	<script id="microloader" type="text/javascript" src="bootstrap.js"></script>
-
-	<!--- Localization -->
-	<script type='text/javascript'>
-		(function(d, s){
-			var t = d.createElement(s), e = d.getElementsByTagName(s)[0];
-			t.type = "text/javascript"; e.parentNode.insertBefore(t, e);
-			t.src = "resources/languages/"+require('electron').ipcRenderer.sendSync('getConfig').locale+".js";
-		})(document, "script");
-	</script>
-	<!--- Localization -->
+	<!-- Prebuilt theme (see CONTRIBUTING.md, "How the UI is built") -->
+	<link rel="stylesheet" type="text/css" href="resources/LibreRambox-all.css">
 </head>
 
 <body>
@@ -34,6 +24,20 @@ c16.438,0,29.787,13.222,29.997,29.608C180.999,465.738,181,465.869,181,466L181,46
 	</div>
 	<div id="background" style="height: 100%; width: 100%; background-color: #0B2444; position: absolute; z-index:99999; top: 0;">
 	</div>
+
+	<!-- Ext JS framework -->
+	<script type="text/javascript" src="build/renderer/ext-all.js"></script>
+
+	<!--- Localization (loaded synchronously, the UI reads `locale` while it is created) -->
+	<script type="text/javascript">
+		document.write('<script type="text/javascript" src="resources/languages/' + require('electron').ipcRenderer.sendSync('getConfig').locale + '.js"><\/script>');
+	</script>
+
+	<!-- Loading screen animation -->
+	<script type="text/javascript" src="resources/js/loadscreen.js"></script>
+
+	<!-- Application bundle, built by `npm run build:renderer` (scripts/build-renderer.mjs) -->
+	<script type="text/javascript" src="build/renderer/app.js"></script>
 </body>
 
 <!-- Fixes visibility issues with some apps that only update the badges while visible  -->

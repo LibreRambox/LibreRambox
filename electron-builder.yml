@@ -80,6 +80,23 @@ linux:
     - target: tar.gz
       arch:
         - x64
+# The renderer is bundled into build/renderer by scripts/build-renderer.mjs,
+# so the Ext JS framework sources and the app/theme sources are not shipped.
+files:
+  - "!ext/**"
+  - "!app/**"
+  - "!overrides/**"
+  - "!packages/**"
+  - "!sass/**"
+  - "!scripts/**"
+  - "!.sencha/**"
+  - "!app.js"
+  - "!app.json"
+  - "!build.xml"
+  - "!workspace.json"
+  - "!Dockerfile.sencha"
+  - "!appveyor.yml"
+  - "!resources/screenshots/**"
 directories:
   buildResources: resources/installer/
   output: dist/
