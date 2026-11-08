@@ -42,6 +42,7 @@ Ext.define('LibreRambox.view.add.AddController', {
 				,js_unread: formValues.js_unread
 				,disableAutoReloadOnFail: formValues.disableAutoReloadOnFail
 			});
+			win.record.set(me.getHibernationValues(formValues));
 
 			var view = Ext.getCmp('tab_'+win.record.get('id'));
 
@@ -76,6 +77,7 @@ Ext.define('LibreRambox.view.add.AddController', {
 			view.tabConfig.service = win.record;
 
 			view.refreshUnreadCount();
+			view.applyHibernationSettings();
 		} else {
 			// Format data
 			if ( win.record.get('url').indexOf('___') >= 0 ) {
@@ -97,6 +99,7 @@ Ext.define('LibreRambox.view.add.AddController', {
 				,trust: formValues.trust
 				,js_unread: formValues.js_unread
 			});
+			service.set(me.getHibernationValues(formValues));
 			service.save();
 			Ext.getStore('Services').add(service);
 
@@ -127,6 +130,22 @@ Ext.define('LibreRambox.view.add.AddController', {
 		}
 
 		win.close();
+	}
+
+	,getHibernationValues: function(formValues) {
+		var toMinutes = function(value, defaultValue) {
+			value = parseInt(value, 10);
+			return isNaN(value) || value < 1 ? defaultValue : value;
+		};
+
+		return {
+			 hibernate: formValues.hibernate === true || formValues.hibernate === 'true'
+			,hibernateAfter: toMinutes(formValues.hibernateAfter, 15)
+			,hibernateOnSelect: formValues.hibernateOnSelect === 'ask' ? 'ask' : 'auto'
+			,hibernateRewake: formValues.hibernateRewake === true || formValues.hibernateRewake === 'true'
+			,hibernateRewakeEvery: toMinutes(formValues.hibernateRewakeEvery, 15)
+			,hibernateRewakeFor: toMinutes(formValues.hibernateRewakeFor, 1)
+		};
 	}
 
 	,onEnter: function(field, e) {

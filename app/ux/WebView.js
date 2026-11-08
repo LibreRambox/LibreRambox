@@ -16,6 +16,7 @@ Ext.define('LibreRambox.ux.WebView',{
 	// private
 	,zoomLevel: 0
 	,currentUnreadCount: 0
+	,hibernated: false
 
 	// CONFIG
 	,hideMode: 'offsets'
@@ -59,6 +60,12 @@ Ext.define('LibreRambox.ux.WebView',{
 				,style: !me.record.get('enabled') ? '-webkit-filter: grayscale(1)' : ''
 				,menu:  {
 					 plain: true
+					,listeners: {
+						beforeshow: function(menu) {
+							menu.down('#hibernateMenuItem').setHidden(me.hibernated || !me.record.get('enabled'));
+							menu.down('#wakeMenuItem').setHidden(!me.hibernated || !me.record.get('enabled'));
+						}
+					}
 					,items: [
 						{
 							 xtype: 'toolbar'
@@ -113,6 +120,21 @@ Ext.define('LibreRambox.ux.WebView',{
 							,scope: me
 							,handler: me.reloadService
 						}
+						,{
+							 text: locale['app.hibernation[10]']
+							,itemId: 'hibernateMenuItem'
+							,glyph: 'xf186@FontAwesome'
+							,scope: me
+							,handler: me.toggleHibernation
+						}
+						,{
+							 text: locale['app.hibernation[11]']
+							,itemId: 'wakeMenuItem'
+							,glyph: 'xf185@FontAwesome'
+							,hidden: true
+							,scope: me
+							,handler: me.toggleHibernation
+						}
 						,'-'
 						,{
 							 text: locale['app.webview[3]']
@@ -165,6 +187,8 @@ Ext.define('LibreRambox.ux.WebView',{
 			,listeners: {
 				 afterrender: me.onAfterRender
 				,beforedestroy: me.onBeforeDestroy
+				,activate: me.onTabActivate
+				,deactivate: me.onTabDeactivate
 			}
 		});
 
@@ -182,6 +206,7 @@ Ext.define('LibreRambox.ux.WebView',{
 	,onBeforeDestroy: function() {
 		var me = this;
 
+		me.clearHibernationTimers();
 		me.setUnreadCount(0);
 	}
 
@@ -269,7 +294,10 @@ Ext.define('LibreRambox.ux.WebView',{
 	,onAfterRender: function() {
 		var me = this;
 
-		if ( !me.record.get('enabled') ) return;
+		if ( !me.hasWebView() ) return;
+
+		// Start the hibernation countdown for services loaded in the background
+		if ( !me.wakingUp ) me.scheduleHibernation();
 
 		var webview = me.getWebView();
 		me.errorCodeLog = []
@@ -649,7 +677,8 @@ Ext.define('LibreRambox.ux.WebView',{
 		var me = this;
 		var webview = me.getWebView();
 
-		if ( me.record.get('enabled') ) {
+		if ( me.hibernated ) return me.wake();
+		if ( me.hasWebView() ) {
 			me.clearUnreadCounter();
 			webview.loadURL(me.src);
 		}
@@ -663,7 +692,7 @@ Ext.define('LibreRambox.ux.WebView',{
 
 	,showSearchBox: function(v) {
 		var me = this;
-		if ( !me.record.get('enabled') ) return;
+		if ( !me.hasWebView() ) return;
 		var webview = me.getWebView();
 
 		webview.stopFindInPage('keepSelection');
@@ -705,7 +734,7 @@ Ext.define('LibreRambox.ux.WebView',{
 		var me = this;
 		var webview = me.getWebView();
 
-		if ( me.record.get('enabled') ) webview.isDevToolsOpened() ? webview.closeDevTools() : webview.openDevTools();
+		if ( me.hasWebView() ) webview.isDevToolsOpened() ? webview.closeDevTools() : webview.openDevTools();
 	}
 
 	,setURL: function(url) {
@@ -714,7 +743,7 @@ Ext.define('LibreRambox.ux.WebView',{
 
 		me.src = url;
 
-		if ( me.record.get('enabled') ) webview.loadURL(url);
+		if ( me.hasWebView() ) webview.loadURL(url);
 	}
 
 	,setAudioMuted: function(muted, calledFromDisturb) {
@@ -725,7 +754,7 @@ Ext.define('LibreRambox.ux.WebView',{
 
 		if ( !muted && !calledFromDisturb && JSON.parse(localStorage.getItem('dontDisturb')) ) return;
 
-		if ( me.record.get('enabled') ) webview.setAudioMuted(muted);
+		if ( me.hasWebView() ) webview.setAudioMuted(muted);
 	}
 
 	,closeStatusBar: function() {
@@ -757,13 +786,15 @@ Ext.define('LibreRambox.ux.WebView',{
 
 		if ( notification && !calledFromDisturb && JSON.parse(localStorage.getItem('dontDisturb')) ) return;
 
-		if ( me.record.get('enabled') ) ipc.send('setServiceNotifications', webview.partition, notification);
+		if ( me.hasWebView() ) ipc.send('setServiceNotifications', webview.partition, notification);
 	}
 
 	,setEnabled: function(enabled) {
 		var me = this;
 
 		me.clearUnreadCounter();
+		me.clearHibernationTimers();
+		me.hibernated = false;
 
 		me.removeAll();
 		me.add(me.webViewConstructor(enabled));
@@ -782,14 +813,14 @@ Ext.define('LibreRambox.ux.WebView',{
 		var me = this;
 		var webview = me.getWebView();
 
-		if ( me.record.get('enabled') ) webview.goBack();
+		if ( me.hasWebView() ) webview.goBack();
 	}
 
 	,goForward: function() {
 		var me = this;
 		var webview = me.getWebView();
 
-		if ( me.record.get('enabled') ) webview.goForward();
+		if ( me.hasWebView() ) webview.goForward();
 	}
 
 	,zoomIn: function() {
@@ -798,7 +829,7 @@ Ext.define('LibreRambox.ux.WebView',{
 				var me = this;
 				var webview = me.getWebView();
 				me.zoomLevel = me.zoomLevel + 0.25;
-				if ( me.record.get('enabled') ) {
+				if ( me.hasWebView() ) {
 					webview.setZoomLevel(me.zoomLevel);
 					me.record.set('zoomLevel', me.zoomLevel);
 				}
@@ -811,7 +842,7 @@ Ext.define('LibreRambox.ux.WebView',{
 				var me = this;
 				var webview = me.getWebView();
 				me.zoomLevel = me.zoomLevel - 0.25;
-				if ( me.record.get('enabled') ) {
+				if ( me.hasWebView() ) {
 					webview.setZoomLevel(me.zoomLevel);
 					me.record.set('zoomLevel', me.zoomLevel);
 				}
@@ -823,17 +854,200 @@ Ext.define('LibreRambox.ux.WebView',{
 		var webview = me.getWebView();
 
 		me.zoomLevel = 0;
-		if ( me.record.get('enabled') ) {
+		if ( me.hasWebView() ) {
 			webview.setZoomLevel(0);
 			me.record.set('zoomLevel', me.zoomLevel);
 		}
 	}
 
 	,getWebView: function() {
-		if ( this.record.get('enabled') ) {
+		if ( this.hasWebView() ) {
 			return this.down('component[cls=webview]').el.dom;
 		} else {
 			return false;
 		}
 	}
+
+	// True when the service is enabled and not hibernated, so the <webview> element exists
+	,hasWebView: function() {
+		return this.record.get('enabled') && !this.hibernated;
+	}
+
+	/**
+	 * HIBERNATION
+	 *
+	 * A hibernated service has its <webview> removed (freeing the renderer process and its RAM)
+	 * and replaced by a lightweight placeholder. Cookies/logins are kept in the persistent partition,
+	 * so waking up just loads the service again.
+	 */
+	,isActiveTab: function() {
+		var tabPanel = Ext.cq1('app-main');
+		return !!tabPanel && tabPanel.getActiveTab() === this;
+	}
+
+	,clearHibernationTimers: function() {
+		var me = this;
+		clearTimeout(me.hibernateTimer);
+		clearTimeout(me.rewakeTimer);
+		clearTimeout(me.rehibernateTimer);
+		me.hibernateTimer = me.rewakeTimer = me.rehibernateTimer = null;
+	}
+
+	// Starts (or restarts) the countdown to hibernate this service while it is in the background
+	,scheduleHibernation: function() {
+		var me = this;
+
+		clearTimeout(me.hibernateTimer);
+		me.hibernateTimer = null;
+		if ( !me.record.get('hibernate') || !me.hasWebView() || me.isActiveTab() ) return;
+
+		var minutes = Math.max(1, parseInt(me.record.get('hibernateAfter'), 10) || 15);
+		me.hibernateTimer = setTimeout(function() {
+			me.hibernateTimer = null;
+			if ( !me.isActiveTab() ) me.hibernate();
+		}, minutes * 60 * 1000);
+	}
+
+	// Schedules the next background wake-up to check for new messages
+	,scheduleRewake: function() {
+		var me = this;
+
+		clearTimeout(me.rewakeTimer);
+		me.rewakeTimer = null;
+		if ( !me.hibernated || !me.record.get('hibernateRewake') ) return;
+
+		var minutes = Math.max(1, parseInt(me.record.get('hibernateRewakeEvery'), 10) || 15);
+		me.rewakeTimer = setTimeout(function() {
+			me.rewakeTimer = null;
+			if ( me.hibernated && !me.isActiveTab() ) me.wake(true);
+		}, minutes * 60 * 1000);
+	}
+
+	,hibernate: function(force) {
+		var me = this;
+
+		if ( !me.hasWebView() ) return;
+		if ( me.isActiveTab() && !force ) return;
+
+		console.info('Hibernating service:', me.record.get('name'));
+		me.clearHibernationTimers();
+
+		if ( me.unreadFramesTimer ) {
+			clearInterval(me.unreadFramesTimer);
+			me.unreadFramesTimer = null;
+		}
+
+		var webviewCmp = me.down('component[cls=webview]');
+		me.hibernated = true;
+		if ( webviewCmp ) me.remove(webviewCmp, true); // destroying the <webview> element frees its process
+		me.insert(0, me.hibernationPlaceholderConstructor());
+		me.down('statusbar').hide();
+		if ( me.tab ) me.tab.setStyle('opacity', '0.5'); // the last known unread badge is kept
+
+		me.scheduleRewake();
+	}
+
+	/**
+	 * Loads the service again.
+	 * @param {boolean} background true for a periodic wake-up: hibernate again after "hibernateRewakeFor" minutes
+	 */
+	,wake: function(background) {
+		var me = this;
+
+		if ( !me.hibernated ) return;
+
+		console.info('Waking up service:', me.record.get('name'), background ? '(background check)' : '');
+		me.clearHibernationTimers();
+
+		var placeholder = me.down('#hibernationPlaceholder');
+		if ( placeholder ) me.remove(placeholder, true);
+
+		me.hibernated = false;
+		me.insert(0, me.webViewConstructor(true));
+		var webviewCmp = me.down('component[cls=webview]');
+		// Components added to a hidden (inactive) tab are not rendered until the tab is shown,
+		// but background wake-ups need the <webview> in the DOM to load the service.
+		if ( !webviewCmp.rendered ) webviewCmp.render(me.getLayout().getRenderTarget());
+		if ( me.tab ) me.tab.setStyle('opacity', '');
+
+		me.wakingUp = true;
+		me.onAfterRender();
+		me.wakingUp = false;
+
+		if ( background ) {
+			var minutes = Math.max(1, parseInt(me.record.get('hibernateRewakeFor'), 10) || 1);
+			me.rehibernateTimer = setTimeout(function() {
+				me.rehibernateTimer = null;
+				if ( !me.isActiveTab() ) me.hibernate();
+			}, minutes * 60 * 1000);
+		} else {
+			me.scheduleHibernation();
+		}
+	}
+
+	,toggleHibernation: function() {
+		var me = this;
+
+		if ( !me.record.get('enabled') ) return;
+		me.hibernated ? me.wake() : me.hibernate(true);
+	}
+
+	,onTabActivate: function() {
+		var me = this;
+
+		// While the user is looking at the service it never hibernates
+		me.clearHibernationTimers();
+		if ( me.hibernated && me.record.get('hibernateOnSelect') !== 'ask' ) me.wake();
+	}
+
+	,onTabDeactivate: function() {
+		var me = this;
+
+		if ( me.hibernated ) {
+			me.scheduleRewake();
+		} else {
+			me.scheduleHibernation();
+		}
+	}
+
+	// Called after the hibernation settings of the service were edited
+	,applyHibernationSettings: function() {
+		var me = this;
+
+		if ( me.hibernated ) {
+			if ( !me.record.get('hibernate') ) {
+				me.wake();
+			} else {
+				me.scheduleRewake();
+			}
+		} else {
+			me.scheduleHibernation();
+		}
+	}
+
+	,hibernationPlaceholderConstructor: function() {
+		var me = this;
+
+		return {
+			 xtype: 'container'
+			,itemId: 'hibernationPlaceholder'
+			,style: 'text-align:center;'
+			,padding: 100
+			,items: [
+				{
+					 xtype: 'component'
+					,html: '<i class="fa fa-moon-o" aria-hidden="true" style="font-size:48px;opacity:.6;"></i><h3>' + Ext.String.format(locale['app.hibernation[12]'], Ext.String.htmlEncode(me.record.get('name'))) + '</h3><p style="opacity:.7;">' + locale['app.hibernation[13]'] + '</p>'
+				}
+				,{
+					 xtype: 'button'
+					,text: locale['app.hibernation[11]']
+					,glyph: 'xf185@FontAwesome'
+					,scale: 'medium'
+					,margin: '10 0 0 0'
+					,handler: function() { me.wake(); }
+				}
+			]
+		};
+	}
 });
+

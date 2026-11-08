@@ -245,6 +245,105 @@ Ext.define('LibreRambox.view.add.Add',{
 					}
 					,{
 						 xtype: 'fieldset'
+						,title: locale['app.hibernation[0]']
+						,margin: '10 0 0 0'
+						,items: [
+							{
+								 xtype: 'checkbox'
+								,boxLabel: locale['app.hibernation[1]']
+								,name: 'hibernate'
+								,checked: me.edit ? me.record.get('hibernate') : false
+								,uncheckedValue: false
+								,inputValue: true
+								,listeners: {
+									change: function(field, checked) {
+										field.nextSibling('#hibernateOptions').setHidden(!checked);
+									}
+								}
+							}
+							,{
+								 xtype: 'container'
+								,itemId: 'hibernateOptions'
+								,hidden: me.edit ? !me.record.get('hibernate') : true
+								,defaults: { labelWidth: 210 }
+								,items: [
+									{
+										 xtype: 'numberfield'
+										,fieldLabel: locale['app.hibernation[2]']
+										,name: 'hibernateAfter'
+										,value: me.edit ? me.record.get('hibernateAfter') : 15
+										,minValue: 1
+										,allowDecimals: false
+										,width: 330
+									}
+									,{
+										 xtype: 'radiogroup'
+										,fieldLabel: locale['app.hibernation[3]']
+										,columns: 1
+										,items: [
+											{
+												 boxLabel: locale['app.hibernation[4]']
+												,name: 'hibernateOnSelect'
+												,inputValue: 'auto'
+												,checked: (me.edit ? me.record.get('hibernateOnSelect') : 'auto') !== 'ask'
+											}
+											,{
+												 boxLabel: locale['app.hibernation[5]']
+												,name: 'hibernateOnSelect'
+												,inputValue: 'ask'
+												,checked: (me.edit ? me.record.get('hibernateOnSelect') : 'auto') === 'ask'
+											}
+										]
+									}
+									,{
+										 xtype: 'checkbox'
+										,boxLabel: locale['app.hibernation[6]']
+										,name: 'hibernateRewake'
+										,checked: me.edit ? me.record.get('hibernateRewake') : false
+										,uncheckedValue: false
+										,inputValue: true
+										,listeners: {
+											change: function(field, checked) {
+												field.nextSibling('#hibernateRewakeOptions').setHidden(!checked);
+											}
+										}
+									}
+									,{
+										 xtype: 'container'
+										,itemId: 'hibernateRewakeOptions'
+										,layout: 'hbox'
+										,hidden: me.edit ? !me.record.get('hibernateRewake') : true
+										,defaults: { allowDecimals: false, minValue: 1, width: 150, labelWidth: 90 }
+										,items: [
+											{
+												 xtype: 'numberfield'
+												,fieldLabel: locale['app.hibernation[7]']
+												,name: 'hibernateRewakeEvery'
+												,value: me.edit ? me.record.get('hibernateRewakeEvery') : 15
+											}
+											,{
+												 xtype: 'numberfield'
+												,fieldLabel: locale['app.hibernation[8]']
+												,name: 'hibernateRewakeFor'
+												,value: me.edit ? me.record.get('hibernateRewakeFor') : 1
+												,labelWidth: 110
+												,width: 170
+												,margin: '0 0 0 10'
+											}
+										]
+									}
+									,{
+										 xtype: 'component'
+										,html: locale['app.hibernation[9]']
+										,style: 'opacity:.7;font-size:12px;'
+										,margin: '0 0 5 0'
+									}
+								]
+							}
+						]
+					}
+					,{
+						 xtype: 'fieldset'
 						,title: locale['app.window[7]']
 						,margin: '10 0 0 0'
 						,collapsible: true

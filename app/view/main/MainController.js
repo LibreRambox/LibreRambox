@@ -38,21 +38,23 @@ Ext.define('LibreRambox.view.main.MainController', {
 			return;
 		}
 
-		var webview = newTab.down('component').el.dom;
-
-		setTimeout(function () {
-			if ( webview ) {
-				tabPanel.getActiveTab().getWebView().blur();
-				tabPanel.getActiveTab().getWebView().focus();
-			}
-		}, 300);
-
 		// Update the main window so it includes the active tab title.
 		if ( LibreRambox.app.getTotalNotifications() > 0 ) {
 			document.title = 'LibreRambox ('+ LibreRambox.app.getTotalNotifications() +') - ' + newTab.record.get('name');
 		} else {
 			document.title = 'LibreRambox - ' + newTab.record.get('name');
 		}
+
+		// Hibernated tab waiting for the user to click "Wake up now"
+		if ( newTab.hibernated ) return;
+
+		setTimeout(function () {
+			var webview = tabPanel.getActiveTab().getWebView && tabPanel.getActiveTab().getWebView();
+			if ( webview ) {
+				webview.blur();
+				webview.focus();
+			}
+		}, 300);
 	}
 
 	,updatePositions: function(tabPanel, tab) {
@@ -150,9 +152,18 @@ Ext.define('LibreRambox.view.main.MainController', {
 		} else {
 			// Get Tab
 			var tab = Ext.getCmp('tab_'+serviceId);
-			// Clear all trash data
-			const webview = tab.getWebView();
-			clearData(webview, tab);
+			if ( tab.hibernated ) {
+				// Load the service again so its data can be cleared
+				tab.wake();
+				const webview = tab.getWebView();
+				webview.addEventListener("did-start-loading", function() {
+					clearData(webview, tab);
+				});
+			} else {
+				// Clear all trash data
+				const webview = tab.getWebView();
+				clearData(webview, tab);
+			}
 		}
 
 		const config = ipc.sendSync('getConfig');
