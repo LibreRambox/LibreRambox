@@ -63,7 +63,7 @@ Ext.define('LibreRambox.ux.WebView',{
 					,listeners: {
 						beforeshow: function(menu) {
 							var item = menu.down('#hibernateMenuItem');
-							item.setText(me.hibernated ? 'Wake up now' : 'Hibernate now');
+							item.setText(me.hibernated ? locale['app.hibernation[11]'] : locale['app.hibernation[10]']);
 							item.setGlyph(me.hibernated ? 'xf185@FontAwesome' : 'xf186@FontAwesome');
 							item.setDisabled(!me.record.get('enabled'));
 						}
@@ -123,7 +123,7 @@ Ext.define('LibreRambox.ux.WebView',{
 							,handler: me.reloadService
 						}
 						,{
-							 text: 'Hibernate now'
+							 text: locale['app.hibernation[10]']
 							,itemId: 'hibernateMenuItem'
 							,glyph: 'xf186@FontAwesome'
 							,scope: me
@@ -1030,11 +1030,11 @@ Ext.define('LibreRambox.ux.WebView',{
 			,items: [
 				{
 					 xtype: 'component'
-					,html: '<i class="fa fa-moon-o" aria-hidden="true" style="font-size:48px;opacity:.6;"></i><h3>' + Ext.String.htmlEncode(me.record.get('name')) + ' is hibernating</h3><p style="opacity:.7;">The service was unloaded to save memory. New messages are not received while it is hibernating.</p>'
+					,html: '<i class="fa fa-moon-o" aria-hidden="true" style="font-size:48px;opacity:.6;"></i><h3>' + Ext.String.format(locale['app.hibernation[12]'], Ext.String.htmlEncode(me.record.get('name'))) + '</h3><p style="opacity:.7;">' + locale['app.hibernation[13]'] + '</p>'
 				}
 				,{
 					 xtype: 'button'
-					,text: 'Wake up now'
+					,text: locale['app.hibernation[11]']
 					,glyph: 'xf185@FontAwesome'
 					,scale: 'large'
 					,margin: '10 0 0 0'

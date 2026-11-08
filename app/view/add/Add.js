@@ -245,12 +245,12 @@ Ext.define('LibreRambox.view.add.Add',{
 					}
 					,{
 						 xtype: 'fieldset'
-						,title: 'Hibernation'
+						,title: locale['app.hibernation[0]']
 						,margin: '10 0 0 0'
 						,items: [
 							{
 								 xtype: 'checkbox'
-								,boxLabel: 'Hibernate this service when not used, to save memory'
+								,boxLabel: locale['app.hibernation[1]']
 								,name: 'hibernate'
 								,checked: me.edit ? me.record.get('hibernate') : false
 								,uncheckedValue: false
@@ -269,7 +269,7 @@ Ext.define('LibreRambox.view.add.Add',{
 								,items: [
 									{
 										 xtype: 'numberfield'
-										,fieldLabel: 'Hibernate after (minutes in background)'
+										,fieldLabel: locale['app.hibernation[2]']
 										,name: 'hibernateAfter'
 										,value: me.edit ? me.record.get('hibernateAfter') : 15
 										,minValue: 1
@@ -278,17 +278,17 @@ Ext.define('LibreRambox.view.add.Add',{
 									}
 									,{
 										 xtype: 'radiogroup'
-										,fieldLabel: 'When selecting a hibernated tab'
+										,fieldLabel: locale['app.hibernation[3]']
 										,columns: 1
 										,items: [
 											{
-												 boxLabel: 'Wake up automatically'
+												 boxLabel: locale['app.hibernation[4]']
 												,name: 'hibernateOnSelect'
 												,inputValue: 'auto'
 												,checked: (me.edit ? me.record.get('hibernateOnSelect') : 'auto') !== 'ask'
 											}
 											,{
-												 boxLabel: 'Ask before waking up ("Wake up now" button)'
+												 boxLabel: locale['app.hibernation[5]']
 												,name: 'hibernateOnSelect'
 												,inputValue: 'ask'
 												,checked: (me.edit ? me.record.get('hibernateOnSelect') : 'auto') === 'ask'
@@ -297,7 +297,7 @@ Ext.define('LibreRambox.view.add.Add',{
 									}
 									,{
 										 xtype: 'checkbox'
-										,boxLabel: 'Periodically wake up to check for new messages'
+										,boxLabel: locale['app.hibernation[6]']
 										,name: 'hibernateRewake'
 										,checked: me.edit ? me.record.get('hibernateRewake') : false
 										,uncheckedValue: false
@@ -317,13 +317,13 @@ Ext.define('LibreRambox.view.add.Add',{
 										,items: [
 											{
 												 xtype: 'numberfield'
-												,fieldLabel: 'Every (min)'
+												,fieldLabel: locale['app.hibernation[7]']
 												,name: 'hibernateRewakeEvery'
 												,value: me.edit ? me.record.get('hibernateRewakeEvery') : 15
 											}
 											,{
 												 xtype: 'numberfield'
-												,fieldLabel: 'Stay awake (min)'
+												,fieldLabel: locale['app.hibernation[8]']
 												,name: 'hibernateRewakeFor'
 												,value: me.edit ? me.record.get('hibernateRewakeFor') : 1
 												,labelWidth: 110
@@ -334,7 +334,7 @@ Ext.define('LibreRambox.view.add.Add',{
 									}
 									,{
 										 xtype: 'component'
-										,html: 'While hibernating, the service does not receive notifications or update its unread counter.'
+										,html: locale['app.hibernation[9]']
 										,style: 'opacity:.7;font-size:12px;'
 										,margin: '0 0 5 0'
 									}
