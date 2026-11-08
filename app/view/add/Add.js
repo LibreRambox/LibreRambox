@@ -245,6 +245,105 @@ Ext.define('LibreRambox.view.add.Add',{
 					}
 					,{
 						 xtype: 'fieldset'
+						,title: 'Hibernation'
+						,margin: '10 0 0 0'
+						,items: [
+							{
+								 xtype: 'checkbox'
+								,boxLabel: 'Hibernate this service when not used, to save memory'
+								,name: 'hibernate'
+								,checked: me.edit ? me.record.get('hibernate') : false
+								,uncheckedValue: false
+								,inputValue: true
+								,listeners: {
+									change: function(field, checked) {
+										field.nextSibling('#hibernateOptions').setHidden(!checked);
+									}
+								}
+							}
+							,{
+								 xtype: 'container'
+								,itemId: 'hibernateOptions'
+								,hidden: me.edit ? !me.record.get('hibernate') : true
+								,defaults: { labelWidth: 210 }
+								,items: [
+									{
+										 xtype: 'numberfield'
+										,fieldLabel: 'Hibernate after (minutes in background)'
+										,name: 'hibernateAfter'
+										,value: me.edit ? me.record.get('hibernateAfter') : 15
+										,minValue: 1
+										,allowDecimals: false
+										,width: 330
+									}
+									,{
+										 xtype: 'radiogroup'
+										,fieldLabel: 'When selecting a hibernated tab'
+										,columns: 1
+										,items: [
+											{
+												 boxLabel: 'Wake up automatically'
+												,name: 'hibernateOnSelect'
+												,inputValue: 'auto'
+												,checked: (me.edit ? me.record.get('hibernateOnSelect') : 'auto') !== 'ask'
+											}
+											,{
+												 boxLabel: 'Ask before waking up ("Wake up now" button)'
+												,name: 'hibernateOnSelect'
+												,inputValue: 'ask'
+												,checked: (me.edit ? me.record.get('hibernateOnSelect') : 'auto') === 'ask'
+											}
+										]
+									}
+									,{
+										 xtype: 'checkbox'
+										,boxLabel: 'Periodically wake up to check for new messages'
+										,name: 'hibernateRewake'
+										,checked: me.edit ? me.record.get('hibernateRewake') : false
+										,uncheckedValue: false
+										,inputValue: true
+										,listeners: {
+											change: function(field, checked) {
+												field.nextSibling('#hibernateRewakeOptions').setHidden(!checked);
+											}
+										}
+									}
+									,{
+										 xtype: 'container'
+										,itemId: 'hibernateRewakeOptions'
+										,layout: 'hbox'
+										,hidden: me.edit ? !me.record.get('hibernateRewake') : true
+										,defaults: { allowDecimals: false, minValue: 1, width: 150, labelWidth: 90 }
+										,items: [
+											{
+												 xtype: 'numberfield'
+												,fieldLabel: 'Every (min)'
+												,name: 'hibernateRewakeEvery'
+												,value: me.edit ? me.record.get('hibernateRewakeEvery') : 15
+											}
+											,{
+												 xtype: 'numberfield'
+												,fieldLabel: 'Stay awake (min)'
+												,name: 'hibernateRewakeFor'
+												,value: me.edit ? me.record.get('hibernateRewakeFor') : 1
+												,labelWidth: 110
+												,width: 170
+												,margin: '0 0 0 10'
+											}
+										]
+									}
+									,{
+										 xtype: 'component'
+										,html: 'While hibernating, the service does not receive notifications or update its unread counter.'
+										,style: 'opacity:.7;font-size:12px;'
+										,margin: '0 0 5 0'
+									}
+								]
+							}
+						]
+					}
+					,{
+						 xtype: 'fieldset'
 						,title: locale['app.window[7]']
 						,margin: '10 0 0 0'
 						,collapsible: true
