@@ -257,6 +257,6 @@ Ext.define('LibreRambox.Application', {
 	}
 
 	,checkUpdate: function(silence) {
-		ipc.send('autoUpdater:check-for-updates');
+		ipc.send('autoUpdater:check-for-updates', { manual: !silence });
 	}
 });

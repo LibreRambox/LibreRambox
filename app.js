@@ -34,27 +34,58 @@ ipc.on('autoUpdater:update-not-available', function() {
 		,buttons: Ext.Msg.OK
 	});
 });
-ipc.on('autoUpdater:update-available', function() {
+ipc.on('autoUpdater:update-available', function(e, version) {
 	Ext.Msg.show({
 		 title: 'New Version available!'
-		,message: 'Please wait until LibreRambox download the new version and ask you for install it.'
+		,message: 'LibreRambox ' + Ext.String.htmlEncode(version || '') + ' is available. Please wait until LibreRambox downloads the new version and asks you to install it.'
 		,icon: Ext.Msg.INFO
 		,buttons: Ext.Msg.OK
 	});
 });
-ipc.on('autoUpdater:update-downloaded', function(e, info) {
-	console.log('Update downloaded!', info);
-	Ext.cq1('app-main').addDocked({
+ipc.on('autoUpdater:error', function(e, message) {
+	Ext.Msg.show({
+		 title: 'Update check failed'
+		,message: 'Could not check for updates.<br><br>' + Ext.String.htmlEncode(message || '')
+		,icon: Ext.Msg.ERROR
+		,buttons: Ext.Msg.OK
+	});
+});
+
+// Shows a banner at the top of the window (replacing any previous update banner)
+function showUpdateBanner(html, buttons) {
+	var main = Ext.cq1('app-main');
+	if ( !main ) return;
+	var previous = main.down('#updateBanner');
+	if ( previous ) main.removeDocked(previous, true);
+	main.addDocked({
 		 xtype: 'toolbar'
+		,itemId: 'updateBanner'
 		,dock: 'top'
 		,ui: 'newversion'
 		,items: [
 			'->'
 			,{
 				 xtype: 'label'
-				,html: '<b>New version is ready to be installed ('+info.version+')!</b> Click the following button to install it now.'
+				,html: html
 			}
+		].concat(buttons, [
+			'->'
 			,{
+				 glyph: 'xf00d@FontAwesome'
+				,baseCls: ''
+				,style: 'cursor:pointer;'
+				,handler: function(btn) { Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true); }
+			}
+		])
+	});
+}
+
+ipc.on('autoUpdater:update-downloaded', function(e, info) {
+	console.log('Update downloaded!', info);
+	showUpdateBanner(
+		'<b>New version is ready to be installed ('+Ext.String.htmlEncode(info.version)+')!</b> Click the following button to install it now.'
+		,[
+			{
 				 xtype: 'button'
 				,text: 'Install now'
 				,handler: function(btn) { ipc.send('autoUpdater:quit-and-install'); }
@@ -65,15 +96,22 @@ ipc.on('autoUpdater:update-downloaded', function(e, info) {
 				,ui: 'decline'
 				,href: 'https://github.com/LibreRambox/LibreRambox/releases/latest'
 			}
-			,'->'
-			,{
-				 glyph: 'xf00d@FontAwesome'
-				,baseCls: ''
-				,style: 'cursor:pointer;'
-				,handler: function(btn) { Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true); }
+		]
+	);
+});
+// A newer release exists on GitHub but can't be installed automatically
+ipc.on('autoUpdater:update-available-manual', function(e, info) {
+	console.log('New version available on GitHub:', info);
+	showUpdateBanner(
+		'<b>LibreRambox '+Ext.String.htmlEncode(info.version)+' is available!</b> You are running version '+Ext.String.htmlEncode(info.currentVersion)+'.'
+		,[
+			{
+				 xtype: 'button'
+				,text: 'Download'
+				,href: info.url
 			}
 		]
-	});
+	);
 });
 
 // Set Badge in taskbar for Windows
