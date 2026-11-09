@@ -9,6 +9,15 @@ jobs:
     name: Typecheck and test
     runs-on: ubuntu-latest
     steps:
+      - name: Require pre-release flag for pre-release tags
+        shell: bash
+        env:
+          PRERELEASE: ${{ github.event.release.prerelease }}
+        run: |
+          if [[ "$GITHUB_REF_NAME" == *-* && "$PRERELEASE" != "true" ]]; then
+            echo "::error::Tag $GITHUB_REF_NAME looks like a pre-release but the release is not marked as pre-release"
+            exit 1
+          fi
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -43,6 +52,9 @@ jobs:
         with:
           node-version: lts/krypton
       - run: npm i
+      - name: Set version from release tag
+        shell: bash
+        run: npm version "${GITHUB_REF_NAME#v}" --no-git-tag-version --allow-same-version
 
       # Build Linux
       - name: Build on Linux
@@ -101,3 +113,31 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: matrix.job_name == 'win'
+
+  bump-master:
+    name: Bump version on master
+    needs: build
+    if: ${{ !github.event.release.prerelease }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/krypton
+      - name: Bump version on master if the tag is newer
+        run: |
+          CURRENT=$(node -p "require('./package.json').version")
+          NEW="${GITHUB_REF_NAME#v}"
+          if ! npx --yes semver@7.6.3 -r ">$CURRENT" "$NEW" > /dev/null; then
+            echo "::notice::master is at $CURRENT, not lowering it to $NEW"
+            exit 0
+          fi
+          npm version "$NEW" --no-git-tag-version
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "chore: bump version to ${GITHUB_REF_NAME#v} [skip ci]"
+          git push origin master
