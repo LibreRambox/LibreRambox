@@ -78,7 +78,7 @@
 		"react-dom": "18.3.1",
 		"typescript": "5.9.3",
 		"vite": "6.4.5",
-		"vitest": "3.2.7",
+		"vitest": "4.1.11",
 		"wait-on": "9.5.1",
 		"zustand": "5.1.0"
 	},
