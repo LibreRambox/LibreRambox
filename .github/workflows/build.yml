@@ -108,16 +108,6 @@ jobs:
         run: 'npm run build:osx'
         if: success() && matrix.job_name == 'osx'
 
-      # Apple Silicon only build. latest-mac.yml (read by the auto-updater) must keep
-      # describing the universal build, so it is saved before and restored after.
-      - name: Build on OSX (arm64)
-        env:
-          DEBUG: electron-builder
-        run: |
-          cp dist/latest-mac.yml "$RUNNER_TEMP/latest-mac.yml"
-          npx electron-builder --macos --arm64 -p never
-          cp "$RUNNER_TEMP/latest-mac.yml" dist/latest-mac.yml
-        if: success() && matrix.job_name == 'osx'
 
       - name: OSX Publish zip
         uses: actions/upload-artifact@v4
@@ -152,6 +142,13 @@ jobs:
         with:
           path: ${{ github.workspace }}/dist/LibreRambox-*-mac-arm64.dmg
           name: LibreRambox-mac-arm64.dmg
+        if: matrix.job_name == 'osx'
+
+      - name: OSX Publish arm64 blockmap
+        uses: actions/upload-artifact@v4
+        with:
+          path: ${{ github.workspace }}/dist/LibreRambox-*-mac-arm64.dmg.blockmap
+          name: LibreRambox-mac-arm64.dmg.blockmap
         if: matrix.job_name == 'osx'
 
       - name: OSX Publish yml
