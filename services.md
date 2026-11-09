@@ -31,15 +31,13 @@ We currently support the following apps out of the box:
 * <img src="resources/icons/gmail.png" alt="Gmail" height="25" /> <a href="https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin">Gmail</a>
 * <img src="resources/icons/googledrive.png" alt="Google Drive" height="25" /> <a href="https://drive.google.com/drive/u/0/my-drive">Google Drive</a>
 * <img src="resources/icons/googlevoice.png" alt="Google Voice" height="25" /> <a href="https://voice.google.com">Google Voice</a>
-* <img src="resources/icons/grape.png" alt="Grape" height="25" /> <a href="https://chatgrape.com/accounts/login/">Grape</a>
 * <img src="resources/icons/groupme.png" alt="GroupMe" height="25" /> <a href="https://web.groupme.com/signin">GroupMe</a>
-* <img src="resources/icons/guilded.png" alt="Guilded" height="25" /> <a href="https://www.guilded.gg/">Guilded</a>
 * <img src="resources/icons/hangouts.png" alt="Hangouts" height="25" /> <a href="https://hangouts.google.com/">Hangouts</a>
 * <img src="resources/icons/hangoutschat.png" alt="Google Chat" height="25" /> <a href="https://chat.google.com/">Google Chat</a>
 * <img src="resources/icons/hibox.png" alt="Hibox" height="25" /> <a href="https://app.hibox.co/">Hibox</a>
 * <img src="resources/icons/hootsuite.png" alt="Hootsuite" height="25" /> <a href="https://hootsuite.com/dashboard">Hootsuite</a>
 * <img src="resources/icons/horde.png" alt="Horde" height="25" /> <a href="___">Horde</a>
-* <img src="resources/icons/hushmail.png" alt="Hushmail" height="25" /> <a href="https://www.hushmail.com/hushmail/index.php">Hushmail</a>
+* <img src="resources/icons/hushmail.png" alt="Hushmail" height="25" /> <a href="https://secure.hushmail.com/mail/">Hushmail</a>
 * <img src="resources/icons/icloudmail.png" alt="iCloud Mail" height="25" /> <a href="https://www.icloud.com/#mail">iCloud Mail</a>
 * <img src="resources/icons/icq.png" alt="ICQ" height="25" /> <a href="https://web.icq.com/">ICQ</a>
 * <img src="resources/icons/inbox.png" alt="Inbox" height="25" /> <a href="http://inbox.google.com/?cid=imp">Inbox</a>
@@ -47,7 +45,6 @@ We currently support the following apps out of the box:
 * <img src="resources/icons/intercom.png" alt="Intercom" height="25" /> <a href="https://app.intercom.io">Intercom</a>
 * <img src="resources/icons/irccloud.png" alt="IRC Cloud" height="25" /> <a href="https://www.irccloud.com/">IRC Cloud</a>
 * <img src="resources/icons/jandi.png" alt="Jandi" height="25" /> <a href="https://___.jandi.com/">Jandi</a>
-* <img src="resources/icons/kaiwa.png" alt="Kaiwa" height="25" /> <a href="___">Kaiwa</a>
 * <img src="resources/icons/kezmo.png" alt="Kezmo" height="25" /> <a href="https://app.kezmo.com/web/">Kezmo</a>
 * <img src="resources/icons/kiwi.png" alt="Kiwi IRC" height="25" /> <a href="https://kiwiirc.com/nextclient">Kiwi IRC</a>
 * <img src="resources/icons/kune.png" alt="Kune" height="25" /> <a href="https://kune.cc">Kune</a>
@@ -57,22 +54,19 @@ We currently support the following apps out of the box:
 * <img src="resources/icons/mastodon.png" alt="Mastodon" height="25" /> <a href="https://mastodon.social/auth/sign_in">Mastodon</a>
 * <img src="resources/icons/mattermost.png" alt="Mattermost" height="25" /> <a href="___">Mattermost</a>
 * <img src="resources/icons/messenger.png" alt="Messenger" height="25" /> <a href="https://www.messenger.com/login/">Messenger</a>
-* <img src="resources/icons/messengerpages.png" alt="Messenger for Pages" height="25" /> <a href="https://facebook.com/___/inbox/">Messenger for Pages</a>
 * <img src="resources/icons/mightytext.png" alt="Mighty Text" height="25" /> <a href="https://mightytext.net/web/">Mighty Text</a>
 * <img src="resources/icons/missive.png" alt="Missive" height="25" /> <a href="https://mail.missiveapp.com/login">Missive</a>
 * <img src="resources/icons/movim.png" alt="Movim" height="25" /> <a href="https://___.movim.eu/">Movim</a>
 * <img src="resources/icons/mysms.png" alt="mysms" height="25" /> <a href="https://app.mysms.com/">mysms</a>
+* <img src="resources/icons/notion.png" alt="Notion" height="25" /> <a href="https://www.notion.so/login">Notion</a>
 * <img src="resources/icons/noysi.png" alt="Noysi" height="25" /> <a href="https://noysi.com/site-en/sign-in">Noysi</a>
-* <img src="resources/icons/notion.png" alt="Notion" height="25" /> <a href="https://www.notion.so">Notion</a>
 * <img src="resources/icons/okru.png" alt="OK.RU" height="25" /> <a href="https://ok.ru/">OK.RU</a>
 * <img src="resources/icons/openmailbox.png" alt="Openmailbox" height="25" /> <a href="https://app.openmailbox.org/">Openmailbox</a>
 * <img src="resources/icons/outlook.png" alt="Outlook" height="25" /> <a href="https://mail.live.com/">Outlook</a>
 * <img src="resources/icons/outlook365.png" alt="Outlook 365" height="25" /> <a href="https://outlook.office.___/owa/">Outlook 365</a>
 * <img src="resources/icons/protonmail.png" alt="ProtonMail" height="25" /> <a href="https://mail.proton.me">ProtonMail</a>
 * <img src="resources/icons/pushbullet.png" alt="Pushbullet" height="25" /> <a href="https://www.pushbullet.com/">Pushbullet</a>
-* <img src="resources/icons/rainloop.png" alt="RainLoop" height="25" /> <a href="___">RainLoop</a>
 * <img src="resources/icons/reddit.png" alt="Reddit Chat" height="25" /> <a href="https://www.reddit.com/chat">Reddit Chat</a>
-* <img src="resources/icons/riot.png" alt="Riot" height="25" /> <a href="https://riot.im/app/">Riot</a>
 * <img src="resources/icons/rocketchat.png" alt="Rocket Chat" height="25" /> <a href="___">Rocket Chat</a>
 * <img src="resources/icons/roundcube.png" alt="Roundcube" height="25" /> <a href="___">Roundcube</a>
 * <img src="resources/icons/ryver.png" alt="Ryver" height="25" /> <a href="https://___.ryver.com/">Ryver</a>
@@ -80,7 +74,7 @@ We currently support the following apps out of the box:
 * <img src="resources/icons/simplenote.png" alt="Simplenote" height="25" /> <a href="https://app.simplenote.com/">Simplenote</a>
 * <img src="resources/icons/skype.png" alt="Skype" height="25" /> <a href="https://web.skype.com/">Skype</a>
 * <img src="resources/icons/slack.png" alt="Slack" height="25" /> <a href="https://___.slack.com">Slack</a>
-* <img src="resources/icons/smooch.png" alt="Smooch" height="25" /> <a href="https://app.smooch.io/">Smooch</a>
+* <img src="resources/icons/snappymail.png" alt="SnappyMail" height="25" /> <a href="___">SnappyMail</a>
 * <img src="resources/icons/socialcast.png" alt="Socialcast" height="25" /> <a href="https://___.socialcast.com/">Socialcast</a>
 * <img src="resources/icons/sococo.png" alt="Sococo" height="25" /> <a href="https://app.sococo.com/a/login">Sococo</a>
 * <img src="resources/icons/spark.png" alt="Cisco Spark" height="25" /> <a href="https://teams.webex.com/">Cisco Spark</a>
@@ -88,14 +82,12 @@ We currently support the following apps out of the box:
 * <img src="resources/icons/squirrelmail.png" alt="SquirrelMail" height="25" /> <a href="___">SquirrelMail</a>
 * <img src="resources/icons/steam.png" alt="Steam" height="25" /> <a href="https://steamcommunity.com/chat">Steam</a>
 * <img src="resources/icons/swello.png" alt="Swello" height="25" /> <a href="https://swello.com/dashboard/">Swello</a>
-* <img src="resources/icons/sync.png" alt="Sync" height="25" /> <a href="https://m.wantedly.com/login">Sync</a>
 * <img src="resources/icons/tawkto.png" alt="Tawk.to" height="25" /> <a href="https://dashboard.tawk.to">Tawk.to</a>
 * <img src="resources/icons/teams.png" alt="Teams" height="25" /> <a href="https://teams.microsoft.com">Teams</a>
 * <img src="resources/icons/teamworkchat.png" alt="Teamwork Chat" height="25" /> <a href="https://___.teamwork.com/chat">Teamwork Chat</a>
 * <img src="resources/icons/telegram.png" alt="Telegram" height="25" /> <a href="https://web.telegram.org/">Telegram</a>
 * <img src="resources/icons/threema.png" alt="Threema" height="25" /> <a href="https://web.threema.ch/">Threema</a>
 * <img src="resources/icons/tutanota.png" alt="Tutanota" height="25" /> <a href="https://mail.tutanota.com">Tutanota</a>
-* <img src="resources/icons/tweetdeck.png" alt="TweetDeck" height="25" /> <a href="https://tweetdeck.twitter.com/">TweetDeck</a>
 * <img src="resources/icons/typetalk.png" alt="Typetalk" height="25" /> <a href="https://typetalk.com/signin">Typetalk</a>
 * <img src="resources/icons/vk.png" alt="VK Messenger" height="25" /> <a href="https://vk.com/im">VK Messenger</a>
 * <img src="resources/icons/voxer.png" alt="Voxer" height="25" /> <a href="https://web.voxer.com/">Voxer</a>
@@ -104,6 +96,7 @@ We currently support the following apps out of the box:
 * <img src="resources/icons/whatsappbusiness.png" alt="Whatsapp Business" height="25" /> <a href="https://web.whatsapp.com/">Whatsapp Business</a>
 * <img src="resources/icons/wire.png" alt="Wire" height="25" /> <a href="https://app.wire.com/">Wire</a>
 * <img src="resources/icons/workplace.png" alt="Workplace" height="25" /> <a href="https://___.facebook.com/">Workplace</a>
+* <img src="resources/icons/x.png" alt="X (Twitter)" height="25" /> <a href="https://x.com/home">X (Twitter)</a>
 * <img src="resources/icons/xender.png" alt="Xender" height="25" /> <a href="http://web.xender.com/">Xender</a>
 * <img src="resources/icons/xing.png" alt="XING" height="25" /> <a href="https://www.xing.com/messages/conversations">XING</a>
 * <img src="resources/icons/yahoo.png" alt="Yahoo! Mail" height="25" /> <a href="https://mail.yahoo.com/">Yahoo! Mail</a>

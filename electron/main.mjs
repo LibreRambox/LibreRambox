@@ -28,6 +28,8 @@ const { positionOnScreen } = require('./utils/positionOnScreen.js');
 const { migrate } = require('./utils/migrationAssistant.js');
 
 if ( isDev ) app.getVersion = function() { return require('../package.json').version; }; // FOR DEV ONLY, BECAUSE IN DEV RETURNS ELECTRON'S VERSION
+// FOR DEV ONLY: run against a separate profile (e.g. a copy of a real one) instead of the installed app's data
+if ( isDev && process.env.LIBRERAMBOX_USER_DATA ) app.setPath('userData', path.resolve(process.env.LIBRERAMBOX_USER_DATA));
 
 // Initial Config
 const config = new Config({
@@ -147,8 +149,12 @@ function createWindow () {
 	// Open the DevTools.
 	if ( isDev ) mainWindow.webContents.openDevTools();
 
-	// and load the index.html of the app.
-	mainWindow.loadURL('file://' + __dirname + '/../index.html');
+	// Load the renderer: the Vite dev server while developing, the built page otherwise
+	if ( isDev && process.env.VITE_DEV_SERVER_URL ) {
+		mainWindow.loadURL(process.env.VITE_DEV_SERVER_URL);
+	} else {
+		mainWindow.loadURL('file://' + __dirname + '/../build/renderer/index.html');
+	}
 
 	Menu.setApplicationMenu(appMenu);
 
@@ -174,9 +180,9 @@ function createWindow () {
 	mainWindow.on('move', function(e) { if (!mainWindow.isMaximized()) config.set(mainWindow.getBounds()); });
 	mainWindow.on('app-command', (e, cmd) => {
 		// Navigate the window back when the user hits their mouse back button
-		if ( cmd === 'browser-backward' ) mainWindow.webContents.executeJavaScript('if(Ext.cq1("app-main")) Ext.cq1("app-main").getActiveTab().goBack();');
+		if ( cmd === 'browser-backward' ) mainWindow.webContents.send('browser-backward');
 		// Navigate the window forward when the user hits their mouse forward button
-		if ( cmd === 'browser-forward' ) mainWindow.webContents.executeJavaScript('if(Ext.cq1("app-main")) Ext.cq1("app-main").getActiveTab().goForward();');
+		if ( cmd === 'browser-forward' ) mainWindow.webContents.send('browser-forward');
 	});
 
 	// Emitted when the window is closed.
@@ -306,8 +312,6 @@ function startApp() {
 		if ( !isDev ) values.auto_launch ? autoLaunch.enable() : autoLaunch.disable();
 		// systemtray_indicator
 		updateBadge(mainWindow.getTitle());
-
-		mainWindow.webContents.executeJavaScript('(function(a){if(a)a.controller.initialize(a)})(Ext.cq1("app-main"))');
 
 		switch ( values.window_display_behavior ) {
 			case 'show_taskbar':

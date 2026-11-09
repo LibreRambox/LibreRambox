@@ -104,8 +104,7 @@ Fork and work!
 git clone https://github.com/LibreRambox/LibreRambox.git
 cd LibreRambox
 npm install
-sencha app watch
-npm start
+npm run dev
 ```
 
 See [Contributing.md](./CONTRIBUTING.md) for more detailed information about getting set up.

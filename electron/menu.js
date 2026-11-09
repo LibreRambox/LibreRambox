@@ -186,6 +186,7 @@ module.exports = function(config) {
 			submenu: [
 				{
 					label: locale['preferences[0]'],
+					accelerator: 'Command+,',
 					click() {
 						sendAction('showPreferences')
 					}

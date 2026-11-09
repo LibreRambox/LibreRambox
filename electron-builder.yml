@@ -1,6 +1,16 @@
 productName: LibreRambox
 appId: io.github.librerambox
 asar: true
+# Packaged app contents (node_modules dependencies are added automatically)
+files:
+  - package.json
+  - electron/**
+  - build/renderer/**
+  - masterpassword.html
+  - screenselector.html
+  - resources/**
+  - '!resources/installer/**'
+  - '!resources/screenshots/**'
 artifactName: LibreRambox-${version}-${os}-${arch}.${ext}
 mac:
   category: public.app-category.productivity
