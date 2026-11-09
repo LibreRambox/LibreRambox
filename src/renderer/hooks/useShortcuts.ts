@@ -14,8 +14,8 @@ export function useShortcuts() {
 		Mousetrap.bind([1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (mac ? 'command+' : 'ctrl+') + n), (e) => {
 			activateTabAt(parseInt(e.key, 10));
 		});
-		// Main tab
-		Mousetrap.bind(mac ? 'command+,' : 'ctrl+,', () => activateTab(HOME_TAB));
+		// Main tab. On macOS Cmd+, opens the preferences instead (accelerator of the app menu, see electron/menu.js)
+		if ( !mac ) Mousetrap.bind('ctrl+,', () => activateTab(HOME_TAB));
 		// Navigate through services
 		Mousetrap.bind(['ctrl+tab', 'ctrl+pagedown'], () => cycleTab(1));
 		Mousetrap.bind(['ctrl+shift+tab', 'ctrl+pageup'], () => cycleTab(-1));
