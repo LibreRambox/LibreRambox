@@ -35,21 +35,18 @@ Working on your first Pull Request? You can learn how from this *free* series [H
 
 ### Prerequisites
 
-| Prerequisite                                                  | Version |
-| ------------------------------------------------------------- | ------- |
-| [Sencha](https://www.sencha.com/products/extjs/cmd-download/) | `=6.6.0.13`  |
-| [Ruby](https://www.ruby-lang.org/en/downloads/)               | `=2.3` |
-| [Node.js](https://nodejs.org)                                 | `~ ^4.0.0`  |
-| npm (comes with Node)                                         | `~ ^3.8.7`  |
+| Prerequisite                  | Version    |
+| ----------------------------- | ---------- |
+| [Node.js](https://nodejs.org) | `>=22.0.0` |
+| npm (comes with Node)         | `>=10`     |
 
 > _Updating to the latest releases is recommended_.
 
-If Node.js, ruby, or sencha cmd is already installed on your machine, run the following commands to validate the versions:
+If Node.js is already installed on your machine, run the following commands to validate the versions:
 
 ```shell
 node -v
-ruby -v
-sencha
+npm -v
 ```
 
 If your versions are lower than the prerequisite versions, you should update.
@@ -121,10 +118,19 @@ npm install
 ```
 
 ```bash
-# Compile the files...
-sencha app watch
-npm start # in a new terminal
+# Start the Vite dev server and Electron, with hot reload of the UI
+npm run dev
 ```
+
+The UI is a React + TypeScript app in `src/renderer` (built with [Vite](https://vite.dev), using [Mantine](https://mantine.dev) components); the Electron main process lives in `electron/`.
+
+```bash
+npm run typecheck   # TypeScript checks
+npm test            # unit tests
+npm start           # build the UI and run it like a release
+```
+
+To run against a separate profile instead of your installed LibreRambox data (for example a copy of a real one), set `LIBRERAMBOX_USER_DATA=/path/to/profile`.
 
 ### Make Changes
 
@@ -144,7 +150,7 @@ The services are stored inside the file `./resources/services.json`:
 https://github.com/LibreRambo/LibreRambox/blob/master/resources/services.json
 
 Add your service to the *BOTTOM* of the array.
-To see these changes you'll need to stop your `npm start` and `sencha app watch`, and then rerun those.
+To see these changes, reload the app window (`npm run dev`) or rerun `npm start`.
 
 ### Creating a Pull Request
 

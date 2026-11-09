@@ -1,0 +1,36 @@
+import type { Service, CatalogEntry } from '../store/types';
+import { remote, resourceUrl } from '../electron';
+import { getConfig } from '../config';
+
+// Must stay exactly as before: the partition holds the cookies/logins of the service
+export function partitionFor(service: Pick<Service, 'id' | 'type'>): string {
+	let suffix = '';
+	if ( localStorage.getItem('id_token') ) {
+		try {
+			suffix = '_' + JSON.parse(localStorage.getItem('profile') || '{}').sub;
+		} catch ( err ) {
+			console.error('Invalid profile in localStorage', err);
+		}
+	}
+	return 'persist:' + service.type + '_' + service.id + suffix;
+}
+
+export function serviceIcon(service: Pick<Service, 'type' | 'logo'>): string {
+	if ( service.type !== 'custom' ) return resourceUrl('icons/' + service.logo);
+	return service.logo === '' ? resourceUrl('icons/custom.png') : service.logo;
+}
+
+export function userAgentFor(entry: CatalogEntry | undefined): string {
+	const ua = getConfig().user_agent || entry?.userAgent || '';
+	return ua.length === 0 ? navigator.userAgent.replace(/LibreRambox\/([0-9]\.?)+\s/gi, '').replace(/Electron\/([0-9]\.?)+\s/gi, '') : ua;
+}
+
+// Clears cookies, cache and storage of a service. Works on the partition directly,
+// so disabled or hibernated services don't need to be loaded first.
+export async function clearServiceData(service: Pick<Service, 'id' | 'type'>): Promise<void> {
+	const session = remote.session.fromPartition(partitionFor(service));
+	session.flushStorageData();
+	await session.clearCache();
+	await session.clearStorageData();
+	await session.cookies.flushStore();
+}

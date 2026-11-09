@@ -1,0 +1,322 @@
+:root {
+	--lr-base: #116eb5;
+	--lr-dark: #0b2444;
+	--lr-accent: #00b7ab;
+	--lr-tabbar-bg: #f1f3f5;
+}
+
+html, body, #root {
+	margin: 0;
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	background-color: #fff;
+}
+
+/* Loading screen, removed once the services catalog is loaded */
+#background {
+	height: 100%;
+	width: 100%;
+	background-color: var(--lr-dark);
+	position: absolute;
+	z-index: 99999;
+	top: 0;
+}
+#spinner {
+	position: absolute;
+	z-index: 999999;
+	width: 200px;
+	height: 200px;
+	top: 50%;
+	left: 50%;
+	margin: -100px 0 0 -100px;
+}
+#spinner > div {
+	position: absolute;
+	width: 160px;
+	height: 160px;
+	top: 20px;
+	left: 20px;
+	border-radius: 80px;
+	box-shadow: 0 6px 0 0 var(--lr-accent);
+	animation: lr-spin 1s linear infinite;
+}
+@keyframes lr-spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+.spin {
+	animation: lr-spin 1s linear infinite;
+}
+
+/* Layout */
+.app {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+.app-main {
+	flex: 1;
+	display: flex;
+	min-height: 0;
+}
+.tabbar-top .app-main { flex-direction: column; }
+.tabbar-bottom .app-main { flex-direction: column-reverse; }
+.tabbar-left .app-main { flex-direction: row; }
+.tabbar-right .app-main { flex-direction: row-reverse; }
+
+.banner {
+	position: relative;
+	padding: 6px 40px;
+	min-height: 40px;
+}
+.banner-close {
+	position: absolute;
+	right: 10px;
+}
+
+/* Tab bar */
+.tabbar {
+	display: flex;
+	align-items: flex-end;
+	gap: 2px;
+	padding: 8px 4px 0;
+	background: var(--lr-tabbar-bg);
+	border-bottom: 1px solid #dee2e6;
+	overflow-x: auto;
+	overflow-y: hidden;
+	flex-shrink: 0;
+	user-select: none;
+}
+.tabbar::-webkit-scrollbar { height: 4px; width: 4px; }
+.tabbar.vertical {
+	flex-direction: column;
+	align-items: stretch;
+	padding: 4px 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border-bottom: 0;
+	border-right: 1px solid #dee2e6;
+	max-width: 220px;
+}
+.tabbar-bottom .tabbar { align-items: flex-start; padding: 0 4px 8px; border-bottom: 0; border-top: 1px solid #dee2e6; }
+.tabbar-right .tabbar.vertical { border-right: 0; border-left: 1px solid #dee2e6; }
+.tabbar.dontdisturb {
+	background-color: #c3c3c3;
+}
+.tab-spacer {
+	flex: 1;
+	min-width: 20px;
+	min-height: 20px;
+}
+.tab {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 13px;
+	border-radius: 4px 4px 0 0;
+	color: var(--lr-base);
+	font-size: 15px;
+	cursor: pointer;
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+.tabbar.vertical .tab { border-radius: 0; }
+.tabbar-bottom .tab { border-radius: 0 0 4px 4px; }
+.tab:hover { background: rgba(17, 110, 181, 0.08); }
+.tab.active {
+	background: #fff;
+	color: #000;
+}
+.tab.hibernated { opacity: 0.5; }
+.tab-icon-wrap { position: relative; display: inline-flex; }
+.tab-icon {
+	width: 24px;
+	height: 24px;
+	object-fit: contain;
+}
+.tab-icon-overlay {
+	position: absolute;
+	right: -4px;
+	bottom: -4px;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: #fff;
+}
+.tab-title {
+	max-width: 160px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.tab-badge {
+	position: absolute;
+	top: 0;
+	right: 2px;
+	font-size: 10px;
+	font-weight: bold;
+	line-height: 14px;
+	color: #fff;
+	padding: 0 4px;
+	border-radius: 3px;
+	background: linear-gradient(#ff1a1a, #e60000 3%, #b30000);
+	box-shadow: rgba(0, 0, 0, 0.3) 0 0.1em 0.1em;
+	text-shadow: rgba(0, 0, 0, 0.5) 0 -0.08em 0;
+}
+
+/* Tab content: every pane fills the area. Inactive panes stay rendered behind the active one
+   because some services only update their unread badges while visible. */
+.tab-content {
+	position: relative;
+	flex: 1;
+	min-width: 0;
+	min-height: 0;
+}
+.tab-pane {
+	position: absolute;
+	inset: 0;
+	z-index: -10;
+	pointer-events: none;
+	background: #fff;
+}
+.tab-pane.active {
+	z-index: 1;
+	pointer-events: auto;
+}
+
+/* Service */
+.service-view {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+.service-search {
+	padding: 4px 8px;
+	border-bottom: 1px solid #dee2e6;
+	background: var(--lr-tabbar-bg);
+}
+.service-webview {
+	position: relative;
+	flex: 1;
+	min-height: 0;
+}
+.service-webview webview {
+	width: 100%;
+	height: 100%;
+	visibility: visible;
+}
+.service-placeholder {
+	text-align: center;
+	padding: 100px;
+}
+.service-statusbar {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	height: 19px;
+	padding: 0 6px;
+	font-size: 12px;
+	color: #fff;
+	background-color: var(--lr-base);
+	border-top: 1px solid #ccc;
+}
+.service-statusbar.floating {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border-top: 0;
+}
+.service-statusbar .status-text { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.service-statusbar .status-url { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.service-statusbar .mantine-ActionIcon-root { color: #fff; }
+
+/* Home tab */
+.home-tab {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+.home-toolbar {
+	height: 42px;
+	padding: 0 8px;
+	background: var(--lr-base);
+	flex-shrink: 0;
+}
+.home-panels {
+	flex: 1;
+	display: flex;
+	gap: 10px;
+	padding: 10px;
+	min-height: 0;
+	background: #f8f9fa;
+}
+.home-panel {
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+	overflow: hidden;
+}
+.home-panel.catalog { flex: 2; min-width: 0; }
+.home-panel.my-services { flex: 1; min-width: 260px; }
+.home-panel-header {
+	min-height: 50px;
+	padding: 6px 12px;
+	border-bottom: 1px solid #dee2e6;
+	flex-shrink: 0;
+}
+.home-panel-body {
+	flex: 1;
+	overflow-y: auto;
+}
+
+.service {
+	width: 230px;
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+.service:hover { background-color: #e3f0fb; }
+.service span { line-height: 1.2; }
+
+.group-header {
+	padding: 6px 12px;
+	background: #f1f3f5;
+	text-transform: uppercase;
+}
+.service-row {
+	padding: 6px 12px;
+	min-height: 44px;
+	border-bottom: 1px solid #f1f3f5;
+}
+.service-row:nth-child(even) { background: #fafafa; }
+.service-row .row-actions { visibility: hidden; }
+.service-row:hover .row-actions { visibility: visible; }
+.service-row .status-icon { color: #adb5bd; flex-shrink: 0; }
+
+.service-note {
+	background-color: #f4f8fc;
+	color: var(--lr-dark);
+	border-radius: 6px;
+	padding: 12px;
+}
+.url-prefix {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.lock-screen {
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--lr-dark);
+}
