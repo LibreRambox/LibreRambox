@@ -10,6 +10,7 @@ import { ipc, remote, platform, resourceFileUrl } from '../electron';
 import { format, t } from '../i18n';
 import { formatNumber } from '../util/format';
 import { dispatchNotification } from '../util/notifier';
+import { activateTab } from '../actions';
 import { partitionFor, userAgentFor } from '../util/service';
 import { registry, type ServiceHandle } from '../util/registry';
 
@@ -465,7 +466,7 @@ export function ServiceView({ service, active }: { service: Service; active: boo
 					break;
 				case 'librerambox.showWindowAndActivateTab':
 					remote.getCurrentWindow().show();
-					useApp.getState().setActiveTab(serviceRef.current.id);
+					activateTab(serviceRef.current.id);
 					// Temp fix missing cursor after upgrade to electron 3.x +
 					focusWebView();
 					break;

@@ -17,6 +17,8 @@ export const ipc = electron.ipcRenderer;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const remote: any = nodeRequire('@electron/remote');
 export const platform: NodeJS.Platform = process.platform;
+const nodeUrl: typeof import('url') = nodeRequire('url');
+const nodePath: typeof import('path') = nodeRequire('path');
 
 // The main process (tray.js) runs `ipc.send(...)` in this page through executeJavaScript
 window.ipc = ipc;
@@ -29,5 +31,5 @@ export function resourceUrl(path: string): string {
 
 // <webview preload> needs a file: URL, also while the page is served by the dev server
 export function resourceFileUrl(path: string): string {
-	return 'file://' + remote.app.getAppPath() + '/resources/' + path;
+	return nodeUrl.pathToFileURL(nodePath.join(remote.app.getAppPath(), 'resources', path)).href;
 }

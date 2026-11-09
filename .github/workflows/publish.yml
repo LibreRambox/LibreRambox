@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/krypton
-      - run: npm i
+      - run: npm ci
       - run: npm run typecheck
       - run: npm test
       - run: npm run build:renderer
@@ -51,7 +51,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/krypton
-      - run: npm i
+      - run: npm ci
       - name: Set version from release tag
         shell: bash
         run: npm version "${GITHUB_REF_NAME#v}" --no-git-tag-version --allow-same-version

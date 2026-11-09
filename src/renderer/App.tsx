@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { HOME_TAB, totalUnread, useApp } from './store/app';
 import { useCatalog } from './store/catalog';
 import { useServices } from './store/services';
@@ -42,7 +42,7 @@ export function App() {
 	}, []);
 
 	// The active service was disabled or removed
-	const enabled = services.filter((s) => s.enabled);
+	const enabled = useMemo(() => services.filter((s) => s.enabled), [services]);
 	useEffect(() => {
 		if ( activeTab !== HOME_TAB && !enabled.some((s) => s.id === activeTab) ) activateTab(HOME_TAB);
 	}, [activeTab, enabled]);

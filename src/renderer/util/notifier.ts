@@ -1,6 +1,6 @@
 import type { Service, CatalogEntry } from '../store/types';
 import { ipc } from '../electron';
-import { useApp } from '../store/app';
+import { activateTab } from '../actions';
 import { plural } from './format';
 import { serviceIcon } from './service';
 
@@ -27,6 +27,6 @@ export function dispatchNotification(service: Service, entry: CatalogEntry | und
 
 	notification.onclick = () => {
 		ipc.send('toggleWin', true);
-		useApp.getState().setActiveTab(service.id);
+		activateTab(service.id);
 	};
 }
