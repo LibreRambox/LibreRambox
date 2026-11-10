@@ -4,4 +4,18 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-
+    groups:
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+      mantine:
+        patterns:
+          - "@mantine/*"
+      vite:
+        patterns:
+          - "vite"
+          - "@vitejs/plugin-react"
+          - "vitest"
