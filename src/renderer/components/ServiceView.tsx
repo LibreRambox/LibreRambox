@@ -277,7 +277,10 @@ export function ServiceView({ service, active }: { service: Service; active: boo
 		wakingUp.current = false;
 
 		remote.session.fromPartition(partition).webRequest.onBeforeSendHeaders((details: { url: string; requestHeaders: Record<string, string> }, callback: (r: object) => void) => {
-			if ( /^https:\/\/accounts\.google\.com(\/|$)/.test(details.url) ) details.requestHeaders['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0';
+			if ( /^https:\/\/accounts\.google\.com(\/|$)/.test(details.url) ) {
+				details.requestHeaders['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:160.0) Gecko/20100101 Firefox/160.0';
+				for ( const h of Object.keys(details.requestHeaders) ) if ( /^sec-ch-ua/i.test(h) ) delete details.requestHeaders[h];
+			}
 			callback({ cancel: false, requestHeaders: details.requestHeaders });
 		});
 
