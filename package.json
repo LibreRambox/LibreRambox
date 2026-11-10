@@ -65,7 +65,7 @@
 		"@types/mousetrap": "1.6.15",
 		"@types/react": "18.3.31",
 		"@types/react-dom": "18.3.7",
-		"@vitejs/plugin-react": "4.7.0",
+		"@vitejs/plugin-react": "6.2.1",
 		"concurrently": "10.0.7",
 		"cross-env": "10.1.0",
 		"electron": "45.2.3",
