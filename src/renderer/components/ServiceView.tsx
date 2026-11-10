@@ -267,7 +267,10 @@ export function ServiceView({ service, active }: { service: Service; active: boo
 		webview.setAttribute('autosize', 'on');
 		webview.setAttribute('webpreferences', 'spellcheck=no, contextIsolation=no');
 		webview.setAttribute('allowpopups', 'on');
-		webview.setAttribute('useragent', userAgentFor(entryRef.current));
+		const userAgent = userAgentFor(entryRef.current);
+		webview.setAttribute('useragent', userAgent);
+		// Service workers and popups use the session UA, which still carries the LibreRambox token
+		remote.session.fromPartition(partition).setUserAgent(userAgent);
 		webview.setAttribute('preload', resourceFileUrl('js/librerambox-service-api.js'));
 		webviewRef.current = webview;
 		errorCodeLog.current = [];
