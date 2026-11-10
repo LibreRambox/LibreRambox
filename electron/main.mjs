@@ -630,7 +630,8 @@ function startApp() {
 			showSaveImageAs: true,
 		});
 
-		// Workaround for Google (gmail) accounts, they forbid Electron User-Agent so we use Firefox ESR.
+		// Workaround for Google (gmail) accounts, they forbid Electron User-Agent so we use Firefox.
+		// Client Hints are stripped too, otherwise they contradict the spoofed User-Agent.
 		contents.session.webRequest.onBeforeSendHeaders(
 			{
 				urls: [
@@ -640,7 +641,8 @@ function startApp() {
 			},
 			(details, callback) => {
 				details.requestHeaders['User-Agent'] =
-					'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36';
+					'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:160.0) Gecko/20100101 Firefox/160.0';
+				for ( const h of Object.keys(details.requestHeaders) ) if ( /^sec-ch-ua/i.test(h) ) delete details.requestHeaders[h];
 				callback({ requestHeaders: details.requestHeaders });
 			}
 		);

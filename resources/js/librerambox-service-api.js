@@ -8,6 +8,10 @@ const { desktopCapturer, ipcRenderer } = require('electron');
 // electron module. Guard so the preload keeps working everywhere else.
 const screenshareSupported = typeof desktopCapturer !== 'undefined';
 
+// Google's login detects the patched globals below (Notification, getDisplayMedia, ...) and rejects
+// the browser as insecure, so leave its pages untouched. The preload runs again once it redirects.
+if ( location.hostname === 'accounts.google.com' ) return;
+
 /**
  * Make the LibreRambox API available via a global "librerambox" variable.
  *

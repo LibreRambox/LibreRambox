@@ -20,9 +20,14 @@ export function serviceIcon(service: Pick<Service, 'type' | 'logo'>): string {
 	return service.logo === '' ? resourceUrl('icons/custom.png') : service.logo;
 }
 
+// Google rejects logins when the page sees a Chrome UA that isn't real Chrome, keeping the Electron token gets past that
+const isGoogleService = (entry: CatalogEntry | undefined) => /^https?:\/\/[^/]*\.google\.com(\/|$)/.test(entry?.url ?? '');
+
 export function userAgentFor(entry: CatalogEntry | undefined): string {
 	const ua = getConfig().user_agent || entry?.userAgent || '';
-	return ua.length === 0 ? navigator.userAgent.replace(/LibreRambox\/([0-9]\.?)+\s/gi, '').replace(/Electron\/([0-9]\.?)+\s/gi, '') : ua;
+	if ( ua.length > 0 ) return ua;
+	const defaultUa = navigator.userAgent.replace(/LibreRambox\/([0-9]\.?)+\s/gi, '');
+	return isGoogleService(entry) ? defaultUa : defaultUa.replace(/Electron\/([0-9]\.?)+\s/gi, '');
 }
 
 // Clears cookies, cache and storage of a service. Works on the partition directly,
