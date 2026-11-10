@@ -94,7 +94,7 @@
 		"logo": "calendar.png",
 		"name": "Google Calendar",
 		"description": "With Google's free online calendar, it's easy to keep track of life's important events all in one place.",
-		"url": "https://calendar.google.com",
+		"url": "https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fcalendar.google.com%2Fcalendar%2Fr&service=cl&flowName=GlifWebSignIn&flowEntry=ServiceLogin",
 		"type": "messaging",
 		"allow_popups": false,
 		"manual_notifications": false,
