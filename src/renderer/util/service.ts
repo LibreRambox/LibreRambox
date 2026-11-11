@@ -26,8 +26,8 @@ const isGoogleService = (entry: CatalogEntry | undefined) => /^https?:\/\/[^/]*\
 export function userAgentFor(entry: CatalogEntry | undefined): string {
 	const ua = getConfig().user_agent || entry?.userAgent || '';
 	if ( ua.length > 0 ) return ua;
-	const defaultUa = navigator.userAgent.replace(/LibreRambox\/([0-9]\.?)+\s/gi, '');
-	return isGoogleService(entry) ? defaultUa : defaultUa.replace(/Electron\/([0-9]\.?)+\s/gi, '');
+	const defaultUa = navigator.userAgent.replace(/LibreRambox\/\S+\s/gi, '');
+	return isGoogleService(entry) ? defaultUa : defaultUa.replace(/Electron\/\S+\s/gi, '');
 }
 
 // Clears cookies, cache and storage of a service. Works on the partition directly,
