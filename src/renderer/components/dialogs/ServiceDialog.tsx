@@ -211,7 +211,7 @@ function ServiceForm({ state, onClose }: { state: ServiceDialogState; onClose: (
 
 				<Fieldset legend={t('app.hibernation[0]')}>
 					<Checkbox label={t('app.hibernation[1]')} {...check('hibernate')} />
-					<Collapse in={values.hibernate}>
+					<Collapse expanded={values.hibernate}>
 						<Stack gap="xs" mt="xs">
 							<NumberInput label={t('app.hibernation[2]')} min={1} allowDecimal={false} w={330} value={values.hibernateAfter} onChange={(v) => set('hibernateAfter', v)} />
 							<Radio.Group label={t('app.hibernation[3]')} value={values.hibernateOnSelect} onChange={(v) => set('hibernateOnSelect', v as 'auto' | 'ask')}>
@@ -221,7 +221,7 @@ function ServiceForm({ state, onClose }: { state: ServiceDialogState; onClose: (
 								</Stack>
 							</Radio.Group>
 							<Checkbox label={t('app.hibernation[6]')} {...check('hibernateRewake')} />
-							<Collapse in={values.hibernateRewake}>
+							<Collapse expanded={values.hibernateRewake}>
 								<Group gap="sm">
 									<NumberInput label={t('app.hibernation[7]')} min={1} allowDecimal={false} w={150} value={values.hibernateRewakeEvery} onChange={(v) => set('hibernateRewakeEvery', v)} />
 									<NumberInput label={t('app.hibernation[8]')} min={1} allowDecimal={false} w={170} value={values.hibernateRewakeFor} onChange={(v) => set('hibernateRewakeFor', v)} />
@@ -239,7 +239,7 @@ function ServiceForm({ state, onClose }: { state: ServiceDialogState; onClose: (
 						</UnstyledButton>
 					}
 				>
-					<Collapse in={advancedOpen}>
+					<Collapse expanded={advancedOpen}>
 						<Textarea
 							label={<>{t('app.window[8]')} (<Anchor href="https://github.com/LibreRambox/LibreRambox/wiki/Inject-JavaScript-Code" target="_blank" size="sm">{t('app.window[9]')}</Anchor>)</>}
 							minRows={5}
