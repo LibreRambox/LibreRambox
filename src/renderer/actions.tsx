@@ -9,7 +9,6 @@ import { HOME_TAB, useApp, type TabId } from './store/app';
 import { getService, tabOrder, useServices } from './store/services';
 import type { Service } from './store/types';
 import { useUi } from './store/ui';
-import { md5 } from './util/md5';
 import { clearServiceData } from './util/service';
 import { registry } from './util/registry';
 
@@ -82,8 +81,10 @@ export function lockLibreRambox() {
 		const id = modals.open({
 			title: t('app.main[19]'),
 			children: <TempPasswordForm onCancel={() => modals.close(id)} onSubmit={(password) => {
+				const hash = ipc.sendSync('password:hash', password);
+				if ( typeof hash !== 'string' || hash.length === 0 ) return;
 				modals.close(id);
-				setLock(md5(password));
+				setLock(hash);
 			}} />,
 		});
 	};
@@ -125,7 +126,8 @@ function TempPasswordForm({ onSubmit, onCancel }: { onSubmit: (password: string)
 
 // Returns false when the password is wrong
 export function unlockLibreRambox(password: string): boolean {
-	if ( localStorage.getItem('locked') !== md5(password) ) return false;
+	const storedHash = localStorage.getItem('locked');
+	if ( !storedHash || !ipc.sendSync('password:verify', storedHash, password) ) return false;
 	console.info('Lock LibreRambox:', 'Disabled');
 	localStorage.removeItem('locked');
 	useApp.getState().setLocked(false);

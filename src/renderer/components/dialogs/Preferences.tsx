@@ -7,7 +7,6 @@ import { HOME_TAB } from '../../store/app';
 import { useServices } from '../../store/services';
 import { useUi } from '../../store/ui';
 import { alert, confirm } from '../../actions';
-import { md5 } from '../../util/md5';
 
 const LANGUAGES: [string, string][] = [
 	['af', 'Afrikaans'], ['ar', 'Arabic'], ['bs2', 'Barndutsch, Switzerland'], ['bn', 'Bengali'], ['bg', 'Bulgarian'],
@@ -52,7 +51,7 @@ function PreferencesForm({ onClose }: { onClose: () => void }) {
 
 	const passwordMismatch = values.master_password1 !== values.master_password2;
 
-	const save = () => {
+	const save = async () => {
 		const { master_password_enabled, master_password1, master_password2 } = values;
 		// Only the fields of this form: other config values (window bounds...) may have changed meanwhile
 		const result: Partial<AppConfig> = {};
@@ -64,10 +63,21 @@ function PreferencesForm({ onClose }: { onClose: () => void }) {
 		if ( master_password_enabled ) {
 			// Only one of "password" or "password confirmation" filled, or they don't match
 			if ( !!master_password1 !== !!master_password2 || master_password1 !== master_password2 ) return;
-			if ( master_password1 ) result.master_password = md5(master_password1);
-			else delete result.master_password; // prevent overwriting password when unchanged
+			if ( master_password1 ) {
+				try {
+					await ipc.invoke('password:set-master', master_password1);
+				} catch ( err ) {
+					console.error('Could not update master password', err);
+					return;
+				}
+			}
 		} else {
-			result.master_password = false;
+			try {
+				await ipc.invoke('password:set-master', null);
+			} catch ( err ) {
+				console.error('Could not disable master password', err);
+				return;
+			}
 		}
 
 		// Proxy
