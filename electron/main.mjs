@@ -4,7 +4,6 @@ import { app, BrowserWindow, shell, Menu, ipcMain, nativeImage, session } from '
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
-import { createHash } from 'node:crypto';
 // Tray
 import tray from './tray.js';
 // Menu
@@ -26,6 +25,7 @@ const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const { positionOnScreen } = require('./utils/positionOnScreen.js');
 const { migrate } = require('./utils/migrationAssistant.js');
+const { hashPassword, verifyPassword } = require('./utils/passwords.js');
 
 if ( isDev ) app.getVersion = function() { return require('../package.json').version; }; // FOR DEV ONLY, BECAUSE IN DEV RETURNS ELECTRON'S VERSION
 // FOR DEV ONLY: run against a separate profile (e.g. a copy of a real one) instead of the installed app's data
@@ -289,6 +289,8 @@ const allowPopUp = [
 ];
 
 function startApp() {
+	const isMainRenderer = (event) => mainWindow && !mainWindow.isDestroyed() && event.sender === mainWindow.webContents;
+
 	ipcMain.on('setBadge', function(event, messageCount, value) {
 		mainWindow.setOverlayIcon(nativeImage.createFromDataURL(value), messageCount.toString());
 	});
@@ -331,17 +333,64 @@ function startApp() {
 		}
 	});
 
+	ipcMain.handle('password:set-master', function(event, password) {
+		if ( !isMainRenderer(event) ) throw new Error('Unauthorized password update');
+		if ( password === null ) {
+			config.set('master_password', false);
+			return;
+		}
+		if ( typeof password !== 'string' || password.length === 0 ) throw new TypeError('Password must not be empty');
+		config.set('master_password', hashPassword(password));
+	});
+
+	ipcMain.on('password:hash', function(event, password) {
+		if ( !isMainRenderer(event) ) {
+			event.returnValue = false;
+			return;
+		}
+		try {
+			event.returnValue = hashPassword(password);
+		} catch {
+			event.returnValue = false;
+		}
+	});
+
+	ipcMain.on('password:verify', function(event, storedHash, password) {
+		if ( !isMainRenderer(event) ) {
+			event.returnValue = false;
+			return;
+		}
+		try {
+			const result = verifyPassword(storedHash, password);
+			if ( result.matches && result.migratedHash && storedHash === config.get('master_password') ) config.set('master_password', result.migratedHash);
+			event.returnValue = result.matches;
+		} catch {
+			event.returnValue = false;
+		}
+	});
+
 	ipcMain.on('sendStatistics', function(event) {
 		event.returnValue = config.get('sendStatistics');
 	});
 
 	ipcMain.on('validateMasterPassword', function(event, pass) {
-		if ( config.get('master_password') === createHash('md5').update(pass).digest('hex') ) {
+		if ( !mainMasterPasswordWindow || event.sender !== mainMasterPasswordWindow.webContents ) {
+			event.returnValue = false;
+			return;
+		}
+		try {
+			const result = verifyPassword(config.get('master_password'), pass);
+			if ( !result.matches ) {
+				event.returnValue = false;
+				return;
+			}
+			if ( result.migratedHash ) config.set('master_password', result.migratedHash);
 			createWindow();
 			mainMasterPasswordWindow.close();
 			event.returnValue = true;
+		} catch {
+			event.returnValue = false;
 		}
-		event.returnValue = false;
 	});
 
 	// Handle Service Notifications
