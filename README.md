@@ -11,7 +11,6 @@
 
   <p>
     <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"><img src="https://img.shields.io/github/license/librerambox/librerambox.svg" alt="GNU GPL v3" /></a>
-    <a title="Crowdin" target="_blank" href="https://crowdin.com/project/librerambox"><img src="https://badges.crowdin.net/librerambox/localized.svg"></a>
   </p>
 	<p>
 		<a target="_blank" href="https://github.com/LibreRambox/LibreRambox/releases"> <img alt="Release" src="https://img.shields.io/github/v/release/LibreRambox/LibreRambox"></a>
@@ -88,7 +87,7 @@ You are always welcome to check the code! ;)
 
 ## Translations
 
-Help us translate LibreRambox on [https://crowdin.com/project/librerambox/invite](https://crowdin.com/project/librerambox).
+Translations are shipped as checked-in locale files in `resources/languages`.
 
 ## [Install on Linux - Steps](https://github.com/ramboxapp/LibreRambox/wiki/Install-on-Linux)
 

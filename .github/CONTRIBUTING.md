@@ -13,7 +13,3 @@ Help us to maximize the effort we can spend fixing issues and adding new feature
 ## Contributing to Source Code
 
 Feel free to create pull requests to help us offer a great and complete software. :wink:
-
-## Translations
-
-Please submit translations via [Crowdin](https://crowdin.com/project/librerambox/).
