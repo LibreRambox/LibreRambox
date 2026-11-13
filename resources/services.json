@@ -1441,21 +1441,6 @@
 		"custom_domain": false
 	},
 	{
-		"id": "xender",
-		"logo": "xender.png",
-		"name": "Xender",
-		"description": "Xender can transfer and share any type of files, from photos, documents, to music, videos, even apps without mobile data usage.",
-		"url": "http://web.xender.com/",
-		"type": "messaging",
-		"allow_popups": false,
-		"manual_notifications": false,
-		"js_unread": "",
-		"userAgent": "",
-		"note": "",
-		"titleBlink": false,
-		"custom_domain": false
-	},
-	{
 		"id": "xing",
 		"logo": "xing.png",
 		"name": "XING",

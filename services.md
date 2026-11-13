@@ -97,7 +97,6 @@ We currently support the following apps out of the box:
 * <img src="resources/icons/wire.png" alt="Wire" height="25" /> <a href="https://app.wire.com/">Wire</a>
 * <img src="resources/icons/workplace.png" alt="Workplace" height="25" /> <a href="https://___.facebook.com/">Workplace</a>
 * <img src="resources/icons/x.png" alt="X (Twitter)" height="25" /> <a href="https://x.com/home">X (Twitter)</a>
-* <img src="resources/icons/xender.png" alt="Xender" height="25" /> <a href="http://web.xender.com/">Xender</a>
 * <img src="resources/icons/xing.png" alt="XING" height="25" /> <a href="https://www.xing.com/messages/conversations">XING</a>
 * <img src="resources/icons/yahoo.png" alt="Yahoo! Mail" height="25" /> <a href="https://mail.yahoo.com/">Yahoo! Mail</a>
 * <img src="resources/icons/yandex.png" alt="Yandex Mail" height="25" /> <a href="https://mail.yandex.com/">Yandex Mail</a>
