@@ -48,8 +48,6 @@
 		"build:linux64": "npm run build:renderer && electron-builder --linux --x64 --publish never",
 		"build:win": "npm run build:renderer && electron-builder --win --x64 --publish never",
 		"build:win64": "npm run build:renderer && electron-builder --win --x64 --publish never",
-		"translations:download": "node languages.js download",
-		"translations:generate": "node languages.js generate",
 		"generate-services": "node generate-services.js"
 	},
 	"devDependencies": {

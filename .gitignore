@@ -24,5 +24,4 @@ npm-debug.log
 # Vagrant
 .vagrant/
 
-languages.js
 electron/dev-app-update.yml

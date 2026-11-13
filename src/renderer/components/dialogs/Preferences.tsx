@@ -106,17 +106,13 @@ function PreferencesForm({ onClose }: { onClose: () => void }) {
 	return (
 		<Modal opened onClose={onClose} title={t('preferences[0]')} size={440}>
 			<Stack gap="sm">
-				<Group gap={0} align="flex-end" wrap="nowrap">
-					<Select
-						flex={1}
-						label="Language"
-						allowDeselect={false}
-						data={LANGUAGES.map(([value, label]) => ({ value, label }))}
-						value={values.locale}
-						onChange={(v) => v && set('locale', v)}
-					/>
-					<Button component="a" variant="default" href="https://crowdin.com/project/librerambox/invite" target="_blank">Help us Translate</Button>
-				</Group>
+				<Select
+					label="Language"
+					allowDeselect={false}
+					data={LANGUAGES.map(([value, label]) => ({ value, label }))}
+					value={values.locale}
+					onChange={(v) => v && set('locale', v)}
+				/>
 				<Text size="xs" c="dimmed">English is the only language that has full translation. We are working with all the others, help us!</Text>
 
 				<Checkbox label={t('preferences[5]')} {...check('auto_launch')} />
